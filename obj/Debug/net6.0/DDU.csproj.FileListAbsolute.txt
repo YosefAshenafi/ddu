@@ -24,3 +24,4 @@ D:\SICS\DDU\Code\DDU\obj\Debug\net6.0\DDU.dll
 D:\SICS\DDU\Code\DDU\obj\Debug\net6.0\ref\DDU.dll
 D:\SICS\DDU\Code\DDU\obj\Debug\net6.0\DDU.pdb
 D:\SICS\DDU\Code\DDU\obj\Debug\net6.0\DDU.genruntimeconfig.cache
+D:\SICS\DDU\Code\DDU\obj\Debug\net6.0\DDU.csproj.AssemblyReference.cache
