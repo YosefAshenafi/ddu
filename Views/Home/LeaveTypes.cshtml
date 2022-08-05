@@ -1,0 +1,188 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "HRSettings";
+}
+
+@section Content{
+    <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Leave Type</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> HR</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onClick="return false;">Leave</a>
+                            </li>
+                            <li class="breadcrumb-item active">Leave Type</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header sectionHeader">
+                            <h2>
+                                <strong>Leave</strong> Type
+                            </h2>
+                            <button data-bs-toggle="modal" data-bs-target="#addLeaveType" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Leave Type</button>
+
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example contact_list">
+                                    <thead>
+                                        <tr>
+                                            <th> Name </th>
+                                            <th> Leave Type </th>
+                                            <th> Status </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>Annual Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-green">Active</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Casual Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-green">Active</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Emergency Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-orange">Deactive</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Work From Home Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-orange">Deactive</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Family Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-green">Active</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Sick Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-green">Active</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Maternity Leave</td>
+                                            <td>Paid</td>
+                                            <td>
+                                                <div class="badge col-green">Active</div>
+                                            </td>
+                                            <td>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </button>
+                                                <button class="btn tblActnBtn">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th> Name </th>
+                                            <th> Leave Type </th>
+                                            <th> Status </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="addLeaveType" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Leave Type</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <input type="text" class="form-control" placeholder="Input leave type" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+}

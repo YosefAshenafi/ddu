@@ -1,0 +1,200 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "attendance";
+}
+@section Content {
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="breadcrumb breadcrumb-style ">
+                    <li class="breadcrumb-item">
+                        <h4 class="page-title">Applicant List</h4>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-1">
+                        <a href="#">
+                            <i class="fas fa-home"></i> HR
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-2">
+                        <a href="#" onClick="return false;">Job</a>
+                    </li>
+                    <li class="breadcrumb-item active">Applicant List</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="header">
+                     <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                        <a href="@Url.Action("Jobs","Home")">Job Lists</a>
+                        Applicant Lists
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="#" onClick="return false;" class="dropdown-toggle"
+                               data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu float-end">
+                                <li>
+                                    <a href="#" onClick="return false;">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#" onClick="return false;">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#" onClick="return false;">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>
+                                    <th class="center"> # </th>
+                                    <th class="center"> Name </th>
+                                    <th class="center"> Job Title </th>
+                                    <th class="center"> Department </th>
+                                    <th class="center"> Interview Date </th>
+                                    <th class="center"> Interview Time </th>
+                                    <th class="center"> Reporting To </th>
+                                    <th class="center"> Qualification </th>
+                                    <th class="center"> Resume </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user1.jpg" alt="">
+                                    </td>
+                                    <td class="center">Jens Brincker</td>
+                                    <td class="center">Java Developer</td>
+                                    <td class="center">Development</td>
+                                    <td class="center">17-07-2018</td>
+                                    <td class="center">10:30</td>
+                                    <td class="center">Mark John</td>
+                                    <td class="center">M.C.A.</td>
+                                    <td class="center"><i class="far fa-file-pdf fa-lg col-red"></i></td>
+                                    <td>
+                                        <a href="#" class="btn tblActnBtn tblEdtBtn">
+                                            <i class="material-icons col-cyan">mode_edit</i>
+                                        </a>
+                                        <a href="#" class="btn tblActnBtn tblDelBtn">
+                                            <i class="material-icons col-orange">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user2.jpg" alt="">
+                                    </td>
+                                    <td class="center">Mark Hay</td>
+                                    <td class="center">Accountant</td>
+                                    <td class="center">Finance</td>
+                                    <td class="center">11-07-2018</td>
+                                    <td class="center">11:00</td>
+                                    <td class="center">Mark Hay</td>
+                                    <td class="center">M.Com.</td>
+                                    <td class="center"><i class="far fa-file-pdf fa-lg col-red"></i></td>
+                                    <td>
+                                        <a href="#" class="btn tblActnBtn tblEdtBtn">
+                                            <i class="material-icons col-cyan">mode_edit</i>
+                                        </a>
+                                        <a href="#" class="btn tblActnBtn tblDelBtn">
+                                            <i class="material-icons col-orange">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user3.jpg" alt="">
+                                    </td>
+                                    <td class="center">David Perry</td>
+                                    <td class="center">PHP Developer</td>
+                                    <td class="center">Development</td>
+                                    <td class="center">11-07-2018</td>
+                                    <td class="center">05:30</td>
+                                    <td class="center">Mark John</td>
+                                    <td class="center">B.E.</td>
+                                    <td class="center"><i class="far fa-file-pdf fa-lg col-red"></i></td>
+                                    <td>
+                                        <a href="#" class="btn tblActnBtn tblEdtBtn">
+                                            <i class="material-icons col-cyan">mode_edit</i>
+                                        </a>
+                                        <a href="#" class="btn tblActnBtn tblDelBtn">
+                                            <i class="material-icons col-orange">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user4.jpg" alt="">
+                                    </td>
+                                    <td class="center">Anthony Davie</td>
+                                    <td class="center">Designer</td>
+                                    <td class="center">Design</td>
+                                    <td class="center">17-08-2018</td>
+                                    <td class="center">12:00</td>
+                                    <td class="center">Jens Brincker</td>
+                                    <td class="center">B.C.A.</td>
+                                    <td class="center"><i class="far fa-file-pdf fa-lg col-red"></i></td>
+                                    <td>
+                                        <a href="#" class="btn tblActnBtn tblEdtBtn">
+                                            <i class="material-icons col-cyan">mode_edit</i>
+                                        </a>
+                                        <a href="#" class="btn tblActnBtn tblDelBtn">
+                                            <i class="material-icons col-orange">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user5.jpg" alt="">
+                                    </td>
+                                    <td class="center">Sue Woodger</td>
+                                    <td class="center">Sr. HR</td>
+                                    <td class="center">Admin</td>
+                                    <td class="center">12-07-2018</td>
+                                    <td class="center">02:30</td>
+                                    <td class="center">Mark Hay</td>
+                                    <td class="center">M.B.A.</td>
+                                    <td class="center"><i class="far fa-file-pdf fa-lg col-red"></i></td>
+                                    <td>
+                                        <a href="#" class="btn tblActnBtn tblEdtBtn">
+                                            <i class="material-icons col-cyan">mode_edit</i>
+                                        </a>
+                                        <a href="#" class="btn tblActnBtn tblDelBtn">
+                                            <i class="material-icons col-orange">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="center"> # </th>
+                                    <th class="center"> Job Title </th>
+                                    <th class="center"> Position </th>
+                                    <th class="center"> Department </th>
+                                    <th class="center"> No Of Pos </th>
+                                    <th class="center"> Interview Date </th>
+                                    <th class="center"> Reporting To </th>
+                                    <th class="center"> Required Qualification </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

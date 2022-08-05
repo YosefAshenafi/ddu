@@ -1,0 +1,238 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "attendance";
+}
+@section Content {
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="breadcrumb breadcrumb-style ">
+                    <li class="breadcrumb-item">
+                        <h4 class="page-title">Today's Attendance</h4>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-1">
+                        <a href="#">
+                            <i class="fas fa-home"></i> HR
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-2">
+                        <a href="#" onClick="return false;">Attendance</a>
+                    </li>
+                    <li class="breadcrumb-item active">Today's Attendance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <strong>Today's</strong> Attendance
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="#" onClick="return false;" class="dropdown-toggle"
+                               data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu float-end">
+                                <li>
+                                    <a href="#" onClick="return false;">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#" onClick="return false;">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#" onClick="return false;">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th class="center"> Name </th>
+                                    <th class="center"> Employee ID </th>
+                                    <th class="center"> Department </th>
+                                    <th class="center"> Check In </th>
+                                    <th class="center"> Shift </th>
+                                    <th class="center"> Status </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user8.jpg" alt="">
+                                    </td>
+                                    <td class="center">Brown</td>
+                                    <td class="center">1001</td>
+                                    <td class="center">Development</td>
+                                    <td class="center col-green">10:28</td>
+                                    <td class="center">Shift 1</td>
+                                    <td class="center">
+                                        <div class="badge col-green">Present</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <a href="@Url.Action("IndividualAttendance","Home")"><img src="~/assets/images/user/user2.jpg" alt=""></a>
+                                    </td>
+                                    <td class="center">Marta Mekonnen</td>
+                                    <td class="center">1002</td>
+                                    <td class="center">Finance</td>
+                                    <td class="center col-red">10:35</td>
+                                    <td class="center">Shift 1</td>
+                                    <td class="center">
+                                        <div class="badge col-green">Present</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user2.jpg" alt="">
+                                    </td>
+                                    <td class="center">Sarah Smith</td>
+                                    <td class="center">1003</td>
+                                    <td class="center">Transport</td>
+                                    <td class="center">-</td>
+                                    <td class="center">Shift 1</td>
+                                    <td class="center">
+                                        <div class="badge col-red">Leave</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user4.jpg" alt="">
+                                    </td>
+                                    <td class="center">Mark Sina</td>
+                                    <td class="center">1004</td>
+                                    <td class="center">Development</td>
+                                    <td class="center col-green">10:30</td>
+                                    <td class="center">Shift 2</td>
+                                    <td class="center">
+                                        <div class="badge col-green">Present</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user5.jpg" alt="">
+                                    </td>
+                                    <td class="center">Jay Soni</td>
+                                    <td class="center">1005</td>
+                                    <td class="center">Testing</td>
+                                    <td class="center col-green">-</td>
+                                    <td class="center">Shift 2</td>
+                                    <td class="center">
+                                        <div class="badge col-red">Leave</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user6.jpg" alt="">
+                                    </td>
+                                    <td class="center">Megha Trivedi</td>
+                                    <td class="center">1006</td>
+                                    <td class="center">Account</td>
+                                    <td class="center col-green">10:25</td>
+                                    <td class="center">Shift 1</td>
+                                    <td class="center">
+                                        <div class="badge col-green">Present</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="table-img center">
+                                        <img src="~/assets/images/user/user7.jpg" alt="">
+                                    </td>
+                                    <td class="center">Pooja Patel</td>
+                                    <td class="center">1007</td>
+                                    <td class="center">Testing</td>
+                                    <td class="center col-red">10:32</td>
+                                    <td class="center">Shift 1</td>
+                                    <td class="center">
+                                        <div class="badge col-green">Present</div>
+                                    </td>
+                                    <td class="center">
+                                        <a href="edit-leave.html" class="btn btn-tbl-edit">
+                                            <i class="material-icons">create</i>
+                                        </a>
+                                        <a href="#" class="btn btn-tbl-delete">
+                                            <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th class="center"> Name </th>
+                                    <th class="center"> Employee ID </th>
+                                    <th class="center"> Department </th>
+                                    <th class="center"> Check In </th>
+                                    <th class="center"> Shift </th>
+                                    <th class="center"> Status </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}

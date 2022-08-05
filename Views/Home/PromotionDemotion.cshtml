@@ -1,0 +1,177 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "Promotion/Demotion";
+}
+
+@section Content{
+    <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Promotion/Demotion</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> HR</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onClick="return false;">Promotion/Demotion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Promotion/Demotion</strong>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu float-end">
+                                        <li>
+                                            <a href="javascript:void(0);">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example contact_list">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Employee Name</th>
+                                            <th> Date </th>
+                                            <th> From Department </th>
+                                            <th> To Department </th>
+                                            <th> Promotion/Demotion </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        <tr>
+                                            <td class="table-img center">
+                                                <a href="@Url.Action("Profile","Home")"><img src="~/assets/images/user/employee.jpg" alt=""></a>
+                                            </td>
+                                            <td>Abel Tessema</td>
+                                            <td>01 January 2018</td>
+                                            <td>Sun Technology</td>
+                                            <td>Sun Ecommerce website</td>
+                                            <td> Promotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-img center">
+                                                <img src="~/assets/images/user/user2.jpg" alt="">
+                                            </td>
+                                            <td>Marta Melkau</td>
+                                            <td>15 January 2017</td>
+                                            <td>Ajay Singh</td>
+                                            <td>Android App</td>
+                                            <td>Promotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-img center">
+                                                <img src="~/assets/images/user/user3.jpg" alt="">
+                                            </td>
+                                            <td>Senayit Tegegne</td>
+                                            <td>17 February 2017</td>
+                                            <td>Manas Infotech</td>
+                                            <td>Desktop App</td>
+                                            <td>Demotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-img center">
+                                                <img src="~/assets/images/user/user7.jpg" alt="">
+                                            </td>
+                                            <td>Meron Mekonnen</td>
+                                            <td>11 March 2017</td>
+                                            <td>Swaraj Steel</td>
+                                            <td>Website</td>
+                                            <td>Demotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="table-img center">
+                                                <img src="~/assets/images/user/user8.jpg" alt="">
+                                            </td>
+                                            <td>Haile Sirak</td>
+                                            <td>17 March 2017</td>
+                                            <td>Ankur Plastic</td>
+                                            <td>IOS App</td>
+                                            <td>Promotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Employee Name</th>
+                                            <th> Date </th>
+                                            <th> From Department </th>
+                                            <th> To Department </th>
+                                            <th> Promotion/Demotion </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

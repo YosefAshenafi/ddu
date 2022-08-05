@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "PerDiem";
+}
+
+@section Content{
+    <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">PerDiem</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> HR</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onClick="return false;">PerDiem</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>PerDiem</strong>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu float-end">
+                                        <li>
+                                            <a href="javascript:void(0);">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example contact_list">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Invoice No </th>
+                                            <th> Date Range </th>
+                                            <th> Field Type </th>
+                                            <th> Project Name </th>
+                                            <th> Amount </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        <tr>
+                                            <td>1</td>
+                                            <td>IN00125</td>
+                                            <td>01 January 2018 - 05 January 2018</td>
+                                            <td>Sun Technology</td>
+                                            <td>Sun Ecommerce website</td>
+                                            <td> $10,000</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>IN00185</td>
+                                            <td>15 January 2017 - 25 January 2017</td>
+                                            <td>Ajay Singh</td>
+                                            <td>Android App</td>
+                                            <td> $1,000</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>IN25875</td>
+                                            <td>17 February 2017 - 30 February 2017</td>
+                                            <td>Manas Infotech</td>
+                                            <td>Desktop App</td>
+                                            <td> $3,724</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>IN00568</td>
+                                            <td>11 March 2017 - 11 April 2017</td>
+                                            <td>Swaraj Steel</td>
+                                            <td>Website</td>
+                                            <td> $528</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>IN0069</td>
+                                            <td>17 March 2017 - 27 March 2017</td>
+                                            <td>Ankur Plastic</td>
+                                            <td>IOS App</td>
+                                            <td> $856</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Invoice No </th>
+                                            <th> Date </th>
+                                            <th> Client Name </th>
+                                            <th> Project Name </th>
+                                            <th> Amount </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

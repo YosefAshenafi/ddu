@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>DDU ERP</title>
+    <!-- Plugins Core Css -->
+    <link href="~/assets/css/common.min.css" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <!-- You can choose a theme from css/styles instead of get all themes -->
+    <link href="~/assets/css/styles/all-themes.css" rel="stylesheet" />
+    <style>
+        .sectionHeader {
+             display:flex; 
+             justify-content:space-between;
+             align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30">
+                <img class="loading-img-spin" src="~/assets/images/loading.png" alt="admin">
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+    @Html.Partial("_TopBar.cshtml")
+    <!-- #Top Bar -->
+    <div>
+        <!-- Left Sidebar -->
+        @Html.Partial("_Menu.cshtml")
+        <!-- #END# Left Sidebar -->
+    </div>
+    <section class="content">
+        @RenderSection("Content")
+    </section>
+    <script src="~/assets/js/common.min.js"></script>
+    <!-- Custom Js -->
+    <script src="~/assets/js/admin.js"></script>
+    <script src="~/assets/js/bundles/echart/echarts.js"></script>
+    <script src="~/assets/js/bundles/apexcharts/apexcharts.min.js"></script>
+    <script src="~/assets/js/pages/index.js"></script>
+    <script src="~/assets/js/pages/todo/todo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+﻿<style>
+    li > a > span {
+        color: gray;
+    }
+</style>
+<aside id="leftsidebar" class="sidebar">
+    <!-- Menu -->
+    <div class="menu">
+        <ul class="list">
+            <li class="sidebar-user-panel active">
+                <div class="user-panel">
+                    <div class=" image">
+                        <img src="@Url.Content("~/assets/images/main-logo.jpg")" class="user-img-style" alt="User Image" />
+                    </div>
+                </div>
+                <div class="profile-usertitle">
+                    <div class="sidebar-userpic-name"> Dembil Dolo University </div>
+                    <div class="profile-usertitle-job ">ERP System </div>
+                </div>
+            </li>
+                        
+            <li class="header mb-5">
+                <a class="menu-toggle toggled">HR Management</a>
+                <ul>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "employees") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Employees","Home")">
+                            <i data-feather="users"></i>
+                            <span>Employees</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "departments") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Departments","Home")">
+                            <i data-feather="briefcase"></i>
+                            <span>Department</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "jobs") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("jobs","Home")">
+                            <i data-feather="book-open"></i>
+                            <span>Recruitment</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "leave") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("AllLeave","Home")">
+                            <i data-feather="git-commit"></i>
+                            <span>Leave Management</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "PerDiem") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("PerDiem","Home")">
+                            <i data-feather="watch"></i>
+                            <span>PerDiem</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "Promotion/Demotion") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("PromotionDemotion","Home")">
+                            <i data-feather="trello"></i>
+                            <span>Promotion Demotion</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "Transfer") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Transfer","Home")">
+                            <i data-feather="command"></i>
+                            <span>Transfer</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "training") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Training","Home")">
+                            <i data-feather="package"></i>
+                            <span>Traning</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "TerminationRehire") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("TerminationRehire","Home")">
+                            <i data-feather="copy"></i>
+                            <span>Termination Rehire</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "attendance") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Attendance","Home")">
+                            <i data-feather="check-circle"></i>
+                            <span>Attendance</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "payroll") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Payroll","Home")">
+                            <i data-feather="credit-card"></i>
+                            <span>Payroll</span>
+                        </a>
+                    </li>
+                </ul>
+                <a class="menu-toggle toggled">Inventory</a>
+                <ul>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Property Management</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Inventory Management</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Administration</span>
+                        </a>
+                    </li>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Procurement Lifecycle</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <a class="menu-toggle toggled">Bidding System</a>
+                <ul>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Depreciation Cost</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <a class="menu-toggle toggled">Archive System</a>
+                <ul>
+                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Index","Home")">
+                            <i data-feather="monitor"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+            
+        </ul>
+        </li>
+
+        </ul>
+    </div>
+    <!-- #Menu -->
+</aside>
