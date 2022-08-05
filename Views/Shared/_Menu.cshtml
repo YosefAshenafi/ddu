@@ -97,26 +97,26 @@
                 </ul>
                 <a class="menu-toggle toggled">Inventory</a>
                 <ul>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
                             <span>Property Management</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
                             <span>Inventory Management</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
                             <span>Administration</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
                             <span>Procurement Lifecycle</span>
                         </a>
@@ -125,29 +125,55 @@
                 </ul>
                 <a class="menu-toggle toggled">Bidding System</a>
                 <ul>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
-                            <span>Depreciation Cost</span>
+                            <span>Bid request</span>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="#">
+                            <i data-feather="monitor"></i>
+                            <span>Bid announcement</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i data-feather="monitor"></i>
+                            <span>Bid Approval</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i data-feather="monitor"></i>
+                            <span>Bid follow-up</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i data-feather="monitor"></i>
+                            <span>Inventory confirmation</span>
+                        </a>
+                    </li>
                 </ul>
                 <a class="menu-toggle toggled">Archive System</a>
                 <ul>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Home")">
+                    <li>
+                        <a href="#">
                             <i data-feather="monitor"></i>
-                            <span>Dashboard</span>
+                            <span>Attachments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i data-feather="monitor"></i>
+                            <span>Documents</span>
                         </a>
                     </li>
                 </ul>
-
             </li>
-            
         </ul>
         </li>
-
         </ul>
     </div>
     <!-- #Menu -->
