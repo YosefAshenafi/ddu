@@ -1,7 +1,0 @@
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\DDU.exe
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\appsettings.json
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\DDU.dll
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\DDU.deps.json
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\DDU.runtimeconfig.json
-D:\SICS\DDU\Code\DDU\obj\Release\net6.0\PubTmp\Out\DDU.pdb
