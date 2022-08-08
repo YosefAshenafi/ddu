@@ -20,7 +20,12 @@
             </li>
                         
             <li class="header mb-5">
-                <a class="menu-toggle toggled">HR Management</a>
+                @if(ViewData["category"] == "hr"){
+                    <a class="menu-toggle">HR Management</a>
+                }
+                else{
+                    <a class="menu-toggle toggled">HR Management</a>
+                }
                 <ul>
                     @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
                         <a href="@Url.Action("Index","Home")">
@@ -95,77 +100,92 @@
                         </a>
                     </li>
                 </ul>
-                <a class="menu-toggle toggled">Inventory Management</a>
+                @if(ViewData["category"] == "inventory"){
+                    <a class="menu-toggle">Inventory Management</a>
+                }
+                else{
+                    <a class="menu-toggle toggled">Inventory Management</a>
+                }
                 <ul>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "property") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("PropertyManagement","Home")">
                             <i data-feather="server"></i>
                             <span>Property Management</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "inventory") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("InventoryManagement","Home")">
                             <i data-feather="archive"></i>
                             <span>Inventory Management</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "administration") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Administration","Home")">
                             <i data-feather="user"></i>
                             <span>Administration</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "procurement") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("ProcurementLifeCycle","Home")">
                             <i data-feather="refresh-ccw"></i>
                             <span>Procurement Lifecycle</span>
                         </a>
                     </li>
 
                 </ul>
-                <a class="menu-toggle toggled">Bidding System</a>
+                @if(ViewData["category"] == "bid"){
+                    <a class="menu-toggle">Bidding System</a>
+                }
+                else{
+                    <a class="menu-toggle toggled">Bidding System</a>
+                }
                 <ul>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "bidRequest") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("BidRequest","Home")">
                             <i data-feather="bell"></i>
                             <span>Bid request</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "bidAnnouncement") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("BidAnnouncement","Home")">
                             <i data-feather="volume-2"></i>
                             <span>Bid announcement</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "bidApproval") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("BidApproval","Home")">
                             <i data-feather="check-square"></i>
                             <span>Bid Approval</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "bidFollowup") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("BidFollowUp","Home")">
                             <i data-feather="activity"></i>
                             <span>Bid follow-up</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "confirmation") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("InventoryConfirmation","Home")">
                             <i data-feather="thumbs-up"></i>
-                            <span>Inventory confirmation</span>
+                            <span>Inventory Confirmation</span>
                         </a>
                     </li>
                 </ul>
-                <a class="menu-toggle toggled">Archive System</a>
+                @if(ViewData["category"] == "archive"){
+                    <a class="menu-toggle">Archive System</a>
+                }
+                else{
+                    <a class="menu-toggle toggled">Archive System</a>
+                }
                 <ul>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "attachments") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Attachments","Home")">
                             <i data-feather="paperclip"></i>
                             <span>Attachments</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    @if(ViewData["name"] == "documents") {<text><li class="active"></text>} else {<text><li></text>}
+                        <a href="@Url.Action("Documents","Home")">
                             <i data-feather="folder"></i>
                             <span>Documents</span>
                         </a>

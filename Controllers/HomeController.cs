@@ -106,6 +106,50 @@ namespace DDU.Controllers
         {
             return View();
         }
+        public IActionResult PropertyManagement()
+        {
+            return View();
+        }
+        public IActionResult InventoryManagement()
+        {
+            return View();
+        }
+        public IActionResult Administration()
+        {
+            return View();
+        }
+        public IActionResult ProcurementLifeCycle()
+        {
+            return View();
+        }
+        public IActionResult BidRequest()
+        {
+            return View();
+        }
+        public IActionResult BidAnnouncement()
+        {
+            return View();
+        }
+        public IActionResult BidApproval()
+        {
+            return View();
+        }
+        public IActionResult BidFollowUp()
+        {
+            return View();
+        }
+        public IActionResult InventoryConfirmation()
+        {
+            return View();
+        }
+        public IActionResult Attachments()
+        {
+            return View();
+        }
+        public IActionResult Documents()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
