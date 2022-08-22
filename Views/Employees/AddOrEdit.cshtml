@@ -1,0 +1,81 @@
+﻿@model EmployeeEducation
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.EmpEduId" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input  asp-for="EmployeeID" type="hidden" />
+            <input asp-for="EmpEduId" type="hidden" />
+            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            
+                                            <input asp-for="EducationLev" class="form-control" placeholder="Education Level"/>
+                                                        <span asp-validation-for="EducationLev" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <input asp-for="Field" class="form-control" placeholder="Field"/>
+                                                        <span asp-validation-for="Field" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <input asp-for="FYear" class="form-control" placeholder="From Year"/>
+                                                        <span asp-validation-for="FYear" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+                                       
+                                        <input asp-for="TYear" class="form-control" placeholder="To Year"/>
+                                              <span asp-validation-for="TYear" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <input asp-for="Institute" class="form-control" placeholder="Institute"/>
+                                                        <span asp-validation-for="Institute" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                           <input asp-for="EffectiveDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="EffectiveDate" onfocus="(this.type='Date')"/>
+                                                        <span asp-validation-for="EffectiveDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                             
+                    <div class="form-group">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="col-lg-12 p-t-20 text-center">
+                               
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>                               
+                                <a  class="btn btn-secondary" asp-controller="Employees" asp-action="Profile" asp-route-id="@Model.EmployeeID")">Back</a>          
+                                 
+                            </div>
+                        </div>
+            </div>
+        </form>
+    </div>
+</div>
