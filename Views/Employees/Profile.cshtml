@@ -1,0 +1,497 @@
+﻿
+@model ViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "employees";
+    ViewData["category"] = "hr";
+    ViewData["Employeeid"] = @ViewBag.Registration.EmployeeID;
+}
+
+@section Content {
+   
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="breadcrumb breadcrumb-style ">
+                    <li class="breadcrumb-item">
+                        <h4 class="page-title">Profile</h4>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-1">
+                        <a href="#">
+                            <i class="fas fa-home"></i> HR
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-2">
+                        <a href="#" onClick="return false;">Employee</a>
+                    </li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+            <div class="card">
+                <div class="m-b-20">                
+                 
+                 
+                    <div class="contact-grid">
+                        <div class="profile-header bg-dark">
+                            <div class="user-name">@(String.Format("{0} {1}", @ViewBag.Registration.FirstName, @ViewBag.Registration.MiddleName))</div>
+                            <div class="name-center">@ViewBag.Registration.Designation</div>
+                        </div>
+                        <img src=@ViewBag.Registration.Image1Path class="user-img" alt="">
+                        <p>
+                            @ViewBag.Registration.Address
+                            <br />Addis Ababa
+                        </p>
+                        <div>
+                            <span class="phone">
+                                <i class="material-icons">phone</i>@ViewBag.Registration.Telephone
+                            </span>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <h5>564</h5>
+                                <small>Following</small>
+                            </div>
+                            <div class="col-4">
+                                <h5>18k</h5>
+                                <small>Followers</small>
+                            </div>
+                            <div class="col-4">
+                                <h5>565</h5>
+                                <small>Post</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+            <div class="card">
+                <ul class="nav nav-tabs">
+                 
+                    <li class="nav-item m-l-10">
+                        <a class="nav-link" data-bs-toggle="tab" href="#skills">Skills</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                       
+                    <div class="tab-pane body active" id="skills">
+                        @foreach (var obj in Model.EmployeeSkills)
+                                    {
+                                        <ul class="list-unstyled">
+                            <li>
+                                <div>@obj.Skill</div>
+                                <div class="progress skill-progress m-t-20">
+                                    <div class="progress-bar l-bg-@obj.Color width-per-@obj.Aria_valuenow" role="progressbar"
+                                         aria-valuenow="@obj.Aria_valuenow" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                           
+                        </ul>
+                       }
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <div class="profile-tab-box">
+                    <div class="p-l-20">
+                        <ul class="nav ">
+                            <li class="nav-item tab-all">
+                                <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                    About
+                                    Me
+                                </a>
+                            </li>
+                             <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#education" data-info="edulist" data-bs-toggle="tab">Education</a>
+                            </li>
+                             <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#employment" data-info="employmentlist" data-bs-toggle="tab">Employment</a>
+                            </li>
+                            <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#skill" data-info="skilllist" data-bs-toggle="tab">Skill</a>
+                            </li>                            
+                            <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#usersettings" data-bs-toggle="tab">Settings</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="row">
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>FullName</strong>
+                                            <br>
+                                            <p class="text-muted">@(String.Format("{0} {1}", @ViewBag.Registration.FirstName, @ViewBag.Registration.MiddleName))</p>
+                                        </div>
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>Mobile</strong>
+                                            <br>
+                                            <p class="text-muted">@ViewBag.Registration.Telephone</p>
+                                        </div>
+                                        <div class="col-md-3 col-6 b-r">
+                                            <strong>Email</strong>
+                                            <br>
+                                            <p class="text-muted">@ViewBag.Registration.Email</p>
+                                        </div>
+                                        <div class="col-md-3 col-6">
+                                            <strong>Location</strong>
+                                            <br>
+                                            <p class="text-muted">Ethiopia</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="m-t-30">
+                                         @foreach (var obj in Model.EmployeeEducations)
+                                        {
+                                            <ul><li>Completed my graduation in @obj.Field  from the well known and
+                                            renowned Institute
+                                            of Ethiopia – @obj.Institute in @obj.FYear to @obj.TYear which was
+                                            affiliated @obj.EducationLev</li></ul>
+                                        } 
+                                    </p>
+                                    
+                                    <p>
+                                         @foreach (var obj in Model.EmploymentHistorys)
+                                        {<ul><li>Worked as @obj.Job_title at @obj.Organiazation, Addis Ababa,
+                                        Ethiopia
+                                        from @obj.Date_from.Value.ToString("MMM-dd-yyyy") to @obj.Date_to.Value.ToString("MMM-dd-yyyy") </li></ul>
+                                        }
+                                    </p>
+                                    
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2>Education</h2>
+                                </div>
+                                 
+                                    <div class="body">
+                                    @foreach (var obj in Model.EmployeeEducations)
+                                    {
+                                        <ul>
+                                            <li>@obj.EducationLev,@obj.Institute, @obj.Field,Ethiopia.</li>
+                                          
+                                        </ul> 
+                                    }
+                                    </div>
+                                   
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2>Experience</h2>
+                                </div>
+                               
+                                <div class="body">       
+                                    @foreach (var obj in Model.EmploymentHistorys)
+                                   {
+                                    <ul>
+                                 
+                                        <li>
+                                           @obj.Remark @obj.Job_title  from @obj.Date_from.Value.ToString("MMM-dd-yyyy") to @obj.Date_to.Value.ToString("MMM-dd-yyyy")
+                                            at @obj.Organiazation.
+                                            , Addis Ababa.
+                                        </li>                       
+
+                                 
+                                    </ul>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2>Conferences, Cources &amp; Workshop Attended</h2>
+                                </div>
+                                <div class="body">
+                                    @foreach (var obj in Model.EmployeeTrainings)
+                                   {
+                                    <ul>
+                                        <li>
+                                            <strong><b>@obj.Topic</b></strong>
+                                            <br>
+                                            @obj.Description                                           
+                                        </li>
+                                    
+                                    </ul>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="usersettings" aria-expanded="false">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Security</strong> Settings
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Current Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="New Password">
+                            </div>
+                            <button class="btn btn-info btn-round">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Account</strong> Settings
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Country">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea rows="4" class="form-control no-resize"
+                                                  placeholder="Address Line 1"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-check m-l-10">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="checkbox"
+                                                       name="checkbox"> Profile Visibility For Everyone
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check m-l-10">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="checkbox1"
+                                                       name="checkbox"> New task notifications
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary btn-round">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+                 <div class="tab-pane fade" id="employment" aria-expanded="false">
+                     
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Employment</strong>
+                            </h2>
+                             <a onclick="showInPopup('@Url.Action("EmpAddOrEdit","Employees",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Add Employment')" class="btn btn-sucess d-flex align-items-center" style="float: right;"><i class="fa fa-plus-circle me-2">Add</i> </a>
+                        </div>                        
+                       
+                            <div class="body">    
+                          <div class="table-responsive">
+						<table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>                                    
+                                    <th class="center"> Organiazation </th>
+                                    <th class="center"> Jobtitle </th>
+                                    <th class="center"> Date from </th>
+                                    <th class="center"> Date to </th>
+                                    <th class="center"> Action</th>
+                                </tr>
+                            </thead>
+                             @foreach (var obj in Model.EmploymentHistorys)
+                                    {
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="center">@obj.Organiazation</td>
+                                    <td class="center">@obj.Job_title</td>
+                                    @if (obj.Date_from.HasValue)
+                                    {
+                                        
+                                         <td class="center">@obj.Date_from.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+                                     @if (obj.Date_to.HasValue)
+                                    {
+                                        
+                                         <td class="center">@obj.Date_to.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+    
+                                   <td>
+
+                                        <a  onclick="showInPopup('@Url.Action("EmpAddOrEdit","Employees",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Update Employment')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                         </a>
+                                        <a  asp-route-id="@obj.EmployeeId" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>                            
+                            </tbody>
+                            }                          
+                        </table>
+						</div>
+                            </div>
+                        
+                        
+                    </div>             
+                     
+                 </div>
+                <div class="tab-pane fade" id="education" aria-expanded="false">
+                     
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Education</strong>
+                            </h2>
+                             <a onclick="showInPopup('@Url.Action("AddOrEdit","Employees",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Add Education')" class="btn btn-sucess d-flex align-items-center" style="float: right;"><i class="fa fa-plus-circle me-2">Add</i> </a>
+                        </div>                        
+                       
+                            <div class="body">    
+                          <div class="table-responsive">
+						<table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>                                    
+                                    <th class="center"> Education Level </th>
+                                    <th class="center"> Institute </th>
+                                    <th class="center"> Field </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </thead>
+                             @foreach (var obj in Model.EmployeeEducations)
+                                    {
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="center">@obj.EducationLev</td>
+                                    <td class="center">@obj.Institute</td>
+                                    <td class="center">@obj.Field</td>                                                                 
+                                   <td>
+                                        <a  onclick="showInPopup('@Url.Action("AddOrEdit","Employees",new { id = @obj.EmpEduId,Employeeid=@obj.EmployeeID},Context.Request.Scheme)','Add Education')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                         </a>
+                                        <form asp-action="EduDelete" asp-route-id="@obj.EmpEduId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                            <input type="hidden" asp-for="@obj.EmpEduId" />
+                                            <button type="submit" value="Delete" class="btn btn-tbl-delete">
+                                             <i class="material-icons">delete_forever</i></button>                                         
+                                        </form>
+                                    </td>
+                                </tr>                            
+                            </tbody>
+                            }                          
+                        </table>
+						</div>
+
+                     </div>
+                        
+                        
+                    </div>             
+                     
+                 </div>
+            <div class="tab-pane fade" id="skill" aria-expanded="false">
+                     
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>skill</strong>
+                            </h2>
+                             <a onclick="showInPopup('@Url.Action("SkillAddOrEdit","Employees",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Add Education')" class="btn btn-sucess d-flex align-items-center" style="float: right;"><i class="fa fa-plus-circle me-2">Add</i> </a>
+                        </div>                       
+                            <div class="body">    
+                          <div class="table-responsive">
+						<table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>                                    
+                                    <th class="center"> Skill </th>
+                                    <th class="center"> Value now </th>
+                                    <th class="center"> Color </th>
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </thead>
+                             @foreach (var obj in Model.EmployeeSkills)
+                                    {
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="center">@obj.Skill</td>
+                                    <td class="center">@obj.Aria_valuenow</td>
+                                    <td class="center">@obj.Color</td>                                                                 
+                                   <td>
+                                        <a  onclick="showInPopup('@Url.Action("SkillAddOrEdit","Employees",new { id = @obj.EmpSkillId,Employeeid=@obj.EmployeeId},Context.Request.Scheme)','Add Skill')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                         </a>
+                                        <a  asp-route-id="@obj.EmployeeId" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                        </a>
+                                    </td>
+                                </tr>                            
+                            </tbody>
+                            }                          
+                        </table>
+						</div>
+                      </div>                
+                    </div>                   
+                 </div>                
+            </div>
+        </div>
+    </div>
+</div>
+}
