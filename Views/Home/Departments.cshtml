@@ -2,358 +2,103 @@
     ViewData["Title"] = "Home Page";
     ViewData["name"] = "departments";
     ViewData["category"] = "hr";
+    var departmentCount = 1;
 }
 @section Content {
-<div class="container-fluid">
-    <div class="block-header">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <ul class="breadcrumb breadcrumb-style ">
-                    <li class="breadcrumb-item">
-                        <h4 class="page-title">All Departments</h4>
-                    </li>
-                    <li class="breadcrumb-item bcrumb-1">
-                        <a href="#">
-                            <i class="fas fa-home"></i> HR
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item bcrumb-2">
-                        <a href="#" onClick="return false;">Departments</a>
-                    </li>
-                    <li class="breadcrumb-item active">All Departments</li>
-                </ul>
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">All Departments</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Departments</a>
+                        </li>
+                        <li class="breadcrumb-item active">All Departments</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card">
-                <div class="header sectionHeader">
-                    <h2>
-                        <strong>All</strong> Departments
-                    </h2>
-                    <button onclick="location.href='@Url.Action("AddDepartment","Home")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Department</button>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-hover js-basic-example contact_list">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th class="center">Dept. Name </th>
-                                    <th class="center"> Head Of Dept. </th>
-                                    <th class="center"> Phone </th>
-                                    <th class="center"> Email </th>
-                                    <th class="center"> Total Emp. </th>
-                                    <th class="center"> Action </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="odd">
-                                    <td class="center">1</td>
-                                    <td class="center">Mechanical Engg.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">2</td>
-                                    <td class="center">Civil Engg.</td>
-                                    <td class="center">Sanjana Patil</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">130</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">3</td>
-                                    <td class="center">Electrical Engg.</td>
-                                    <td class="center">Pooja Sarma</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">160</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">4</td>
-                                    <td class="center">M.C.A.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">5</td>
-                                    <td class="center">Computer Engg.</td>
-                                    <td class="center">Rajesh Malhotra</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">60</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">6</td>
-                                    <td class="center">M.B.A.</td>
-                                    <td class="center">Poonam Talati</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">250</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">7</td>
-                                    <td class="center">Mechanical Engg.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">8</td>
-                                    <td class="center">Civil Engg.</td>
-                                    <td class="center">Sanjana Patil</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">130</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">9</td>
-                                    <td class="center">Electrical Engg.</td>
-                                    <td class="center">Pooja Sarma</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">160</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">10</td>
-                                    <td class="center">M.C.A.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">11</td>
-                                    <td class="center">Computer Engg.</td>
-                                    <td class="center">Rajesh Malhotra</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">60</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">12</td>
-                                    <td class="center">M.B.A.</td>
-                                    <td class="center">Poonam Talati</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">250</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">13</td>
-                                    <td class="center">Mechanical Engg.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">14</td>
-                                    <td class="center">Civil Engg.</td>
-                                    <td class="center">Sanjana Patil</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">130</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">15</td>
-                                    <td class="center">Electrical Engg.</td>
-                                    <td class="center">Pooja Sarma</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">160</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">16</td>
-                                    <td class="center">M.C.A.</td>
-                                    <td class="center">Sanjay Chohan</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">150</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="center">17</td>
-                                    <td class="center">Computer Engg.</td>
-                                    <td class="center">Rajesh Malhotra</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">60</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td class="center">18</td>
-                                    <td class="center">M.B.A.</td>
-                                    <td class="center">Poonam Talati</td>
-                                    <td class="center">+123 4567890</td>
-                                    <td class="center">test@example.com</td>
-                                    <td class="center">250</td>
-                                    <td class="center">
-                                        <a href="edit-department.html" class="btn btn-tbl-edit">
-                                            <i class="material-icons">create</i>
-                                        </a>
-                                        <a href="#" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th class="center">Dept. Name </th>
-                                    <th class="center"> Head Of Dept. </th>
-                                    <th class="center"> Phone </th>
-                                    <th class="center"> Email </th>
-                                    <th class="center"> Total Emp. </th>
-                                    <th class="center"> Action </th>
-                                </tr>
-                            </tfoot>
-                        </table>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header sectionHeader">
+                        <h2>
+                            <strong>All</strong> Departments
+                        </h2>
+                        <button onclick="location.href='@Url.Action("AddDepartment","Home")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Department</button>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="center">Dept. Code </th>
+                                        <th class="center"> Dept. Name </th>
+                                        <th class="center"> Phone </th>
+                                        <th class="center"> Email </th>
+                                        <th class="center"> Total Emp. </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewData["allDepartments"] != null)
+                                    {
+                                        foreach (var department in ViewData["allDepartments"] as List<DDU.Models.Department>)
+                                        {
+                                            <tr class="odd">
+                                                <td class="center">@departmentCount</td>
+                                                <td class="center">@department.DepartmentCode</td>
+                                                <td class="center">@department.DepartmentName</td>
+                                                <td class="center">@department.Phone</td>
+                                                <td class="center">@department.Email</td>
+                                                <td class="center">@department.TotalEmpNo</td>
+                                                <td class="center">
+                                                    <a href="@Url.Action("EditDepartment","Home", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                    </a>
+                                                    <a onclick="return WarnDelete()" href="@Url.Action("DeleteDepartment","Home", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            departmentCount += 1;
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="center">Dept. Code </th>
+                                        <th class="center"> Dept. Name </th>
+                                        <th class="center"> Phone </th>
+                                        <th class="center"> Email </th>
+                                        <th class="center"> Total Emp. </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <script>
+        function WarnDelete(){
+            var check = confirm("are you sure you want to delete");
+            if(check){
+                return true;
+            }
+            return false;
+        }
+    </script>
 }
