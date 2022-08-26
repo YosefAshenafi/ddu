@@ -1,0 +1,105 @@
+﻿@model DDU.Models.Department
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "departments";
+    ViewData["category"] = "hr";
+    var departmentCount = 1;
+}
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">All Departments</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Departments</a>
+                        </li>
+                        <li class="breadcrumb-item active">All Departments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header sectionHeader">
+                        <h2>
+                            <strong>All</strong> Departments
+                        </h2>
+                        <button onclick="location.href='@Url.Action("AddDepartment","Department")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Department</button>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="center">Dept. Code </th>
+                                        <th class="center"> Dept. Name </th>
+                                        <th class="center"> Phone </th>
+                                        <th class="center"> Email </th>
+                                        <th class="center"> Total Emp. </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewData["allDepartments"] != null)
+                                    {
+                                        foreach (var department in ViewData["allDepartments"] as List<DDU.Models.Department>)
+                                        {
+                                            <tr class="odd">
+                                                <td class="center">@departmentCount</td>
+                                                <td class="center">@department.DepartmentCode</td>
+                                                <td class="center">@department.DepartmentName</td>
+                                                <td class="center">@department.Phone</td>
+                                                <td class="center">@department.Email</td>
+                                                <td class="center">@department.TotalEmpNo</td>
+                                                <td class="center">
+                                                    <a href="@Url.Action("EditDepartment","Department", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                    </a>
+                                                    <a onclick="return WarnDelete()" href="@Url.Action("DeleteDepartment","Department", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            departmentCount += 1;
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="center">Dept. Code </th>
+                                        <th class="center"> Dept. Name </th>
+                                        <th class="center"> Phone </th>
+                                        <th class="center"> Email </th>
+                                        <th class="center"> Total Emp. </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function WarnDelete() {
+            var check = confirm("are you sure you want to delete");
+            if (check) {
+                return true;
+            }
+            return false;
+        }
+    </script>
+}
