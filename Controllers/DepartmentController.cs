@@ -1,27 +1,38 @@
 ﻿using DDU.Data;
 using DDU.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace DDU.Controllers
 {
     public class DepartmentController : Controller
     {
-        db_a676b9_dduContext db = new db_a676b9_dduContext();
+        private readonly ApplicationDbContext _db;
+        private IHostingEnvironment _he;
+
+        public DepartmentController(ApplicationDbContext db, IHostingEnvironment he)
+        {
+            _db = db;
+            _he = he;
+        }
         public IActionResult Index()
         {
-            var allDepartments = db.Departments.Where(e => e.IsActive == true).ToList();
-            ViewData["allDepartments"] = allDepartments;
-            return View();
+            IEnumerable<Department> alldepartment = _db.department;
+            alldepartment = alldepartment.ToList().Where(e=>e.IsActive == true);
+            return View(alldepartment);
         }
         public IActionResult AddDepartment()
         {
-            ViewData["Departments"] = db.Departments.ToList();
+            IEnumerable<Department> alldepartment = _db.department.Where(e=>e.DepartmentId == 1);
+            ViewData["Departments"] = alldepartment;
             return View();
         }
         public IActionResult EditDepartment(int departmentId)
         {
-            ViewData["Departments"] = db.Departments.Where(e => e.DepartmentId != departmentId || e.ParentDepartmentId != departmentId).ToList();
-            var department = db.Departments.FirstOrDefault(d => d.DepartmentId == departmentId);
+            ViewData["department"] = _db.department.Where(e => e.DepartmentId != departmentId || e.ParentDepartmentId != departmentId).ToList();
+            var department = _db.department.FirstOrDefault(d => d.DepartmentId == departmentId);
             return View(department);
         }
         [HttpPost]
@@ -29,23 +40,23 @@ namespace DDU.Controllers
         {
             if (dept.DepartmentId == 0)
             {
-                db.Departments.Update(dept);
+                _db.department.Update(dept);
             }
             else
             {
-                db.Departments.Update(dept);
+                _db.department.Update(dept);
             }
-            db.SaveChanges();
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
         public IActionResult DeleteDepartment(int departmentId)
         {
-            var department = db.Departments.FirstOrDefault(d => d.DepartmentId == departmentId);
+            var department = _db.department.Find(departmentId);
             if (department != null)
             {
                 department.IsActive = false;
-                db.Departments.Update(department);
-                db.SaveChanges();
+                _db.department.Update(department);
+                _db.SaveChanges();
             }
             return RedirectToAction("Index");
         }

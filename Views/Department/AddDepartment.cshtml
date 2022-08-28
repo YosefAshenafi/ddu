@@ -71,7 +71,7 @@
                                         <select name="ParentDepartmentId">
                                             <option disabled selected>Parent Department</option>
                                             <option>-</option>
-                                            @foreach (var department in ViewData["Departments"] as List<DDU.Models.Department>)
+                                            @foreach (var department in ViewData["Departments"] as IEnumerable<Department>)
                                             {
                                                 <option value="@department.DepartmentId">@department.DepartmentName</option>
                                             }

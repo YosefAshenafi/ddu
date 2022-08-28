@@ -1,4 +1,4 @@
-﻿@model DDU.Models.Department
+﻿@model IEnumerable<Department>
 @{
     ViewData["Title"] = "Home Page";
     ViewData["name"] = "departments";
@@ -51,9 +51,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (ViewData["allDepartments"] != null)
+                                    @foreach (var department in Model)
                                     {
-                                        foreach (var department in ViewData["allDepartments"] as List<DDU.Models.Department>)
+                                        if (department != null)
                                         {
                                             <tr class="odd">
                                                 <td class="center">@departmentCount</td>

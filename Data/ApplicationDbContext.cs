@@ -25,6 +25,7 @@ namespace DDU.Data;
     public DbSet<JobList> jobList { get; set; }
 
     public DbSet<EmployeeSkill> employeeSkill { get; set; }
+    public DbSet<Department> department { get; set; }
 
-    
+
 }
