@@ -25,20 +25,20 @@ namespace DDU.Controllers
         }
         public IActionResult AddDepartment()
         {
-            IEnumerable<Department> alldepartment = _db.department.Where(e=>e.DepartmentId == 1);
+            IEnumerable<Department> alldepartment = _db.department.Where(e=>e.DepartmentID == 1);
             ViewData["Departments"] = alldepartment;
             return View();
         }
         public IActionResult EditDepartment(int departmentId)
         {
-            ViewData["department"] = _db.department.Where(e => e.DepartmentId != departmentId || e.ParentDepartmentId != departmentId).ToList();
-            var department = _db.department.FirstOrDefault(d => d.DepartmentId == departmentId);
+            ViewData["department"] = _db.department.Where(e => e.DepartmentID != departmentId || e.DisplayDepartmentID != departmentId).ToList();
+            var department = _db.department.FirstOrDefault(d => d.DepartmentID == departmentId);
             return View(department);
         }
         [HttpPost]
         public IActionResult SaveDepartment(Department dept)
         {
-            if (dept.DepartmentId == 0)
+            if (dept.DepartmentID == 0)
             {
                 _db.department.Update(dept);
             }

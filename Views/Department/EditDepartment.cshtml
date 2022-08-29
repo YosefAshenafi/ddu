@@ -74,13 +74,13 @@
                                             <option>-</option>
                                             @foreach (var department in ViewData["Departments"] as List<DDU.Models.Department>)
                                             {
-                                                if (Model.ParentDepartmentId == department.DepartmentId)
+                                                if (Model.ParentDepartmentID == department.DepartmentID)
                                                 {
-                                                    <option value="@department.DepartmentId" selected>@department.DepartmentName</option>
+                                                    <option value="@department.DepartmentID" selected>@department.DepartmentName</option>
                                                 }
                                                 else
                                                 {
-                                                    <option value="@department.DepartmentId">@department.DepartmentName</option>
+                                                    <option value="@department.DepartmentID">@department.DepartmentName</option>
                                                 }
                                             }
                                         </select>
@@ -91,7 +91,7 @@
                                         <div class="form-line">
                                             <input type="text" name="TotalEmpNo" class="form-control" placeholder="Total Employees" value="@Model.TotalEmpNo" />
                                             <input type="hidden" name="IsActive" value="true" />
-                                            <input type="hidden" name="DepartmentId" value="@Model.DepartmentId" />
+                                            <input type="hidden" name="DepartmentId" value="@Model.DepartmentID" />
                                         </div>
                                     </div>
                                 </div>
