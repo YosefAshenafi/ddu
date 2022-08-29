@@ -63,10 +63,10 @@
                                                 <td class="center">@department.Email</td>
                                                 <td class="center">@department.TotalEmpNo</td>
                                                 <td class="center">
-                                                    <a href="@Url.Action("EditDepartment","Department", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-edit">
+                                                    <a href="@Url.Action("EditDepartment","Department", new{ departmentId = department.DepartmentID })" class="btn btn-tbl-edit">
                                                         <i class="material-icons">create</i>
                                                     </a>
-                                                    <a onclick="return WarnDelete()" href="@Url.Action("DeleteDepartment","Department", new{ departmentId = department.DepartmentId })" class="btn btn-tbl-delete">
+                                                    <a onclick="return WarnDelete()" href="@Url.Action("DeleteDepartment","Department", new{ departmentId = department.DepartmentID })" class="btn btn-tbl-delete">
                                                         <i class="material-icons">delete_forever</i>
                                                     </a>
                                                 </td>

@@ -11,7 +11,6 @@ namespace DDU.Data;
         {
 
         }
-
     public DbSet<EmployeeRegistration> employeeRegistration { get; set; }
 
     public DbSet<EmployeeEducation> employeeEducation { get; set; }
@@ -28,4 +27,9 @@ namespace DDU.Data;
     public DbSet<Department> department { get; set; }
 
 
+    public DbSet<PositionJobs> positionJobs { get; set; }
+
+    public DbSet<Positions> positions { get; set; }
+
+    public DbSet<Applicant> applicants { get; set; }
 }

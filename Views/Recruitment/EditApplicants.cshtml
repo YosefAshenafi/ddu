@@ -1,0 +1,129 @@
+﻿
+@{ Layout = null; }
+@model Applicant
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                      
+                        <div class="body">
+                            <form asp-action="AddApplicants" asp-route-id="@Model.ApplicantID" onsubmit="return jQueryAjaxPost(this);">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input  asp-for="ApplicantID" type="hidden" />
+                            <input asp-for="PositionJobId" type="hidden" />
+                            <input asp-for="Image1Path" type="hidden" />
+                             
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            
+                                            <input asp-for="FirstName" class="form-control" placeholder="First Name"/>
+                                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <input asp-for="MiddleName" class="form-control" placeholder="Last Name"/>
+                                                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <input asp-for="Phonenumber" class="form-control" placeholder="Phone Number"/>
+                                                        <span asp-validation-for="Phonenumber" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+                                        <div class="form-line">
+                                              <input asp-for="InterviewTime" type="text" class="form-control datetimepicker flatpickr-input" placeholder="InterviewTime" onfocus="(this.type='Time')"/>
+                                                        <span asp-validation-for="InterviewTime" class="text-danger"></span> 
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            
+                                            <input asp-for="Result" class="form-control" placeholder="Result"/>
+                                                        <span asp-validation-for="Result" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Remark" class="form-control" placeholder="Remark"/>
+                                                        <span asp-validation-for="Remark" class="text-danger"></span>
+                                            
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                                        <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label asp-for="PassResult">Pass Result</label>
+                                             <input type="checkbox" asp-for="PassResult" class="form-control" placeholder="Pass Result"/>
+                                                      
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label asp-for="Recuited" placeholder="Recuited"></label>
+                                               <input type="checkbox" asp-for="Recuited" class="form-control" placeholder="Recuited"/>
+                                                        
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                         
+                            
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label class="control-label col-md-3">Upload Resume</label>
+                                  
+                                        <div class="dz-message">
+                                            <div class="drag-icon-cph">
+                                               
+                                                 <input  name="file" class="form-control" type="file" multiple />
+                                            </div>
+                                            
+                                            <em>Selected files are
+                                                <strong>not</strong>
+                                                actually uploaded.</em>
+                                        </div>                                    
+                                    
+                                </div>
+                            </div>
+
+                               <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+ 

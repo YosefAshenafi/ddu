@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DDU.Models
 {
-    public partial class Department
+    public class Department
     {
-        public int DepartmentId { get; set; }
-        public string? DepartmentCode { get; set; }
-        public string DepartmentName { get; set; } = null!;
-        public int? ParentDepartmentId { get; set; }
+        [Key]
+        public int DepartmentID { get; set; }
+
+        public string DepartmentCode { get; set; }
+
+        public string? DepartmentName { get; set; }
+
+        public int? ParentDepartmentID { get; set; }
+
         public bool? IsActive { get; set; }
-        public int? RootDepartmentId { get; set; }
-        public int? DisplayDepartmentId { get; set; }
+
+        public int? RootDepartmentID { get; set; }
+
+        public int? DisplayDepartmentID { get; set; }
+
         public string? Phone { get; set; }
+
         public string? Email { get; set; }
+
         public int? TotalEmpNo { get; set; }
-        public string? SessionId { get; set; }
-        public string? SessionIp { get; set; }
-        public string? SessionMac { get; set; }
+
+        public string? SessionID { get; set; }
+
+        public string? SessionIP { get; set; }
+
+        public string? SessionMAC { get; set; }
     }
 }
