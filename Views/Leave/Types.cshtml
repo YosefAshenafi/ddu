@@ -1,0 +1,120 @@
+﻿@model IEnumerable<TblLeaveType>
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "HRSettings";
+    ViewData["category"] = "hr";
+}
+
+@section Content{
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Leave Type</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Leave</a>
+                        </li>
+                        <li class="breadcrumb-item active">Leave Type</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header sectionHeader">
+                        <div>
+                            <button type="button" onclick="location.href='@Url.Action("Index","Leave")'" class="btn btn-secondary waves-effect">Leave Request</button>
+                            <button type="button" onclick="location.href='@Url.Action("Balance","Leave")'" class="btn btn-secondary waves-effect">Leave Balance</button>
+                            <button type="button" onclick="location.href='@Url.Action("Types","Leave")'" class="btn btn-secondary waves-effect active">Leave Types</button>
+                        </div>
+                        <button data-bs-toggle="modal" data-bs-target="#addLeaveType" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Leave Type</button>
+
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th> Name </th>
+                                        <th> Leave Type </th>
+                                        <th> No of Days </th>
+                                        <th> Condition </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model)
+                                    {
+                                        if (obj != null)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td>@obj.LeaveType</td>
+                                                <td>@obj.Pay</td>
+                                                <td>
+                                                    <div class="badge col-green">@obj.NoOfDays</div>
+                                                </td>
+                                                <td>@obj.Condition</td>
+                                                <td>
+                                                    <button class="btn tblActnBtn">
+                                                        <i class="material-icons">mode_edit</i>
+                                                    </button>
+                                                    <button class="btn tblActnBtn">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addLeaveType" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" action="@Url.Action("AddLeaveType","Leave")">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add Leave Type</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="LeaveType" class="form-control" placeholder="Input leave type" />
+                    </div>
+                    <div class="modal-body">
+                        <select>
+                            <option>Pay</option>
+                            <option>No Pay</option>
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" name="NoOfDays" class="form-control" placeholder="Number of Days" />
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" name="Condition" placeholder="Input Conditions" />
+                        <input type="hidden" name="LeaveTypeId" value="0" />
+                        <input type="hidden" name="IsDeleted" value="0" />
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
