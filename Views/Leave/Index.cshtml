@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TblLeaveType>
+﻿@model IEnumerable<TblLeaveRequest>
 @{
     ViewData["Title"] = "Home Page";
     ViewData["name"] = "leave";
@@ -11,7 +11,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <ul class="breadcrumb breadcrumb-style ">
                         <li class="breadcrumb-item">
-                            <h4 class="page-title">All Leave Request</h4>
+                            <h4 class="page-title">Leave Request</h4>
                         </li>
                         <li class="breadcrumb-item bcrumb-1">
                             <a href="#">
@@ -21,7 +21,7 @@
                         <li class="breadcrumb-item bcrumb-2">
                             <a href="#" onClick="return false;">Leave</a>
                         </li>
-                        <li class="breadcrumb-item active">All Leave Request</li>
+                        <li class="breadcrumb-item active">Leave Request</li>
                     </ul>
                 </div>
             </div>
@@ -29,31 +29,14 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
-                    <div class="header">
-
-                        <button type="button" onclick="location.href='@Url.Action("Index","Leave")'" class="btn btn-secondary waves-effect active">Leave Request</button>
-                        <button type="button" onclick="location.href='@Url.Action("Balance","Leave")'" class="btn btn-secondary waves-effect">Leave Balance</button>
-                        <button type="button" onclick="location.href='@Url.Action("Types","Leave")'" class="btn btn-secondary waves-effect">Leave Types</button>
-                        <ul class="header-dropdown m-r--5">
-                            <li class="dropdown">
-                                <a href="#" onClick="return false;" class="dropdown-toggle"
-                               data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false">
-                                    <i class="material-icons">more_vert</i>
-                                </a>
-                                <ul class="dropdown-menu float-end">
-                                    <li>
-                                        <a href="#" onClick="return false;">Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" onClick="return false;">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" onClick="return false;">Something else here</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <div class="header sectionHeader">
+                        <div>
+                            <button type="button" onclick="location.href='@Url.Action("Index","Leave")'" class="btn btn-secondary waves-effect active">Leave Request</button>
+                            <button type="button" onclick="location.href='@Url.Action("Types","Leave")'" class="btn btn-secondary waves-effect">Leave Types</button>
+                        </div>
+                        <div>
+                            <button data-bs-toggle="modal" data-bs-target="#addLeaveRequest" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Leave Request</button>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -61,194 +44,53 @@
                                 <thead>
                                     <tr>
                                         <th class="center">#</th>
-                                        <th class="center"> Emp ID </th>
                                         <th class="center"> Name </th>
-                                        <th class="center"> Appl Date </th>
+                                        <th class="center"> Request Date </th>
                                         <th class="center"> Status </th>
                                         <th class="center"> Leave From </th>
                                         <th class="center"> Leave To </th>
                                         <th class="center"> Leave Type </th>
-                                        <th class="center"> Remark </th>
                                         <th class="center"> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user8.jpg" alt="">
-                                        </td>
-                                        <td class="center">1001</td>
-                                        <td class="center">Brown</td>
-                                        <td class="center">15-07-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-green">Approved</div>
-                                        </td>
-                                        <td class="center">17-07-2018</td>
-                                        <td class="center">21-07-2018</td>
-                                        <td class="center">Sick</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user9.jpg" alt="">
-                                        </td>
-                                        <td class="center">1002</td>
-                                        <td class="center">Miller</td>
-                                        <td class="center">01-06-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-red">Reject</div>
-                                        </td>
-                                        <td class="center">18-06-2018</td>
-                                        <td class="center">28-06-2018</td>
-                                        <td class="center">Privilege</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user3.jpg" alt="">
-                                        </td>
-                                        <td class="center">1003</td>
-                                        <td class="center">Johnson</td>
-                                        <td class="center">14-04-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-green">Approved</div>
-                                        </td>
-                                        <td class="center">22-04-2018</td>
-                                        <td class="center">28-04-2018</td>
-                                        <td class="center">Casual</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user2.jpg" alt="">
-                                        </td>
-                                        <td class="center">1004</td>
-                                        <td class="center">Jones</td>
-                                        <td class="center">05-09-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-red">Reject</div>
-                                        </td>
-                                        <td class="center">17-09-2018</td>
-                                        <td class="center">21-09-2018</td>
-                                        <td class="center">Sick</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user7.jpg" alt="">
-                                        </td>
-                                        <td class="center">1005</td>
-                                        <td class="center">Davis</td>
-                                        <td class="center">13-08-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-brown">Pending</div>
-                                        </td>
-                                        <td class="center">30-08-2018</td>
-                                        <td class="center">04-09-2018</td>
-                                        <td class="center">Casual</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user5.jpg" alt="">
-                                        </td>
-                                        <td class="center">1006</td>
-                                        <td class="center">Sarah</td>
-                                        <td class="center">18-07-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-red">Reject</div>
-                                        </td>
-                                        <td class="center">21-07-2018</td>
-                                        <td class="center">25-12-2018</td>
-                                        <td class="center">Maternity</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr class="odd gradeX">
-                                        <td class="table-img center">
-                                            <img src="~/assets/images/user/user1.jpg" alt="">
-                                        </td>
-                                        <td class="center">1007</td>
-                                        <td class="center">Clark</td>
-                                        <td class="center">11-07-2018</td>
-                                        <td class="center">
-                                            <div class="badge col-green">Approved</div>
-                                        </td>
-                                        <td class="center">12-07-2018</td>
-                                        <td class="center">18-07-2018</td>
-                                        <td class="center">Casual</td>
-                                        <td class="center">xyz...</td>
-                                        <td class="center">
-                                            <a href="edit-leave.html" class="btn btn-tbl-edit">
-                                                <i class="material-icons">create</i>
-                                            </a>
-                                            <a href="#" class="btn btn-tbl-delete">
-                                                <i class="material-icons">delete_forever</i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var obj in Model)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td class="table-img center">
+                                                <img src=@obj.Employee.Image1Path style="width:50px;height:50px;" alt="">
+                                            </td>
+                                            <td class="center">@obj.Employee.FirstName @obj.Employee.MiddleName @obj.Employee.LastName</td>
+                                            <td class="center">@obj.RequestDate</td>
+                                            @if (obj.ApproveDate == null)
+                                            {
+                                                <td class="center">
+                                                    <div class="badge col-red">Requested</div>
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td class="center">
+                                                    <div class="badge col-green">Approved</div>
+                                                </td>
+                                            }
+                                            <td class="center">@obj.FromDate</td>
+                                            <td class="center">@obj.ToDate</td>
+                                            <td class="center">@obj.LeaveType.LeaveType</td>
+                                            <td class="center">
+                                                <a class="circleBorder" onclick="return WarnApproval()" href="@Url.Action("Approve","Leave", new{ LeaveRequestId = obj.EmpLeaveRequestId })">
+                                                    <i class="fa fa-check"></i>
+                                                </a>
+                                                <a data-bs-toggle="modal" data-bs-target="#addLeaveRequest" onclick="populateRequest('@obj.EmpLeaveRequestId', '@obj.ReferenceNo','@obj.Employee.EmployeeID','@obj.LeaveType.LeaveTypeId','@obj.FromDate','@obj.ToDate','@obj.ResumeWorkOn','@obj.AvailableDays','@obj.NoOfRequestedDays','@obj.RemainingDays','@obj.LeaveBalance','@obj.Reason')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th class="center">#</th>
-                                        <th class="center"> Emp ID </th>
-                                        <th class="center"> Name </th>
-                                        <th class="center"> Appl Date </th>
-                                        <th class="center"> Status </th>
-                                        <th class="center"> Leave From </th>
-                                        <th class="center"> Leave To </th>
-                                        <th class="center"> Leave Type </th>
-                                        <th class="center"> Remark </th>
-                                        <th class="center"> Action </th>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -256,4 +98,118 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addLeaveRequest" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" action="@Url.Action("AddLeaveRequest","Leave")">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Leave Request</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Reference Number</label>
+                        <input type="text" name="ReferenceNo" id="ReferenceNo" class="form-control" placeholder="Reference Number" />
+                    </div>
+                    <div class="modal-body">
+                        <select name="EmployeeID" id="EmployeeID">
+                            <option>Select Employee</option>
+                            @foreach (var emp in ViewData["Employees"] as List<DDU.Models.EmployeeRegistration>)
+                            {
+                                <option value="@emp.EmployeeID">@emp.FirstName @emp.MiddleName @emp.LastName</option>
+                            }
+                        </select>
+                    </div><div class="modal-body">
+                        <select name="LeaveTypeId" id="LeaveTypeId">
+                            <option>Select Leave Type</option>
+                            @foreach (var emp in ViewData["LeaveTypes"] as List<DDU.Models.TblLeaveType>)
+                            {
+                                <option value="@emp.LeaveTypeId">@emp.LeaveType</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">From Date</label>
+                        <input type="datetime-local" name="FromDate" id="FromDate" class="form-control"/>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">To Date</label>
+                        <input type="datetime-local" name="ToDate" id="ToDate" class="form-control"/>
+                        <input type="hidden" name="RequestDate" value="@DateTime.Now" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Resume Workon</label>
+                        <input type="datetime-local" name="ResumeWorkOn" id="ResumeWorkOn" class="form-control" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Available Days</label>
+                        <input type="text" name="AvailableDays" id="AvailableDays" class="form-control" placeholder="Available Days" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">No Of Requested Days</label>
+                        <input type="text" name="NoOfRequestedDays" id="NoOfRequestedDays" class="form-control" placeholder="No Of Requested Days" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Remaining Days</label>
+                        <input type="text" name="RemainingDays" id="RemainingDays" class="form-control" placeholder="Remaining Days" />
+                        <input type="hidden" name="EmpLeaveRequestId" id="EmpLeaveRequestId" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Leave Balance</label>
+                        <input type="text" name="LeaveBalance" id="LeaveBalance" class="form-control" placeholder="Leave Balance" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Reason</label>
+                        <input type="text" name="Reason" id="Reason" class="form-control" placeholder="Reason" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function WarnApproval() {
+            var check = confirm("Are you sure you want to approve this leave Request?");
+            if (check) {
+                return true;
+            }
+            return false;
+        }
+
+        function populateRequest(EmpLeaveRequestId, ReferenceNo, EmployeeID, LeaveTLeaveTypeId, FromDate, ToDate, ResumeWorkOn, AvailableDays, NoOfRequestedDays, RemainingDays, LeaveBalance, Reason){
+            $("#EmpLeaveRequestId").val(EmpLeaveRequestId);
+            $("#ReferenceNo").val(ReferenceNo);
+            $("#EmployeeID").val(EmployeeID);
+            var objSelect = document.getElementById("EmployeeID");
+            setSelectedValue(objSelect, EmployeeID);
+            $("#LeaveTypeId").val(LeaveTypeId);
+            $("#FromDate").val(ToCustomDate(new Date(FromDate)));
+            $("#ToDate").val(ToCustomDate(new Date(ToDate)));
+            $("#ResumeWorkOn").val(ToCustomDate(new Date(ResumeWorkOn)));
+            $("#AvailableDays").val(AvailableDays);
+            $("#NoOfRequestedDays").val(NoOfRequestedDays);
+            $("#RemainingDays").val(RemainingDays);
+            $("#LeaveBalance").val(LeaveBalance);
+            $("#Reason").val(Reason);
+        }
+
+        function ToCustomDate(d){
+            var dateString = d.getFullYear() + "-" + ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + " " +
+                ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+            return dateString;
+        }
+
+        function setSelectedValue(selectObj, valueToSet) {
+            for (var i = 0; i < selectObj.options.length; i++) {
+                if (selectObj.options[i].text == valueToSet) {
+                    selectObj.options[i].selected = true;
+                    return;
+                }
+            }
+        }
+    </script>
 }

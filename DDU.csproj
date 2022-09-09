@@ -20,4 +20,10 @@
     <Folder Include="wwwroot\images\recruitment\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Leave\Balance.cshtml" />
+    <None Include="Views\Leave\Index.cshtml" />
+    <None Include="Views\Leave\Types.cshtml" />
+  </ItemGroup>
+
 </Project>
