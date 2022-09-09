@@ -32,4 +32,7 @@ namespace DDU.Data;
     public DbSet<Positions> positions { get; set; }
 
     public DbSet<Applicant> applicants { get; set; }
+    public DbSet<TblLeaveRequest> tblLeaveRequest { get; set; }
+    public DbSet<TblLeaveType> tblLeaveType { get; set; }
+    public DbSet<TblEmployeeOnLeave> tblEmployeeOnLeave { get; set; }
 }
