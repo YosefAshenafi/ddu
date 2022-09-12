@@ -121,11 +121,11 @@ namespace DDU.Controllers
             return View(employeesFromDb);
         }
         //Post
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeletePost")]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(Guid? id)
         {
-
+            
             var obj = _db.employeeRegistration.Find(id);
             if (obj == null)
             {
@@ -134,9 +134,13 @@ namespace DDU.Controllers
             _db.employeeRegistration.Remove(obj);
             _db.SaveChanges();
             TempData["success"] = "delete successfully";
-            return RedirectToAction("Index");
+            IEnumerable<EmployeeRegistration> objEmployeeList = _db.employeeRegistration;
+            objEmployeeList = _db.employeeRegistration;
+            return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", objEmployeeList) });
+            //return RedirectToAction("Index");
 
         }
+
 
         // GET: EmployeeEducation/AddOrEdit(Insert)
         // GET: EmployeeEducation/AddOrEdit/5(Update)
@@ -165,8 +169,6 @@ namespace DDU.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit(Guid id, [Bind("EmpEduId,EmployeeID,Credential,Field,Institute,FYear,TYear,EffectiveDate,EducationLev,SessionID,SessionIP,SessionMAC")] EmployeeEducation eduModel)
         {
-           
-
             if (ModelState.IsValid)
             {
                
@@ -370,6 +372,17 @@ namespace DDU.Controllers
             return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
         }
 
-     
+        // POST: EmployeeEducation/Delete/5
+        [HttpPost, ActionName("SkillDelete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SkillDelete(Guid? id)
+        {
+            var skillModel = await _db.employeeSkill.FindAsync(id);
+            _db.employeeSkill.Remove(skillModel);
+            await _db.SaveChangesAsync();
+            return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+        }
+
+
     }
 }
