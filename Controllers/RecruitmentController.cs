@@ -230,6 +230,16 @@ namespace DDU.Controllers
                     {
                         _db.Update(appModel);
                         await _db.SaveChangesAsync();
+                        if (!EmployeeModelExists(appModel.ApplicantID) && appModel.Recuited == true)
+                        {
+                            EmployeeRegistration obj = new EmployeeRegistration();
+                            obj.EmployeeID = appModel.ApplicantID;
+                            obj.FirstName = appModel.FirstName;
+                            obj.MiddleName = appModel.MiddleName;
+                            obj.Telephone = appModel.Phonenumber;
+                            _db.employeeRegistration.Add(obj);
+                            _db.SaveChanges();
+                        }
                     }
                     catch (DbUpdateConcurrencyException)
                     {
@@ -267,7 +277,23 @@ namespace DDU.Controllers
                 return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
             }
             return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddApplicants", appModel) });
-        }      
+        }
+
+        // POST: PositionJobs/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Guid? id)
+        {
+            var jobsModel = await _db.positionJobs.FindAsync(id);
+            _db.positionJobs.Remove(jobsModel);
+            await _db.SaveChangesAsync();
+            return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+        }
+
+        private bool EmployeeModelExists(Guid id)
+        {
+            return _db.employeeRegistration.Any(e => e.EmployeeID == id);
+        }
 
 
     }

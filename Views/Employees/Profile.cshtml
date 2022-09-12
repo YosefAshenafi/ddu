@@ -55,17 +55,17 @@
                         </div>
                         <div class="row">
                             <div class="col-4">
-                                <h5>564</h5>
-                                <small>Following</small>
+                                <h5>18</h5>
+                                <small>Annual Leave</small>
+                            </div>
+                           @* <div class="col-4">
+                                <h5>5</h5>
+                                <small>Absent current Month</small>
                             </div>
                             <div class="col-4">
-                                <h5>18k</h5>
-                                <small>Followers</small>
-                            </div>
-                            <div class="col-4">
-                                <h5>565</h5>
-                                <small>Post</small>
-                            </div>
+                                <h5>10</h5>
+                                <small>Absent current Year</small>
+                            </div>*@
                         </div>
                     </div>
                     
@@ -77,6 +77,9 @@
                  
                     <li class="nav-item m-l-10">
                         <a class="nav-link" data-bs-toggle="tab" href="#skills">Skills</a>
+                    </li>
+                      <li class="nav-item m-l-10">
+                        <a class="nav-link" data-bs-toggle="tab" href="#Status">Employment type </a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -95,6 +98,73 @@
                            
                         </ul>
                        }
+                       
+                    </div>
+                  <div class="tab-pane body" id="Status">
+                       
+                          @*<ul class="list-unstyled">
+                            <li>
+                               
+                                <div>Permanent</div>
+                                <div class="progress skill-progress m-t-20">
+                                     <div class="switch">
+                                            <label>
+                                                <input type="checkbox" checked>
+                                                <span class="lever switch-col-green"></span>
+                                            </label>
+                                  </div>
+                                </div>
+                                       
+                            </li>
+                            <li>
+                               
+                               <div class="demo-switch-title">Temporary</div>
+                                      <div class="progress skill-progress m-t-20">
+                                            <label>
+                                                <input type="checkbox" checked>
+                                                <span class="lever switch-col-light-green"></span>
+                                            </label>
+                                        </div>
+                            </li>
+                               <li>
+                               
+                               <div class="demo-switch-title">Expatriate</div>
+                                      <div class="switch">
+                                            <label>
+                                                <input type="checkbox" >
+                                                <span class="lever switch-col-lime"></span>
+                                            </label>
+                                        </div>
+                            </li>
+                           
+                        </ul>*@
+                                                           <div class="col-sm-12">
+                                        <div class="demo-switch-title">Permanent</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" checked>
+                                                <span class="lever switch-col-green"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="demo-switch-title">Temporary</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" >
+                                                <span class="lever switch-col-light-green"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="demo-switch-title">Expatriate</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" >
+                                                <span class="lever switch-col-lime"></span>
+                                            </label>
+                                        </div>
+                                    </div>
                        
                     </div>
                 </div>
@@ -478,9 +548,12 @@
                                         <a  onclick="showInPopup('@Url.Action("SkillAddOrEdit","Employees",new { id = @obj.EmpSkillId,Employeeid=@obj.EmployeeId},Context.Request.Scheme)','Add Skill')" class="btn btn-tbl-edit">
                                                     <i class="material-icons">create</i>
                                          </a>
-                                        <a  asp-route-id="@obj.EmployeeId" class="btn btn-tbl-delete">
-                                                    <i class="material-icons">delete_forever</i>
-                                        </a>
+                                        <form asp-action="SkillDelete" asp-route-id="@obj.EmpSkillId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                            <input type="hidden" asp-for="@obj.EmpSkillId" />
+                                            <button type="submit" value="SkillDelete" class="btn btn-tbl-delete">
+                                             <i class="material-icons">delete_forever</i></button>                                         
+                                        </form>
+
                                     </td>
                                 </tr>                            
                             </tbody>

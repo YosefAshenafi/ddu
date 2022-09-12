@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     @if(ViewData["name"] == "PerDiem") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("PerDiem","Home")">
+                        <a href="@Url.Action("Index","PerDiem")">
                             <i data-feather="watch"></i>
                             <span>PerDiem</span>
                         </a>
@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     @if(ViewData["name"] == "Transfer") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Transfer","Home")">
+                        <a href="@Url.Action("Index","Transfer")">
                             <i data-feather="command"></i>
                             <span>Transfer</span>
                         </a>

@@ -78,8 +78,16 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <label asp-for="PassResult">Pass Result</label>
-                                             <input type="checkbox" asp-for="PassResult" class="form-control" placeholder="Pass Result"/>
+                                        <div class="demo-switch-title">Pass Result</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" asp-for="PassResult">
+                                                <span class="lever switch-col-light-green"></span>
+                                            </label>
+                                        </div>
+
+                                            @*<label asp-for="PassResult">Pass Result</label>
+                                             <input type="checkbox" asp-for="PassResult" class="form-control" placeholder="Pass Result"/>*@
                                                       
                                           
                                         </div>
@@ -88,8 +96,16 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <label asp-for="Recuited" placeholder="Recuited"></label>
-                                               <input type="checkbox" asp-for="Recuited" class="form-control" placeholder="Recuited"/>
+
+                                        <div class="demo-switch-title">Recuited</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" asp-for="Recuited">
+                                                <span class="lever switch-col-green"></span>
+                                            </label>
+                                        </div>
+                                         @*   <label asp-for="Recuited" placeholder="Recuited"></label>
+                                               <input type="checkbox" asp-for="Recuited" class="form-control" placeholder="Recuited"/>*@
                                                         
                                            
                                         </div>
@@ -109,9 +125,9 @@
                                                  <input  name="file" class="form-control" type="file" multiple />
                                             </div>
                                             
-                                            <em>Selected files are
+                                            @*<em>Selected files are
                                                 <strong>not</strong>
-                                                actually uploaded.</em>
+                                                actually uploaded.</em>*@
                                         </div>                                    
                                     
                                 </div>
