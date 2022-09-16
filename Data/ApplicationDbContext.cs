@@ -48,5 +48,8 @@ namespace DDU.Data;
     public DbSet<PerDiemRequest> PerDiemRequest { get; set; } = null!;
 
     public DbSet<EmployeeTransfer> employeeTransfer { get; set; } = null!;
+
+    public DbSet<TblPromotion> tblPromotion { get; set; }
+    public DbSet<TblDemotion> tblDemotion { get; set; }
 }
 

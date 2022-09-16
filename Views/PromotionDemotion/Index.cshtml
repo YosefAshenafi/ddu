@@ -1,0 +1,209 @@
+﻿@model IEnumerable<DDU.Models.TblPromotion>
+@{
+    ViewData["Title"] = "Promotion";
+    ViewData["name"] = "Promotion/Demotion";
+    ViewData["category"] = "hr";
+}
+
+@section Content{
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Promotion/Demotion</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Promotion/Demotion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header sectionHeader">
+                        <div>
+                            <button type="button" onclick="location.href='@Url.Action("Index","PromotionDemotion")'" class="btn btn-secondary waves-effect active">Promotion</button>
+                            <button type="button" onclick="location.href='@Url.Action("Demotion","PromotionDemotion")'" class="btn btn-secondary waves-effect">Demotion</button>
+                        </div>
+                        <div>
+                            <button data-bs-toggle="modal" data-bs-target="#addPromotion" class="btn btn-success d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Promote Employee</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Employee Name</th>
+                                        <th> Date </th>
+                                        <th> From Department </th>
+                                        <th> To Department </th>
+                                        <th> Promotion/Demotion </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    @foreach (var obj in Model)
+                                    {
+                                        <tr>
+                                            <td class="table-img center">
+                                                <img src=@obj.Employee.Image1Path style="width:50px;height:50px;" alt="">
+                                            </td>
+                                            <td>@obj.Employee.FirstName @obj.Employee.MiddleName @obj.Employee.LastName</td>
+                                            <td>@obj.PDate</td>
+                                            <td>@obj.FDept</td>
+                                            <td>@obj.TDept</td>
+                                            <td>Promotion</td>
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addPromotion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" action="@Url.Action("AddPromotion","PromotionDemotion")">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Promotion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Reference Number</label>
+                        <input type="text" name="ReferenceNo" id="ReferenceNo" class="form-control" placeholder="Reference Number" />
+                    </div>
+                    <div class="modal-body">
+                        <select name="EmployeeID" id="EmployeeID">
+                            <option>Select Employee</option>
+                            @foreach (var emp in ViewData["Employees"] as List<DDU.Models.EmployeeRegistration>)
+                            {
+                                <option value="@emp.EmployeeID">@emp.FirstName @emp.MiddleName @emp.LastName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Promotion Date</label>
+                        <input type="datetime-local" name="PDate" id="PDate" class="form-control" placeholder="Promotion Date" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">From Department</label>
+                        <select name="FDept" id="FDept">
+                            <option>Select Department</option>
+                            @foreach (var dept in ViewData["Departments"] as List<DDU.Models.Department>)
+                            {
+                                <option value="@dept.DepartmentName">@dept.DepartmentName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">To Department</label>
+                        <select name="TDept" id="TDept">
+                            <option>Select Department</option>
+                            @foreach (var dept in ViewData["Departments"] as List<DDU.Models.Department>)
+                            {
+                                <option value="@dept.DepartmentName">@dept.DepartmentName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">From Grade</label>
+                        <input type="text" name="FGrade" id="FGrade" class="form-control" placeholder="From Grade" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">To Grade</label>
+                        <input type="text" name="TGrade" id="TGrade" class="form-control" placeholder="To Grade" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">From Job</label>
+                        <input type="text" name="FJob" id="FJob" class="form-control" placeholder="From Job" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">To Job</label>
+                        <input type="text" name="TJob" id="TJob" class="form-control" placeholder="To Job" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Salary</label>
+                        <input type="text" name="Salary" id="Salary" class="form-control" placeholder="Salary" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">New Salary</label>
+                        <input type="text" name="NewSalary" id="TJob" class="form-control" placeholder="New Salary" />
+                    </div>
+                    <div class="modal-body">
+                        <label class="label form-label">Remark</label>
+                        <input type="text" name="TGrade" id="TJob" class="form-control" placeholder="Remark" />
+                        <input type="hidden" name="IsDeleted" id="IsDeleted" value="0" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        function WarnApproval() {
+            var check = confirm("Are you sure you want to approve this leave Request?");
+            if (check) {
+                return true;
+            }
+            return false;
+        }
+
+        function populateRequest(EmpLeaveRequestId, ReferenceNo, EmployeeID, LeaveTLeaveTypeId, FromDate, ToDate, ResumeWorkOn, AvailableDays, NoOfRequestedDays, RemainingDays, LeaveBalance, Reason) {
+            $("#EmpLeaveRequestId").val(EmpLeaveRequestId);
+            $("#ReferenceNo").val(ReferenceNo);
+            $("#EmployeeID").val(EmployeeID);
+            var objSelect = document.getElementById("EmployeeID");
+            setSelectedValue(objSelect, EmployeeID);
+            $("#LeaveTypeId").val(LeaveTypeId);
+            $("#FromDate").val(ToCustomDate(new Date(FromDate)));
+            $("#ToDate").val(ToCustomDate(new Date(ToDate)));
+            $("#ResumeWorkOn").val(ToCustomDate(new Date(ResumeWorkOn)));
+            $("#AvailableDays").val(AvailableDays);
+            $("#NoOfRequestedDays").val(NoOfRequestedDays);
+            $("#RemainingDays").val(RemainingDays);
+            $("#LeaveBalance").val(LeaveBalance);
+            $("#Reason").val(Reason);
+        }
+
+        function ToCustomDate(d) {
+            var dateString = d.getFullYear() + "-" + ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + " " +
+                ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
+            return dateString;
+        }
+
+        function setSelectedValue(selectObj, valueToSet) {
+            for (var i = 0; i < selectObj.options.length; i++) {
+                if (selectObj.options[i].text == valueToSet) {
+                    selectObj.options[i].selected = true;
+                    return;
+                }
+            }
+        }
+    </script>
+}
