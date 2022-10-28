@@ -4,7 +4,7 @@
     ViewData["category"] = "hr";
     var i = 1;
 }
-@model IEnumerable<EmployeeTransfer>
+@model IEnumerable<vw_EmployeeTransfer>
 @section Content {
 <div class="container-fluid">
     <div class="block-header">
@@ -79,7 +79,15 @@
                                 <tr class="odd gradeX">
                                     <td class="center">@i</td>
                                     <td class="center">@obj.LetterNo</td>
-                                    <td class="center">@obj.LetterDate</td>
+                                    @if (obj.LetterDate.HasValue)
+                                    {
+
+                                    <td class="center">@obj.LetterDate.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+                                    else
+                                    {
+                                    <td></td>
+                                    }
                                     <td class="center">@obj.EmployeeName</td>
                                     <td class="center">@obj.PositionName</td>
                                     <td class="center">@obj.DepartmentName</td>
@@ -95,18 +103,15 @@
                                     }                               
                                   
                                     <td class="center">
-                                        <a asp-controller="Recruitment" asp-action="EditPositionJobs" asp-route-id="@obj.TransferID" class="btn btn-tbl-edit">
+                                        <a asp-controller="Transfer" asp-action="EditTransfers" asp-route-id="@obj.TransferID" class="btn btn-tbl-edit">
                                             <i class="material-icons">create</i>
-                                        </a>
-                                       @* <a asp-controller="Recruitment" asp-action="Delete" asp-route-id="@obj.PositionJobId" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>*@
-                                         <form asp-action="Delete" asp-route-id="@obj.TransferID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                        </a>                                    
+                                         <form asp-controller="Transfer" asp-action="Delete" asp-route-id="@obj.TransferID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
                                            
                                             <button type="submit" value="Delete" class="btn btn-tbl-delete">
                                              <i class="material-icons">delete_forever</i></button>                                         
                                         </form>
-                                         <a asp-controller="Transfer" asp-action="TransferDetail" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-add">
+                                         <a asp-controller="Transfer" asp-action="EmployeeTransferDetail" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-add">
                                            <i class="material-icons">dehaze</i>
                                         </a>
                                     </td>

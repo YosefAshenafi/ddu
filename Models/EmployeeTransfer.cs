@@ -19,7 +19,7 @@ namespace DDU.Models
 
         public string? LetterNo { get; set; }
 
-        public DateTime LetterDate { get; set; }
+        public DateTime? LetterDate { get; set; }
 
         public DateTime? EffectiveDate { get; set; }
 

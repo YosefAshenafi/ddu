@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "jobs";
+    ViewData["category"] = "hr";
+    var i = 1;
+}
+@model IEnumerable<vw_StaffRecivable>
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">StaffRecivable List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">StaffRecivable</a>
+                        </li>
+                        <li class="breadcrumb-item active">StaffRecivable List</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                            StaffRecivables Lists
+                            <button onclick="location.href='@Url.Action("AddStaffRecivables","StaffRecivable")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i>Add StaffRecivables</button>
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="#" onClick="return false;" class="dropdown-toggle"
+                               data-bs-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end">
+                                    <li>
+                                        <a href="#" onClick="return false;">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" onClick="return false;">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th class="center"> IDNo </th>
+                                        <th class="center"> Employee Name </th>
+                                        <th class="center"> FromMonth </th>
+                                        <th class="center"> ToMonth </th>
+                                        <th class="center"> ReturnYear </th>
+                                        <th class="center"> Amount </th>
+                                        <th class="center"> Remark </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model)
+                                    {
+
+                                        <tr class="odd gradeX">
+                                            <td class="table-img center">
+                                                <a href="@Url.Action("StaffDetail","StaffRecivable" , new{ id = @obj.EmployeeID })"><img src=@obj.Image1Path style="width:50px;height:50px;" alt=""></a>
+                                            </td>
+                                        <td class="center">@obj.IDNo</td>
+                                            <td class="center">@obj.EmployeeName</td>
+                                        <td class="center">@obj.FromMonth</td>
+                                            <td class="center">@obj.ToMonth</td>
+                                            <td class="center">@obj.ReturnYear</td>
+                                            <td class="center">@obj.Amount</td>
+                                            <td class="center">@obj.Remark</td>
+                                             <td class="center">
+                                                <a asp-controller="StaffRecivable" asp-action="EditStaffRecivables" asp-route-id="@obj.StaffRecivableID" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <form asp-controller="StaffRecivable" asp-action="Delete" asp-route-id="@obj.StaffRecivableID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+
+                                                    <button type="submit" value="Delete" class="btn btn-tbl-delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </form>
+                                                <a asp-controller="StaffRecivable" asp-action="StaffDetail" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-add">
+                                                    <i class="material-icons">dehaze</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

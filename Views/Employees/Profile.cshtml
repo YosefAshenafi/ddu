@@ -1,4 +1,9 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @model ViewModel
 
 @{
@@ -54,8 +59,8 @@
                             </span>
                         </div>
                         <div class="row">
-                            <div class="col-4">
-                                <h5>18</h5>
+                            <div class="col-4">                             
+                                <h5>@ViewBag.Annualleave.Balance</h5>
                                 <small>Annual Leave</small>
                             </div>
                            @* <div class="col-4">
@@ -102,42 +107,7 @@
                     </div>
                   <div class="tab-pane body" id="Status">
                        
-                          @*<ul class="list-unstyled">
-                            <li>
-                               
-                                <div>Permanent</div>
-                                <div class="progress skill-progress m-t-20">
-                                     <div class="switch">
-                                            <label>
-                                                <input type="checkbox" checked>
-                                                <span class="lever switch-col-green"></span>
-                                            </label>
-                                  </div>
-                                </div>
-                                       
-                            </li>
-                            <li>
-                               
-                               <div class="demo-switch-title">Temporary</div>
-                                      <div class="progress skill-progress m-t-20">
-                                            <label>
-                                                <input type="checkbox" checked>
-                                                <span class="lever switch-col-light-green"></span>
-                                            </label>
-                                        </div>
-                            </li>
-                               <li>
-                               
-                               <div class="demo-switch-title">Expatriate</div>
-                                      <div class="switch">
-                                            <label>
-                                                <input type="checkbox" >
-                                                <span class="lever switch-col-lime"></span>
-                                            </label>
-                                        </div>
-                            </li>
-                           
-                        </ul>*@
+                       
                                                            <div class="col-sm-12">
                                         <div class="demo-switch-title">Permanent</div>
                                         <div class="switch">
@@ -175,6 +145,8 @@
                 <div class="profile-tab-box">
                     <div class="p-l-20">
                         <ul class="nav ">
+                        @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+                        {
                             <li class="nav-item tab-all">
                                 <a class="nav-link active show" href="#project" data-bs-toggle="tab">
                                     About
@@ -189,10 +161,23 @@
                             </li>
                             <li class="nav-item tab-all p-l-20">
                                 <a class="nav-link" href="#skill" data-info="skilllist" data-bs-toggle="tab">Skill</a>
+                            </li>   
+                            <li class="nav-item tab-all p-l-20">
+                                <a class="nav-link" href="#salary" data-info="salaryist" data-bs-toggle="tab">Salary</a>
                             </li>                            
                             <li class="nav-item tab-all p-l-20">
                                 <a class="nav-link" href="#usersettings" data-bs-toggle="tab">Settings</a>
                             </li>
+                            }
+                            else
+                            {
+                                  <li class="nav-item tab-all">
+                                <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                    About
+                                    Me
+                                </a>
+                            </li>
+                            }
                         </ul>
 
                     </div>
@@ -562,8 +547,72 @@
 						</div>
                       </div>                
                     </div>                   
-                 </div>                
-            </div>
+                 </div> 
+                             <div class="tab-pane fade" id="salary" aria-expanded="false">
+                     
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>salary</strong>
+                            </h2>
+                             <a onclick="showInPopup('@Url.Action("SalaryAddOrEdit","Employees",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Add Education')" class="btn btn-sucess d-flex align-items-center" style="float: right;"><i class="fa fa-plus-circle me-2">Add</i> </a>
+                        </div>                       
+                            <div class="body">    
+                          <div class="table-responsive">
+						<table class="table table-hover js-basic-example contact_list">
+                            <thead>
+                                <tr>                                    
+                                    <th class="center"> Salary </th>
+
+                                    <th class="center"> Currency </th>
+                                    
+                                    <th class="center"> EffectiveDate </th>
+
+                                    <th class="center"> Remark </th>
+
+                                    <th class="center"> Action </th>
+                                </tr>
+                            </thead>
+                             @foreach (var obj in Model.SalaryChange)
+                                    {
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="center">@obj.Salary</td>
+                                    <td class="center">ETB</td>
+                                    @if (obj.EffectiveDate.HasValue)
+                                    {
+                                        
+                                         <td class="center">@obj.EffectiveDate.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+                                     @if (obj.EffectiveDate.HasValue)
+                                    {
+                                        
+                                         <td class="center">@obj.EffectiveDate.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+                                    
+                                    
+                                    <td class="center">@obj.Remark</td>                                                                 
+                                   <td>
+                                        <a  onclick="showInPopup('@Url.Action("SalaryAddOrEdit","Employees",new { id = @obj.SalaryChangeID,Employeeid=@obj.EmployeeID},Context.Request.Scheme)','Add Skill')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                         </a>
+                                        <form asp-action="SalaryDelete" asp-route-id="@obj.SalaryChangeID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                            <input type="hidden" asp-for="@obj.SalaryChangeID" />
+                                            <button type="submit" value="SalaryDelete" class="btn btn-tbl-delete">
+                                             <i class="material-icons">delete_forever</i></button>                                         
+                                        </form>
+
+                                    </td>
+                                </tr>                            
+                            </tbody>
+                            }                          
+                        </table>
+						</div>
+                      </div>                
+                    </div>                   
+                 </div>
+                              
+            </div>          
         </div>
     </div>
 </div>

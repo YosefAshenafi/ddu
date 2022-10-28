@@ -1,9 +1,11 @@
 ﻿using DDU.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace DDU.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -19,16 +21,21 @@ namespace DDU.Controllers
         }
         public IActionResult CheckLogin(string username, string password)
         {
-            if(username == null || password == null)
-            {
-                ViewData["Message"] = "Please fill username and password please.";
-                return RedirectToAction("Login");
-            }
-            else
+            if (User?.Identity?.IsAuthenticated ?? false)
             {
                 return RedirectToAction("Index");
             }
+            else
+            {
+                Login login = new Login();
+                //login.ReturnUrl = returnUrl;
+                return RedirectToAction("Login", "Account", login);
+            }
+
+          
         }
+       // [Authorize]
+       //[AllowAnonymous]
         public IActionResult Index()
         {
             return View();

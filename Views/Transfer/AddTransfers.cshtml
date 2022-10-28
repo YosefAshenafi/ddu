@@ -103,13 +103,13 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group default-select select2Style">
-                                        <select class="form-control select2" data-placeholder="Select">
+                                        <select asp-for="TransferType" class="form-control select2" data-placeholder="Select">
                                             <option> Select Transfer Type</option>
-                                            <option>Production</option>
-                                            <option>Replacement</option>
-                                            <option>Shift</option>
-                                            <option>Remedial</option>
-                                            <option>Versatility</option>
+                                            <option value='Production'>Production</option>
+                                            <option value='Replacement'>Replacement</option>
+                                            <option value='Shift'>Shift</option>
+                                            <option value='Remedial'>Remedial</option>
+                                            <option value='Versatility'>Versatility</option>
                                         </select>
                                     
                                     </div>
@@ -118,7 +118,7 @@
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                   
-                                   <input asp-for="EffectiveDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="Letter Date" onfocus="(this.type='Date')"/>
+                                   <input asp-for="EffectiveDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="Effective Date" onfocus="(this.type='Date')"/>
                                     <span asp-validation-for="EffectiveDate" class="text-danger"></span>
                                 </div>
                                 <div class="col-sm-6">
@@ -142,3 +142,8 @@
         </div>
  
 }
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
