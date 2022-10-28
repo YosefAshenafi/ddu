@@ -166,7 +166,7 @@ namespace DDU.Controllers
 
             _db.positionJobs.Update(obj);
             _db.SaveChanges();
-            TempData["success"] = "Edit Add successfully";
+            TempData["success"] = "Edit successfully";
             return RedirectToAction("Index");
         }
 

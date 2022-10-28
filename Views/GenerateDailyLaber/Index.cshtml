@@ -1,0 +1,428 @@
+﻿@using System.Net.Http
+@using DDU.Utility
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "DailyLabourer";
+    ViewData["category"] = "hr";
+    var i = 1;
+}
+@model ViewDailyLabourer
+
+@section Content{
+        <script src=~/lib/jquery/dist/jquery.js></script>
+        <div class="container-fluid">
+                <div class="block-header">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <ul class="breadcrumb breadcrumb-style ">
+                                <li class="breadcrumb-item">
+                                    <h4 class="page-title">DailyLabourer</h4>
+                                </li>
+                                <li class="breadcrumb-item bcrumb-1">
+                                    <a href="#">
+                                        <i class="fas fa-home"></i> HR</a>
+                                </li>
+                                <li class="breadcrumb-item bcrumb-2">
+                                    <a href="#" onClick="return false;">DailyLabourer</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="card">
+                    <div class="profile-tab-box">
+                        <div class="p-l-20">
+                            <ul class="nav ">
+                                
+                                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+                                    {
+                                    <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            Request
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimapprove" data-bs-toggle="tab"> Approved</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimpaid" data-bs-toggle="tab"> Paid</a>
+                                    </li>
+                                    }
+                                    else if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                                    {
+                                     <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            Request
+                                        </a>
+                                    </li>
+
+
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimpaid" data-bs-toggle="tab"> Paid</a>
+                                    </li>
+
+                                    }
+                                    else if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                                    {
+                                                                       <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            Request
+                                        </a>
+                                    </li>
+
+                                    }
+                                    else
+                                    {
+                                 
+                                    <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            Request
+                                        </a>
+                                    </li>
+                                    
+
+                                    }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                            <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="card project_widget">
+                                    <div class="header">
+                                        <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                            Request
+                                            <button onclick="location.href='@Url.Action("AddDailyLabourer","GenerateDailyLaber")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Payment Request</button>
+                        @*                    <button onclick="showInPopup('@Url.Action("AddDailyLabourer","GenerateDailyLaber",Context.Request.Scheme)','Add Request')"
+                         class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i>Request</button>*@
+                                        </h2>
+                                    </div>
+                         <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover js-basic-example contact_list">                                 
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th> FullName </th>
+                                                <th> HourlyEarning</th>
+                                                <th> TotalWorkedHours</th>
+                                                <th> StartDate - EndDate</th>
+                                                <th> TotalDeduction </th>
+                                                <th> NetPayment </th>
+                                                <th> Action </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-left">
+                                                    @foreach (var obj in Model.Checked)
+                                                    {
+                                                <tr>
+                                                    <td>@i</td>
+                                                    <td>@(String.Format("{0} {1}", @obj.FirstName, @obj.MiddleName))</td>
+                                                    <td>@obj.HourlyEarning.ToString("0.00")</td>
+                                                    <td>@obj.TotalWorkedHours</td>
+                                                    <td>@obj.FromDate.Value.ToString("MMM-dd-yyyy") - @obj.ToDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                    <td>@obj.TotalDeduction</td>
+                                                    <td>@obj.NetPayment</td>                                           
+                                                    <td>
+                                                        <a href="#" class="btn btn-tbl-edit">
+                                                            <i class="material-icons">create</i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-tbl-delete">
+                                                            <i class="material-icons">delete_forever</i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                        i++;
+                                                    }
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                           </div>
+                          </div>     
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+                    </div>
+                   @* <div role="tabpanel" class="tab-pane" id="checkandconfirm" aria-expanded="false">
+                         <div class="card">
+                            <div class="header">
+                                        <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                            Check and confirm                         
+                                        </h2>
+                                    </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-0 table-nowrap" id="example">
+                                        <thead>
+                                            <tr>
+                                                <th>Checked</th>                                      
+                                                <th> Title </th>
+                                                <th> StartDate</th>
+                                                <th> EndDate</th>
+                                                <th> HotelDailyLabourer </th>
+                                                <th> TravelDailyLabourer </th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        @foreach (var obj in Model.Approved)
+                                        {
+                                                <tbody>
+                                                    <tr data-id=@obj.DailyPayID>
+                                                        <td>
+                                                       <div class="switch">
+                                                            <label>
+                                                                @if (obj.IsCheckAndConfirm == true)
+                                                                {
+                                                                     <input class="form-check-input" asp-items=@obj.RequestPerDimId type="checkbox" checked id=@obj.RequestPerDimId>
+                                                                }
+                                                                else
+                                                                {
+                                                                        <input class="form-check-input" asp-items=@obj.RequestPerDimId type="checkbox" id=@obj.RequestPerDimId>
+                                                                }                                                        
+
+                                                                <span class="lever switch-col-light-green"></span>
+                                                            </label>
+                                                       </div>
+
+                                                        </td>
+
+                                                        <td>@obj.Title</td>
+                                                        <td>@obj.StartDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                        <td>@obj.EndDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                        <td>@obj.HotelDailyLabourer</td>
+                                                        <td>@obj.TravelDailyLabourer</td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-tbl-edit">
+                                                            <i class="material-icons">create</i>
+                                                            </a>
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                        }
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                      </div>*@
+
+                    <div role="tabpanel" class="tab-pane" id="perdimapprove" aria-expanded="false">
+                         <div class="card">
+                            <div class="header">
+                                        <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                            DailyLabourer Approve              
+
+                                        </h2>
+                                    </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-0 table-nowrap" id="approved">
+                                        <thead>
+                                            <tr>
+                                                <th>IsApproved</th>
+                                                <th> FullName </th>
+                                                <th> HourlyEarning</th>
+                                                <th> TotalWorkedHours</th>
+                                                <th> StartDate - EndDate</th>
+                                                <th> TotalDeduction </th>
+                                                <th> NetPayment </th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        @foreach (var obj in Model.Approved)
+                                        {
+                                                <tbody>
+                                                <tr data-id=@obj.DailyPayID>
+                                                        <td>
+                                                       <div class="switch">
+                                                            <label>
+                                                                @if (obj.IsApproved == true)
+                                                                {
+                                                                     <input class="form-check-input" asp-items=@obj.IsApproved type="checkbox" checked id=@obj.IsApproved>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input class="form-check-input" asp-items=@obj.IsApproved type="checkbox" id=@obj.IsApproved>
+                                                                }                                                        
+
+                                                                <span class="lever switch-col-light-green"></span>
+                                                            </label>
+                                                       </div>
+
+                                                        </td>
+
+                                                    <td>@obj.FirstName</td>
+                                                    <td>@obj.HourlyEarning.ToString("0.00")</td>
+                                                    <td>@obj.TotalWorkedHours</td>
+                                                    <td>@obj.FromDate.Value.ToString("MMM-dd-yyyy") - @obj.ToDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                    <td>@obj.TotalDeduction</td>
+                                                    <td>@obj.NetPayment</td>
+
+                                                </tr>
+                                                </tbody>
+                                        }
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                      </div>
+
+                      <div role="tabpanel" class="tab-pane" id="perdimpaid" aria-expanded="false">
+                         <div class="card">
+                            <div class="header">
+                                        <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                            DailyLabourer Paid                      
+
+                                        </h2>
+                                    </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-0 table-nowrap" id="paid">
+                                        <thead>
+                                            <tr>
+                                                <th>IsPaid</th>
+                                                <th> FullName </th>
+                                                <th> HourlyEarning</th>
+                                                <th> TotalWorkedHours</th>
+                                                <th> StartDate - EndDate</th>
+                                                <th> TotalDeduction </th>
+                                                <th> NetPayment </th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        @foreach (var obj in Model.Paid)
+                                        {
+                                                <tbody>
+                                                    <tr data-id=@obj.DailyPayID>
+                                                        <td>
+                                                       <div class="switch">
+                                                            <label>
+                                                                @if (obj.IsPaid == true)
+                                                                {
+                                                                     <input class="form-check-input" asp-items=@obj.IsPaid type="checkbox" checked id=@obj.IsPaid>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <input class="form-check-input" asp-items=@obj.IsPaid type="checkbox" id=@obj.IsPaid>
+                                                                }                                                      
+
+                                                                <span class="lever switch-col-light-green"></span>
+                                                            </label>
+                                                       </div>
+
+                                                        </td>
+
+
+                                                    <td>@obj.FirstName</td>
+                                                    <td>@obj.HourlyEarning.ToString("0.00")</td>
+                                                    <td>@obj.TotalWorkedHours</td>
+                                                    <td>@obj.FromDate.Value.ToString("MMM-dd-yyyy") - @obj.ToDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                    <td>@obj.TotalDeduction</td>
+                                                    <td>@obj.NetPayment</td>
+                                                       @* <td>
+                                                          <a href="#" class="btn btn-tbl-edit">
+                                                                <i class="material-icons">create</i>
+                                                               </a>
+
+                                                        </td>*@
+                                                    </tr>
+                                                </tbody>
+                                        }
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                      </div>
+
+
+                        </div>
+                    </div>
+                </div>
+               </div>
+
+       <script>
+        $(function()
+        {
+            var dataId
+            var dataApp
+            var datapaid
+            $('#example tbody').on('click', 'tr', function () {
+               dataId = $(this).attr("data-id"); 
+
+            });
+            $('#approved tbody').on('click', 'tr', function () {
+               dataApp = $(this).attr("data-id"); 
+
+
+            });
+
+            $('#paid tbody').on('click', 'tr', function () {
+               datapaid = $(this).attr("data-id"); 
+
+
+            });
+
+
+
+               $('#approved tbody').on('change', 'input[type="checkbox"]', function () {
+                   if (this.checked) {
+                     // the checkbox is now checked
+                $.getJSON("/GenerateDailyLaber/Approved",{ id:dataApp,check:1},
+                 function(d) 
+                 {
+
+                })
+
+                 } 
+                 else {
+                                      // the checkbox is now checked
+                $.getJSON("/GenerateDailyLaber/Approved",{ id:dataApp,check:0},
+                 function(d) 
+                 {
+
+                })
+                 }
+         });
+
+        $('#paid tbody').on('change', 'input[type="checkbox"]', function () {
+                   if (this.checked) {
+                     // the checkbox is now checked
+                    $.getJSON("/GenerateDailyLaber/Paid", { id: datapaid, check: 1 },
+                 function(d) 
+                 {
+
+                })
+
+                 } 
+                 else {
+                                      // the checkbox is now checked
+                    $.getJSON("/GenerateDailyLaber/Paid", { id: datapaid, check: 0 },
+                 function(d) 
+                 {
+
+                 })
+                 }
+         });
+
+        })
+    </script>     
+}

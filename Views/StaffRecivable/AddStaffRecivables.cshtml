@@ -1,0 +1,183 @@
+﻿@{
+    ViewData["Title"] = "Add StaffRecivable";
+    ViewData["name"] = "StaffRecivable";
+    ViewData["category"] = "hr";
+    //SelectList positions = ViewBag.PositionId;
+    //var currentlySelectedIndex = 0; // Currently selected index (usually will come from model)
+}
+@model StaffRecivable
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">StaffRecivable </h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="../../index.html">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">StaffRecivable </a>
+                        </li>
+                        <li class="breadcrumb-item active">Add StaffRecivable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Add</strong> StaffRecivable
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end" style="">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.DropDownListFor(model => model.StaffRecivableType, new SelectList(Model.ListStaffRecivableType, "Value", "Text"),new{@class="col-12 m-t-20 p-l-0"})
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="ReturnYear" id="ReturnYear" asp-for="ReturnYear">
+                                                <option value="2022" selected="selected">select Year</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2026">2026</option>
+                                                <option value="2027">2027</option>
+                                                <option value="2028">2028</option>
+                                                <option value="2029">2029</option>
+                                                <option value="2030">2030</option>
+                                                <option value="2031">2031</option>
+                                                <option value="2032">2032</option>
+                                                <option value="2033">2033</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @*<input id="FromMonth" class="form-control datetimepicker flatpickr-input" placeholder="From Month" onfocus="(this.type='Month')" asp-for="FromMonth" />*@
+                                            <select name="FromMonth" id="FromMonth" asp-for="FromMonth">
+                                                <option value="0" selected="selected">selected FromMonth</option>
+                                                <option value="1">Jan</option>
+                                                <option value="2">Feb</option>
+                                                <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+                                                <option value="8">Aug</option>
+                                                <option value="9">Sep</option>
+                                                <option value="10">Oct</option>
+                                                <option value="11">Nov</option>
+                                                <option value="12">Dec</option>
+                                            </select>
+                                            <span asp-validation-for="FromMonth" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+
+                                    @*<input id="ToMonth" type="text" class="form-control datetimepicker flatpickr-input" placeholder="ToMonth" onfocus="(this.type='Month')" asp-for="ToMonth" />*@
+                                    <select name="ToMonth" id="FromMonth" asp-for="ToMonth">
+                                        <option value="0" selected="selected">select ToMonth</option>
+                                        <option value="1">Jan</option>
+                                        <option value="2">Feb</option>
+                                        <option value="3">March</option>
+                                        <option value="4">April</option>
+                                        <option value="5">May</option>
+                                        <option value="6">June</option>
+                                        <option value="7">July</option>
+                                        <option value="8">Aug</option>
+                                        <option value="9">Sep</option>
+                                        <option value="10">Oct</option>
+                                        <option value="11">Nov</option>
+                                        <option value="12">Dec</option>
+                                    </select>
+                                    <span asp-validation-for="ToMonth" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" ng-model="Amount" placeholder="Amount" id="Amount" asp-for="Amount" />
+                                            <span asp-validation-for="Amount" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                    <input asp-for="IdNos" type="text" class="form-control" placeholder="IdNos with Comma Splice" />
+                                    <span asp-validation-for="IdNos" class="text-danger"></span>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button href="@Url.Action("Index","StaffRecivable")" type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

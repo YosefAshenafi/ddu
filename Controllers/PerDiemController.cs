@@ -1,10 +1,13 @@
-﻿using DDU.Data;
+﻿using DDU.Core;
+using DDU.Data;
 using DDU.Models;
 using DDU.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using static DDU.Core.Constants;
 using static DDU.Helper;
 
 
@@ -17,6 +20,7 @@ namespace DDU.Controllers
         {
             _db = db;
         }
+        [Authorize(Roles = $"{Constants.Roles.Administrator}" + "," + $"{Constants.Roles.Manager}" + "," + $"{Constants.Roles.User}")]
         public IActionResult Index()
         {
             List<PerDiemViewModel> objallperdiem = new List<PerDiemViewModel>();

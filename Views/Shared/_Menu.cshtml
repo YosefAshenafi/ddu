@@ -18,183 +18,459 @@
                     <div class="profile-usertitle-job ">ERP System </div>
                 </div>
             </li>
-                        
+
             <li class="header mb-5">
-                @if(ViewData["category"] == "hr"){
+                @if (ViewData["category"] == "hr")
+                {
                     <a class="menu-toggle">HR Management</a>
                 }
-                else{
+                else
+                {
                     <a class="menu-toggle toggled">HR Management</a>
                 }
                 <ul>
-                    @if(ViewData["name"] == "index") {<text><li class="active"></text>} else {<text><li></text>}
+                    @if (ViewData["name"] == "index")
+                    {
+                        <text>
+                        <li class="active">
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                        <li>
+                        </text>
+                    }
                         <a href="@Url.Action("Index","Home")">
                             <i data-feather="monitor"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "employees") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "employees")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","Employees")">
                             <i data-feather="users"></i>
                             <span>Employees</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "departments") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "departments")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","Department")">
                             <i data-feather="briefcase"></i>
                             <span>Department</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "jobs") {<text><li class="active"></text>} else {<text><li></text>}
+    
+            @if (ViewData["name"] == "jobs")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","Recruitment")">
                             <i data-feather="book-open"></i>
                             <span>Recruitment</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "leave") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","Leave")">
+            @if (ViewData["name"] == "leave")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("AllLeave","Home")">
                             <i data-feather="git-commit"></i>
                             <span>Leave Management</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "PerDiem") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "PerDiem")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","PerDiem")">
                             <i data-feather="watch"></i>
                             <span>PerDiem</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "Promotion/Demotion") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Index","PromotionDemotion")">
+            
+            @if (ViewData["name"] == "Promotion/Demotion")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("PromotionDemotion","Home")">
                             <i data-feather="trello"></i>
                             <span>Promotion Demotion</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "Transfer") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "Transfer")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","Transfer")">
                             <i data-feather="command"></i>
                             <span>Transfer</span>
                         </a>
                     </li>
-                    @*@if(ViewData["name"] == "training") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Training","Home")">
-                            <i data-feather="package"></i>
-                            <span>Traning</span>
+            @if (ViewData["name"] == "StaffRecivable")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","StaffRecivable")">
+                            <i data-feather="skip-back"></i>
+                            <span>Staff Recivable</span>
                         </a>
-                    </li>*@
-                    @if(ViewData["name"] == "TerminationRehire") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("TerminationRehire","Home")">
+                    </li>
+            @if (ViewData["name"] == "TerminationRehire")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","EmployeeStatusChange")">
                             <i data-feather="copy"></i>
                             <span>Termination Rehire</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "attendance") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "attendance")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Attendance","Home")">
                             <i data-feather="check-circle"></i>
                             <span>Attendance</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "payroll") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Payroll","Home")">
+            @if (ViewData["name"] == "allowance")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","Allowance")">
+                            <i data-feather="dollar-sign"></i>
+                            <span>Allowance</span>
+                        </a>
+                    </li>
+            @if (ViewData["name"] == "DailyLabourer")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","GenerateDailyLaber")">
+                            <i data-feather="dollar-sign"></i>
+                            <span>DailyLabourer</span>
+                        </a>
+                    </li>
+            @if (ViewData["name"] == "payroll")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("payroll","Home")">
                             <i data-feather="credit-card"></i>
                             <span>Payroll</span>
                         </a>
                     </li>
-                </ul>
-                @if(ViewData["category"] == "inventory"){
-                    <a class="menu-toggle">Inventory Management</a>
-                }
-                else{
-                    <a class="menu-toggle toggled">Inventory Management</a>
-                }
-                <ul>
-                    @if(ViewData["name"] == "property") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("PropertyManagement","Home")">
-                            <i data-feather="server"></i>
-                            <span>Property Management</span>
-                        </a>
-                    </li>
-                    @if(ViewData["name"] == "inventory") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("InventoryManagement","Home")">
-                            <i data-feather="archive"></i>
-                            <span>Inventory Management</span>
-                        </a>
-                    </li>
-                    @if(ViewData["name"] == "administration") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("Administration","Home")">
-                            <i data-feather="user"></i>
-                            <span>Administration</span>
-                        </a>
-                    </li>
-                    @if(ViewData["name"] == "procurement") {<text><li class="active"></text>} else {<text><li></text>}
-                        <a href="@Url.Action("ProcurementLifeCycle","Home")">
-                            <i data-feather="refresh-ccw"></i>
-                            <span>Procurement Lifecycle</span>
-                        </a>
-                    </li>
 
+            @if (ViewData["name"] == "PayrollGenerate")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","GeneratePayroll")">
+                            <i data-feather="cpu"></i>
+                            <span>Payroll Generate</span>
+                        </a>
+                    </li>
                 </ul>
-                @if(ViewData["category"] == "bid"){
+        @if (ViewData["category"] == "bid")
+        {
                     <a class="menu-toggle">Bidding System</a>
-                }
-                else{
+        }
+        else
+        {
                     <a class="menu-toggle toggled">Bidding System</a>
-                }
+        }
                 <ul>
-                    @if(ViewData["name"] == "bidRequest") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "bidRequest")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("BidRequest","Home")">
                             <i data-feather="bell"></i>
                             <span>Bid request</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "bidAnnouncement") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "bidAnnouncement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("BidAnnouncement","Home")">
                             <i data-feather="volume-2"></i>
                             <span>Bid announcement</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "bidApproval") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "bidApproval")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("BidApproval","Home")">
                             <i data-feather="check-square"></i>
                             <span>Bid Approval</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "bidFollowup") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "bidFollowup")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("BidFollowUp","Home")">
                             <i data-feather="activity"></i>
                             <span>Bid follow-up</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "confirmation") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "confirmation")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("InventoryConfirmation","Home")">
                             <i data-feather="thumbs-up"></i>
                             <span>Inventory Confirmation</span>
                         </a>
                     </li>
                 </ul>
-                @if(ViewData["category"] == "archive"){
+        @if (ViewData["category"] == "archive")
+        {
                     <a class="menu-toggle">Archive System</a>
-                }
-                else{
+        }
+        else
+        {
                     <a class="menu-toggle toggled">Archive System</a>
-                }
+        }
                 <ul>
-                    @if(ViewData["name"] == "attachments") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "attachments")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Attachments","Home")">
                             <i data-feather="paperclip"></i>
                             <span>Attachments</span>
                         </a>
                     </li>
-                    @if(ViewData["name"] == "documents") {<text><li class="active"></text>} else {<text><li></text>}
+            @if (ViewData["name"] == "documents")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Documents","Home")">
                             <i data-feather="folder"></i>
                             <span>Documents</span>
                         </a>
                     </li>
                 </ul>
+
+        @if (ViewData["category"] == "Admin")
+        {
+                    <a class="menu-toggle">Admin</a>
+        }
+        else
+        {
+                    <a class="menu-toggle toggled">Administration</a>
+        }
+                <ul>
+            @*
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login" asp-route-ReturnUrl="/">Login</a>
+                    </li>*@
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">All User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Create">Create User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">All Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Create Role</a>
+                    </li>
+            @*  <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Index">Claims</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Create">Create Claim</a>
+                    </li>
+                                   <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Project">Policy Authorization</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="TomFiles">Tom Files</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="PrivateAccess">Private Accesss</a>
+                    </li>*@
+                </ul>
             </li>
-        </ul>
-        </li>
-        </ul>
+        </ul>       
     </div>
     <!-- #Menu -->
 </aside>

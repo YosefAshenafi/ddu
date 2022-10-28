@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "employees";
+    ViewData["category"] = "hr";
+}
+@model IEnumerable<vw_Allowance>
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                                <h4 class="page-title">All Allowance</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> HR
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onClick="return false;">Allowance</a>
+                        </li>
+                            <li class="breadcrumb-item active">All Allowance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header sectionHeader">
+                        <h2>
+                                <strong>All</strong> Allowance
+                        </h2>
+                            <button onclick="location.href='@Url.Action("AddAllowance","Allowance")'" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Allowance</button>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+                                <thead>
+                                    <tr>
+                                        <th class="center">#</th>
+                                        <th class="center"> Name </th>
+                                        <th class="center"> Designation </th>                                  
+                                        <th class="center">Joining Date</th>
+                                         <th class="center"> Transport </th>
+                                         <th class="center"> Phone </th>
+                                         <th class="center"> Food </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var obj in Model)
+                                    {
+                                        if (obj != null)
+                                        {
+                                            <tr class="odd gradeX">
+                                                <td class="table-img center">
+                                                    <a asp-controller="StaffRecivable" asp-action="StaffRecivablesDetail" asp-route-id="@obj.EmployeeID" )"><img src=@obj.Image1Path style="width:50px;height:50px;" alt=""></a>
+                                                </td>
+                                                <td class="center">@(String.Format("{0} {1}", @obj.FirstName, @obj.MiddleName)) </td>
+                                                <td class="center">@obj.Designation</td>
+
+                                                @if (obj.HireDate.HasValue)
+                                                {
+
+                                                    <td class="center">@obj.HireDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                }
+                                                else
+                                                {
+                                                    <td></td>
+                                                }
+                                                <td class="center">@obj.TransportAllowance</td>
+                                                <td class="center">@obj.PhoneAllowance</td>
+                                                <td class="center">@obj.FoodAllowance</td>
+                                                <td class="center">
+
+                                                    <a asp-controller="StaffRecivable" asp-action="StaffRecivablesDetail" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-add">
+                                                                    <i class="material-icons">dehaze</i>
+                                                                </a>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

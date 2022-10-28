@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>DDU ERP</title>
-
-   
+    
     <!-- Plugins Core Css -->
   
     <link href="~/assets/css/form.min.css" rel="stylesheet">
@@ -21,6 +20,7 @@
     <link href="~/assets/css/style.css" rel="stylesheet" />
     <!-- You can choose a theme from css/styles instead of get all themes -->
     <link href="~/assets/css/styles/all-themes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.all.min.js" integrity="sha512-cgolxBUBvc5yorfBxXYQCvGEaTbZDdRMDjGrMw8h4G01gm/BfHlN8CO3amP68GbNbw8LY5uj/CFW4qpY9lHyPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .sectionHeader {
@@ -78,6 +78,7 @@
         <!-- #END# Left Sidebar -->
     </div>
     <section class="content">
+        <partial name="_Notification" />
         @RenderSection("Content")        
     </section>
 
@@ -96,10 +97,7 @@
             </div>
         </div>
     </div>
-
-
-     <!-- Plugins Js -->
-  
+     <!-- Plugins Js -->  
     <script src="~/assets/js/bundles/flatpickr.min.js"></script>
     <script src="~/assets/js/bundles/autosize.js"></script>
     <script src="~/assets/js/common.min.js"></script>
@@ -116,15 +114,12 @@
     <script src="~/assets/js/pages/forms/selectitem-data.js"></script>
     <script src="~/assets/js/pages/forms/basic-form-elements.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.29/sweetalert2.js" integrity="sha512-7d55UBuf00ZDx2Vq6ixYFfC6teVZx85aVXHXg7pafFcrj6yD3HqkiASCsYpZW7wqkT1oyes3lItPXrokMr2pKg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-       @* <script src="~/lib/jquery/dist/jquery.js"></script>*@
-      @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
             crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-    
+    @RenderSection("Scripts", required: false)   
 
 </body>
 

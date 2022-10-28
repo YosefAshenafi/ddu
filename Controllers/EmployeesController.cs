@@ -1,5 +1,8 @@
-﻿using DDU.Data;
+﻿
+using DDU.Core;
+using DDU.Data;
 using DDU.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -17,6 +20,8 @@ namespace DDU.Controllers
             _db = db;
             _he = he;
         }
+        [Authorize(Roles = $"{Constants.Roles.Administrator}" + "," + $"{Constants.Roles.Manager}")]
+        //[Authorize(Roles = $"{Constants.Roles.Administrator}")]
         public IActionResult Index()
         {
             IEnumerable<EmployeeRegistration> objEmployeeList = _db.employeeRegistration;
@@ -65,12 +70,14 @@ namespace DDU.Controllers
         public IActionResult Profile(Guid? id)
         {
             ViewModel mymodel = new ViewModel();
-            ViewBag.Registration = _db.employeeRegistration.Find(id); 
+            ViewBag.Registration = _db.employeeRegistration.Find(id);
+            ViewBag.Annualleave= _db.vw_Annualleave.Find(id);
             mymodel.EmployeeEducations = _db.employeeEducation.Select(z => z).Where(s => s.EmployeeID == id).ToList();
             mymodel.EmployeeFamilys = _db.employeeFamily.Select(z => z).Where(s => s.EmployeeId == id).ToList();
             mymodel.EmploymentHistorys =_db.employmentHistory.Select(z => z).Where(s => s.EmployeeId == id).ToList();
             mymodel.EmployeeTrainings = _db.employeeTraining.Select(z => z).Where(s => s.EmployeeID == id).ToList();
             mymodel.EmployeeSkills = _db.employeeSkill.Select(z => z).Where(s => s.EmployeeId == id).ToList();
+            mymodel.SalaryChange = _db.salaryChange.Select(z => z).Where(s => s.EmployeeID == id).ToList();
             return View(mymodel);
         }
 
@@ -97,10 +104,27 @@ namespace DDU.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EmployeeRegistration obj)
+        public async Task<IActionResult> EditAsync(EmployeeRegistration obj, [FromForm(Name = "file")] IFormFile image)
         {
           
             _db.employeeRegistration.Update(obj);
+            var filename = DateTime.Now.Ticks.ToString() + Path.GetExtension(image.FileName);
+            if (image != null)
+            {
+                var imagepath = @"\images\employee\";
+
+                var path = Path.Combine(_he.WebRootPath + imagepath, filename);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+            }
+            else
+            {
+                filename = "noimage.PNG";
+            }
+
+            obj.Image1Path = "/images/employee/" + filename;
             _db.SaveChanges();
             TempData["success"] = "Edit Add successfully";
             return RedirectToAction("Index");
@@ -136,8 +160,7 @@ namespace DDU.Controllers
             TempData["success"] = "delete successfully";
             IEnumerable<EmployeeRegistration> objEmployeeList = _db.employeeRegistration;
             objEmployeeList = _db.employeeRegistration;
-            return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", objEmployeeList) });
-            //return RedirectToAction("Index");
+            return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index", objEmployeeList) });         
 
         }
 
