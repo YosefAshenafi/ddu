@@ -3,6 +3,7 @@
     ViewData["Title"] = "Home Page";
     ViewData["name"] = "HRSettings";
     ViewData["category"] = "hr";
+    int count = 1;
 }
 
 @section Content{
@@ -33,7 +34,6 @@
                     <div class="header sectionHeader">
                         <div>
                             <button type="button" onclick="location.href='@Url.Action("Index","Leave")'" class="btn btn-secondary waves-effect">Leave Request</button>
-                            <button type="button" onclick="location.href='@Url.Action("Balance","Leave")'" class="btn btn-secondary waves-effect">Leave Balance</button>
                             <button type="button" onclick="location.href='@Url.Action("Types","Leave")'" class="btn btn-secondary waves-effect active">Leave Types</button>
                         </div>
                         <button data-bs-toggle="modal" data-bs-target="#addLeaveType" class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i> Add Leave Type</button>
@@ -44,9 +44,10 @@
                             <table class="table table-hover js-basic-example contact_list">
                                 <thead>
                                     <tr>
+                                        <th> # </th>
                                         <th> Name </th>
-                                        <th> Leave Type </th>
                                         <th> No of Days </th>
+                                        <th> Is Paid</th>
                                         <th> Condition </th>
                                         <th> Action </th>
                                     </tr>
@@ -57,21 +58,28 @@
                                         if (obj != null)
                                         {
                                             <tr class="odd gradeX">
+                                                <td>@count</td>
                                                 <td>@obj.LeaveType</td>
-                                                <td>@obj.Pay</td>
                                                 <td>
                                                     <div class="badge col-green">@obj.NoOfDays</div>
                                                 </td>
-                                                <td>@obj.Condition</td>
+                                                <td>@obj.Pay</td>
+                                                @if(@obj.Condition != null){
+                                                    <td>@obj.Condition</td>
+                                                }
+                                                else{
+                                                    <td class="ml-1">-</td>
+                                                }
                                                 <td>
-                                                    <button class="btn tblActnBtn">
+                                                    <button class="btn tblActnBtn" onclick="populateLeaveTypes('@obj.LeaveTypeId','@obj.LeaveType','@obj.Pay','@obj.NoOfDays','@obj.Condition','@obj.Description')" data-bs-toggle="modal" data-bs-target="#addLeaveType">
                                                         <i class="material-icons">mode_edit</i>
                                                     </button>
-                                                    <button class="btn tblActnBtn">
+                                                    <a onclick="return WarnDelete()" href="@Url.Action("DeleteTypes","Leave", new{ leaveTypeId = obj.LeaveTypeId })" class="btn btn-tbl-delete">
                                                         <i class="material-icons">delete</i>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                             </tr>
+                                            count += 1;
                                         }
                                     }
                                 </tbody>
@@ -88,25 +96,25 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Leave Type</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Leave Type</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="text" name="LeaveType" class="form-control" placeholder="Input leave type" />
+                        <input type="text" name="LeaveType" id="LeaveType" class="form-control" placeholder="Input leave type" />
                     </div>
                     <div class="modal-body">
-                        <select>
-                            <option>Pay</option>
-                            <option>No Pay</option>
+                        <select name="Pay" id="Pay">
+                            <option value="Yes">Pay</option>
+                            <option value="No">No Pay</option>
                         </select>
                     </div>
                     <div class="modal-body">
-                        <input type="text" name="NoOfDays" class="form-control" placeholder="Number of Days" />
+                        <input type="text" name="NoOfDays" id="NoOfDays" class="form-control" placeholder="Number of Days" />
                     </div>
                     <div class="modal-body">
-                        <input type="text" class="form-control" name="Condition" placeholder="Input Conditions" />
-                        <input type="hidden" name="LeaveTypeId" value="0" />
-                        <input type="hidden" name="IsDeleted" value="0" />
+                        <input type="text" class="form-control" id="Condition" name="Condition" placeholder="Input Conditions" />
+                        <input type="hidden" name="LeaveTypeId" id="LeaveTypeId" value="0" />
+                        <input type="hidden" name="IsDeleted" id="IsDeleted" value="0" />
                     </div>
 
                     <div class="modal-footer">
@@ -117,4 +125,23 @@
             </div>
         </form>
     </div>
+
+    <script>
+        function populateLeaveTypes(LeaveTypeId, LeaveType, Pay, NoOfDays, Condition, Description) {
+            $("#LeaveTypeId").val(LeaveTypeId);
+            $("#LeaveType").val(LeaveType);
+            $("#Pay").val(Pay);
+            $("#NoOfDays").val(NoOfDays);
+            $("#Condition").val(Condition);
+            $("#Description").val(Description);
+        }
+
+        function WarnDelete() {
+            var check = confirm("Are you sure you want to delete");
+            if (check) {
+                return true;
+            }
+            return false;
+        }
+    </script>
 }

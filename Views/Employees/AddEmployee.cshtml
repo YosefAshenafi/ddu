@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Add Employee";
     ViewData["name"] = "employees";
+    ViewData["category"] = "hr";
 }
 @model EmployeeRegistration
 @section Content {
@@ -52,7 +53,7 @@
                         </div>
                         <div class="body">
                             <form method="post"  enctype="multipart/form-data" >
-                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                           @*  <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
                             <div class="row clearfix">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -102,8 +103,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                    
+                                    <div class="form-group form-float">                                    
                                          <div class="form-line">
                                              <select asp-for="Sex" class="col-12 m-t-20 p-l-0" select2">
                                                             <option>Gender</option>
@@ -133,7 +133,21 @@
                                 </div>
                             </div>
                             <div class="row clearfix">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <select asp-for="Employmenttype" class="col-12 m-t-20 p-l-0" select2">
+                                                <option>Employment type</option>
+                                                <option value="1">Permanent</option>
+                                                <option value="2">Temporary</option>
+                                                <option value="3">Expatriate</option>
+                                                <option value="4">Daily Labourer</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
                                             
@@ -154,10 +168,10 @@
                                                
                                                  <input  name="file" class="form-control" type="file" multiple />
                                             </div>
-                                            <h3>Drop files here or click to upload.</h3>
+                                           @* <h3>Drop files here or click to upload.</h3>
                                             <em>(This is just a demo dropzone. Selected files are
                                                 <strong>not</strong>
-                                                actually uploaded.)</em>
+                                                actually uploaded.)</em>*@
                                         </div>
                                         
                                     @*</form>*@
@@ -175,4 +189,9 @@
             </div>
         </div>
  
+}
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
 }

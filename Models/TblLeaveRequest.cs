@@ -10,7 +10,7 @@ namespace DDU.Models
         public Guid EmpLeaveRequestId { get; set; }
         public Guid EmployeeId { get; set; }
         public string ReferenceNo { get; set; } = null!;
-        public string? LeaveType { get; set; }
+        public int? LeaveTypeId { get; set; }
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }
         public DateTime? RequestDate { get; set; }
@@ -22,6 +22,9 @@ namespace DDU.Models
         public double? LeaveBalance { get; set; }
         public string? Reason { get; set; }
         public string? ApprovedBy { get; set; }
-        public int? IsAnnualLeave { get; set; }
+        public bool? IsAnnualLeave { get; set; }
+        public int? IsRemoved { get; set; }
+        public EmployeeRegistration Employee { get; set; }
+        public TblLeaveType LeaveType { get; set; }
     }
 }

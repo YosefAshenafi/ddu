@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+}
+@model StaffRecivable
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.EmployeeID" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="EmployeeID" type="hidden" />
+            <input asp-for="StaffRecivableID" type="hidden" />
+            <div class="row clearfix">
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="form-line">
+                           
+                            @*@Html.DropDownListFor(model => model.StaffRecivableType, new SelectList(Model.ListStaffRecivableType, "Value", "Text"),new{@class="col-12 m-t-20 p-l-0"})*@
+
+                            <select name="StaffRecivableType" id="StaffRecivableType" asp-for="StaffRecivableType" class="form-control select2">
+                                <option value="2022" selected="selected">select Staff Recivable</option>
+                                <option value="3">AdvanceRecivable</option>
+                                <option value="4">Labour Union</option>
+                                <option value="5">Ekub</option>
+                                <option value="6">Edre</option>
+                                <option value="7">HIV</option>
+                                <option value="8">IDCard</option>
+                                <option value="9">Other</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+
+               <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select name="ReturnYear" id="ReturnYear" asp-for="ReturnYear" class="form-control select2">
+                                <option value="2022" selected="selected">select Year</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                                <option value="2028">2028</option>
+                                <option value="2029">2029</option>
+                                <option value="2030">2030</option>
+                                <option value="2031">2031</option>
+                                <option value="2032">2032</option>
+                                <option value="2033">2033</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+
+               
+
+
+            </div>
+            <div class="row clearfix">
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="form-line">
+                          
+                            <select name="FromMonth" id="FromMonth" asp-for="FromMonth" class="form-control select2">
+                                <option value="0" selected="selected">selected FromMonth</option>
+                                <option value="1">Jan</option>
+                                <option value="2">Feb</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">Aug</option>
+                                <option value="9">Sep</option>
+                                <option value="10">Oct</option>
+                                <option value="11">Nov</option>
+                                <option value="12">Dec</option>
+                            </select>
+                            <span asp-validation-for="FromMonth" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <select name="ToMonth" id="FromMonth" asp-for="ToMonth" class="form-control select2">
+                        <option value="0" selected="selected">select ToMonth</option>
+                        <option value="1">Jan</option>
+                        <option value="2">Feb</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">Aug</option>
+                        <option value="9">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                    <span asp-validation-for="ToMonth" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row clearfix">
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control" ng-model="Amount" placeholder="Amount" id="Amount" asp-for="Amount" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                      @*  <div class="form-line">
+                            <input asp-for="IdNos" type="text" class="form-control" placeholder="IdNos with Comma Splice" />
+                            <span asp-validation-for="IdNos" class="text-danger"></span>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 p-t-20 text-center">
+                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                <button href="@Url.Action("Index","StaffRecivable")" type="button" class="btn btn-danger waves-effect">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

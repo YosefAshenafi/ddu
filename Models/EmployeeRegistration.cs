@@ -54,6 +54,8 @@ namespace DDU.Models
         public string? Email { get; set; }
 
         public string? Address { get; set; }
+        
+        public int? Employmenttype { get; set; }
 
         public string? SessionID { get; set; }
 

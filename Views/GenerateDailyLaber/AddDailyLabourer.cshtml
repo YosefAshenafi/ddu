@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Add DailyLabourer";
+    ViewData["name"] = "DailyLabourer";
+    ViewData["category"] = "hr";
+    //SelectList positions = ViewBag.PositionId;
+    //var currentlySelectedIndex = 0; // Currently selected index (usually will come from model)
+}
+@model DailyLabourer
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">DailyLabourer </h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="../../index.html">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">DailyLabourer </a>
+                        </li>
+                        <li class="breadcrumb-item active">Add DailyLabourer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Add</strong> DailyLabourer
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end" style="">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="row clearfix">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="FromDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="From Date" onfocus="(this.type='Date')" />
+                                            <span asp-validation-for="FromDate" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="ToDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="To Date" onfocus="(this.type='Date')" />
+                                            <span asp-validation-for="ToDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                      
+                            <div class="row clearfix">
+
+                               
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="IdNos" type="text" class="form-control" placeholder="IdNos with Comma Splice" />
+                                            <span asp-validation-for="IdNos" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button href="@Url.Action("Index","GenerateDailyLaber")" type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

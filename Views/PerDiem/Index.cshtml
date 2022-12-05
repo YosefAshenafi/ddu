@@ -1,0 +1,485 @@
+﻿@using System.Net.Http
+@using DDU.Utility
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "PerDiem";
+    ViewData["category"] = "hr";
+    var i = 1;
+}
+@model IEnumerable<PerDiemRequest>
+@inject IHttpContextAccessor HttpContextAccessor
+@{   
+    List<PerDiemViewModel> allperdeim = HttpContextAccessor.HttpContext.Session.Get<List<PerDiemViewModel>>("AllPerDiem");       
+}
+
+@section Content{
+    <script src=~/lib/jquery/dist/jquery.js></script>
+    <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">PerDiem</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> HR</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onClick="return false;">PerDiem</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="card">
+                <div class="profile-tab-box">
+                    <div class="p-l-20">
+                        <ul class="nav ">
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+                                {
+                                    <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            PerDiem Request                                    
+                                        </a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#checkandconfirm" data-bs-toggle="tab">Check and confirm</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimapprove" data-bs-toggle="tab">PerDiem Approve</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimpaid" data-bs-toggle="tab">PerDiem Paid</a>
+                                    </li>
+                                }
+                                else if (SignInManager.IsSignedIn(User) && User.IsInRole("Administrator"))
+                            {
+                                    <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            PerDiem Request
+                                        </a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#checkandconfirm" data-bs-toggle="tab">Check and confirm</a>
+                                    </li>
+
+                            }
+                            else if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+                            {
+                                  <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            PerDiem Request                                    
+                                        </a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#perdimpaid" data-bs-toggle="tab">PerDiem Paid</a>
+                                    </li>
+
+                            }
+                            else 
+                            {
+                                     <li class="nav-item tab-all">
+                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                            PerDiem Request
+                                        </a>
+                                    </li>
+
+                            }
+                            </ul>
+                    </div>
+                </div>
+            </div>
+                        <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="header">
+                                    <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                        PerDim Request 
+                                        <button onclick="showInPopup('@Url.Action("AddRequestPerDim","PerDiem",Context.Request.Scheme)','Add Request')"
+                         class="btn btn-sucess d-flex align-items-center"><i class="fa fa-plus-circle me-2"></i>Request</button>
+                                    </h2>
+                                </div>
+                     <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example contact_list">                                 
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th> Title </th>
+                                            <th> Department</th>
+                                            <th> Employee</th>
+                                            <th> StartDate - EndDate</th>
+                                            <th> HotelPerDiem </th>
+                                            <th> TravelPerDiem </th>
+                                            <th> Action </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        @foreach (var obj in Model)
+                                        {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@obj.Title</td>
+                                            <td>@obj.DepartmentName</td>
+                                            <td>@obj.EmployeeName</td>
+                                            <td>@obj.StartDate.Value.ToString("MMM-dd-yyyy") - @obj.EndDate.Value.ToString("MMM-dd-yyyy")</td>
+                                            <td>@obj.HotelPerDiem</td>
+                                            <td>@obj.TravelPerDiem</td>                                           
+                                            <td>
+                                                <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                </a>
+                                                <a href="#" class="btn btn-tbl-delete">
+                                                    <i class="material-icons">delete_forever</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                        }
+                                        
+                                    </tbody>
+                                   
+                                </table>
+                            </div>
+                        </div>
+                       </div>
+                      </div>     
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="checkandconfirm" aria-expanded="false">
+                     <div class="card">
+                        <div class="header">
+                                    <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                        Check and confirm                         
+                                    </h2>
+                                </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0 table-nowrap" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th>Checked</th>                                      
+                                            <th> Title </th>
+                                            <th> StartDate</th>
+                                            <th> EndDate</th>
+                                            <th> HotelPerDiem </th>
+                                            <th> TravelPerDiem </th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var obj in allperdeim)
+                                    {
+                                        <tbody>
+                                            <tr data-id=@obj.RequestPerDimId>
+                                                <td>
+                                               <div class="switch">
+                                                    <label>
+                                                        @if(obj.IsCheckAndConfirm==true)
+                                                        {
+                                                         <input class="form-check-input" asp-items=@obj.RequestPerDimId type="checkbox" checked id=@obj.RequestPerDimId>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input class="form-check-input" asp-items=@obj.RequestPerDimId type="checkbox" id=@obj.RequestPerDimId>
+                                                        }                                                        
+                                                      
+                                                        <span class="lever switch-col-light-green"></span>
+                                                    </label>
+                                               </div>
+                                                   
+                                                </td>
+                                             
+                                                <td>@obj.Title</td>
+                                                <td>@obj.StartDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>@obj.EndDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>@obj.HotelPerDiem</td>
+                                                <td>@obj.TravelPerDiem</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">create</i>
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    }
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                  </div>
+
+                <div role="tabpanel" class="tab-pane" id="perdimapprove" aria-expanded="false">
+                     <div class="card">
+                        <div class="header">
+                                    <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                        Perdiem Approve              
+                         
+                                    </h2>
+                                </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0 table-nowrap" id="approved">
+                                    <thead>
+                                        <tr>
+                                            <th>Approved</th>                                      
+                                            <th> Title </th>
+                                            <th> StartDate</th>
+                                            <th> EndDate</th>
+                                            <th> HotelPerDiem </th>
+                                            <th> TravelPerDiem </th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var obj in allperdeim.Select(n=>n).Where(f=>f.IsCheckAndConfirm==true))
+                                    {
+                                        <tbody>
+                                            <tr data-id=@obj.CheckandconfirmId>
+                                                <td>
+                                               <div class="switch">
+                                                    <label>
+                                                        @if(obj.IsApproved==true)
+                                                        {
+                                                         <input class="form-check-input" asp-items=@obj.CheckandconfirmId type="checkbox" checked id=@obj.CheckandconfirmId>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input class="form-check-input" asp-items=@obj.CheckandconfirmId type="checkbox" id=@obj.CheckandconfirmId>
+                                                        }                                                        
+                                                      
+                                                        <span class="lever switch-col-light-green"></span>
+                                                    </label>
+                                               </div>
+                                                   
+                                                </td>
+                                             
+                                                <td>@obj.Title</td>
+                                                <td>@obj.StartDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>@obj.EndDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>@obj.HotelPerDiem</td>
+                                                <td>@obj.TravelPerDiem</td>
+                                                <td>
+                                                       <a href="#" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                       </a>
+
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    }
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane" id="perdimpaid" aria-expanded="false">
+                     <div class="card">
+                        <div class="header">
+                                    <h2 style="display:flex; justify-content: space-between; margin-right: 20px;">
+                                        Perdiem Paid                      
+                         
+                                    </h2>
+                                </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle mb-0 table-nowrap" id="paid">
+                                    <thead>
+                                        <tr>
+                                            <th>Paid</th>                                      
+                                            <th> Title </th>
+                                            <th> StartDate</th>
+                                            <th> EndDate</th>
+                                            <th> Basic Salary </th>
+                                            <th> PerDiem </th>                                           
+                                            <th> Taxable </th>
+                                            <th> Non Taxable </th>
+                                            <th> Total Taxable </th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var obj in allperdeim.Select(n=>n).Where(f=>f.IsApproved==true))
+                                    {
+                                        <tbody>
+                                            <tr data-id=@obj.ApprovedId>
+                                                <td>
+                                               <div class="switch">
+                                                    <label>
+                                                        @if(obj.IsPaid==true)
+                                                        {
+                                                         <input class="form-check-input" asp-items=@obj.ApprovedId type="checkbox" checked id=@obj.ApprovedId>
+                                                        }
+                                                        else
+                                                        {
+                                                            <input class="form-check-input" asp-items=@obj.ApprovedId type="checkbox" id=@obj.ApprovedId>
+                                                        }                                                      
+                                                      
+                                                        <span class="lever switch-col-light-green"></span>
+                                                    </label>
+                                               </div>
+                                                   
+                                                </td>
+                                             
+                                                <td>@obj.Title</td>
+                                                 <td>@obj.StartDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>@obj.EndDate.Value.ToString("MMM-dd-yyyy")</td>
+                                                <td>20000</td>
+                                                
+                                                <td>@(obj.HotelPerDiem+obj.TravelPerDiem)</td>
+                                                @if((20000*0.04)>=500)
+                                                {
+                                                     <td>@((obj.HotelPerDiem+obj.TravelPerDiem)-(20000*0.04))</td>
+                                                }
+                                                else
+                                                {
+                                                     <td>0</td>
+                                                }
+                                               
+                                                 @if((20000*0.04)>=500)
+                                                {
+                                                 <td>@(20000*0.04)</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>0</td>
+                                                }
+
+                                             @if((20000*0.04)>=500)
+                                                {
+                                                  <td>@((obj.HotelPerDiem+obj.TravelPerDiem)+(20000*0.04))</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>0</td>
+                                                }
+                                              
+                                               
+                                                
+                                                <td>
+                                                  <a href="#" class="btn btn-tbl-edit">
+                                                        <i class="material-icons">create</i>
+                                                       </a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    }
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                  </div>
+
+
+                    </div>
+                </div>
+            </div>
+           </div>
+            
+   <script>
+    $(function()
+    {
+        var dataId
+        var dataApp
+        var datapaid
+        $('#example tbody').on('click', 'tr', function () {
+           dataId = $(this).attr("data-id"); 
+          
+        });
+        $('#approved tbody').on('click', 'tr', function () {
+           dataApp = $(this).attr("data-id"); 
+         
+           
+        });
+
+        $('#paid tbody').on('click', 'tr', function () {
+           datapaid = $(this).attr("data-id"); 
+       
+           
+        });
+        
+      $('#example tbody').on('change', 'input[type="checkbox"]', function () {
+               if (this.checked) {
+                 // the checkbox is now checked
+            $.getJSON("/PerDiem/Confirmandchecked",{ id:dataId,check:1},
+             function(d) 
+             {
+                 //$("#btngrn").html("+GRN("+d+")");
+                 //$("#btnisv").html("+ISV("+d+")");
+            })
+
+             } 
+             else {
+                                  // the checkbox is now checked
+            $.getJSON("/PerDiem/Confirmandchecked",{ id:dataId,check:0},
+             function(d) 
+             {
+                 //$("#btngrn").html("+GRN("+d+")");
+                 //$("#btnisv").html("+ISV("+d+")");
+            })
+             }
+     });
+
+
+           $('#approved tbody').on('change', 'input[type="checkbox"]', function () {
+               if (this.checked) {
+                 // the checkbox is now checked
+            $.getJSON("/PerDiem/Approved",{ id:dataApp,check:1},
+             function(d) 
+             {
+                
+            })
+
+             } 
+             else {
+                                  // the checkbox is now checked
+            $.getJSON("/PerDiem/Approved",{ id:dataApp,check:0},
+             function(d) 
+             {
+                 
+            })
+             }
+     });
+
+    $('#paid tbody').on('change', 'input[type="checkbox"]', function () {
+               if (this.checked) {
+                 // the checkbox is now checked
+            $.getJSON("/PerDiem/Paid",{ id:datapaid,check:1},
+             function(d) 
+             {
+                
+            })
+
+             } 
+             else {
+                                  // the checkbox is now checked
+            $.getJSON("/PerDiem/Paid",{ id:datapaid,check:0},
+             function(d) 
+             {
+                 
+             })
+             }
+     });
+
+    })
+</script>     
+}

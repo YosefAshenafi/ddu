@@ -1,0 +1,104 @@
+﻿
+@{ Layout = null; }
+@model PerDiemRequest
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="body">
+                            <form asp-action="AddRequestPerDim" asp-route-id="@Model.RequestPerDimId" onsubmit="return jQueryAjaxPost(this);">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input  asp-for="RequestPerDimId" type="hidden" />
+                             
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            
+                                            <input asp-for="Title" class="form-control" placeholder="Title"/>
+                                                        <span asp-validation-for="Title" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            @Html.DropDownListFor(model => model.DepartmentID, new SelectList(Model.ListDepartment, "Value", "Text"),new{@class="form-control"})
+                                            @*@Html.DropDownListFor(model => model.DepartmentId, Model.ListDepartment,htmlAttributes: new{ @class = "form-control"})*@
+		                                    @Html.ValidationMessageFor(Model => Model.DepartmentID, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                              @Html.DropDownListFor(model => model.EmployeeID, new SelectList(Model.ListEmployees, "Value", "Text"),new{@class="form-control"})
+                                              		@*@Html.DropDownListFor(model => model.EmployeeId, Model.ListEmployees,htmlAttributes: new{ @class = "form-control"})*@
+		                                            @Html.ValidationMessageFor(Model => Model.EmployeeID, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+
+                                              <input asp-for="StartDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="StartDate" onfocus="(this.type='Date')"/>
+                                                        <span asp-validation-for="StartDate" class="text-danger"></span> 
+                                    </div>
+                                </div>
+                            </div>
+                         <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                              <input asp-for="EndDate" type="text" class="form-control datetimepicker flatpickr-input" placeholder="EndDate" onfocus="(this.type='Date')"/>
+                                                        <span asp-validation-for="EndDate" class="text-danger"></span> 
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+
+                                               <input asp-for="HotelPerDiem" class="form-control" placeholder="Hotel PerDiem"/>
+                                                        <span asp-validation-for="HotelPerDiem" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                              <input asp-for="TravelPerDiem" type="text" class="form-control" placeholder="Travel PerDiem"/>
+                                                        <span asp-validation-for="TravelPerDiem" class="text-danger"></span> 
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            
+                            
+
+                               <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

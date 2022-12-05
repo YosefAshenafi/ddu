@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Login
+
+<!DOCTYPE html>
 <html lang="en">
 
 
@@ -29,14 +31,15 @@
                 <button>Request</button>
             </div>
             <div class="wrapper">
-                <form id="login" tabindex="500" method="post" action="@Url.Action("CheckLogin","Home")">
+                <form id="account" tabindex="500" method="post" >
+                    <input type="hidden" asp-for="ReturnUrl" />
                     <h3>Login</h3>
                     <div class="mail">
-                        <input type="email" name="username" class="form-control" required>
+                        <input type="email" asp-for="Email" placeholder="username" class="form-control" required>
                         <label>Mail or Username</label>
                     </div>
                     <div class="passwd">
-                        <input type="password" name="password" required>
+                        <input type="password" asp-for="Password" name="password" required>
                         <label>Password</label>
                     </div>
                     <div class="text-end p-t-8 p-b-31">
@@ -45,7 +48,9 @@
                         </a>
                     </div>
                     <div class="submit">
-                        <button onclick="location.href='@Url.Action("Index","Home")'" class="dark" type="button">Login</button>
+                        @*<button onclick="location.href='@Url.Action("Index","Home")'" class="dark" type="button">Login</button>*@
+                        <button type="submit" class="dark" asp-controller="Account" >Login</button>
+                        
                     </div>
                     <div class="flex-c p-b-112">
                         <a href="#" class="login100-social-item bg-fb">
@@ -89,7 +94,5 @@
     <!-- Extra page Js -->
     <script src="~/assets/js/pages/examples/login-register.js"></script>
 </body>
-
-
 <!-- Mirrored from www.einfosoft.com/templates/admin/atrio/source/lighthr/pages/examples/login-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 17 Jun 2022 08:05:14 GMT -->
 </html>

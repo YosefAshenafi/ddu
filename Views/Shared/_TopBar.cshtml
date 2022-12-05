@@ -1,4 +1,9 @@
-﻿<style>
+﻿@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<style>
     .topbar-avatar {
         width: 25px;
     }
@@ -20,8 +25,36 @@
                         <i data-feather="menu"></i>
                     </a>
                 </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <a id="manage" class="nav-link" title="Manage" data-bs-toggle="tab">
+                            Hello @UserManager.GetUserName(User)!
+                        </a>
+                        @*<a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>*@
+                    </li>
+                    <li class="nav-item">
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <a asp-controller="Account" asp-action="Logout">
+                                <i class="material-icons">power_settings_new</i>
+                            </a>
+
+                        }
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" id="login" href="@Url.Action("Login","Account")">Login</a>
+                    </li>
+                }
                 <!-- Full Screen Button -->
                 <li class="fullscreen">
                     <a href="javascript:;" class="fullscreen-btn">

@@ -79,9 +79,13 @@
                                         <a asp-controller="Employees" asp-action="Edit" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-edit">
                                             <i class="material-icons">create</i>
                                         </a>
-                                        <a asp-controller="Employees" asp-action="Delete" asp-route-id="@obj.EmployeeID" class="btn btn-tbl-delete">
-                                            <i class="material-icons">delete_forever</i>
-                                        </a>
+
+                                         <form asp-action="DeletePost" asp-route-id="@obj.EmployeeID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                           
+                                            <button type="submit" value="DeletePost" class="btn btn-tbl-delete">
+                                             <i class="material-icons">delete_forever</i></button>                                         
+                                        </form>
+
                                     </td>
                                 </tr>
 

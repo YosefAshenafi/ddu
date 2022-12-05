@@ -62,9 +62,9 @@
                                                  <input  name="file" class="form-control" type="file" multiple />
                                             </div>
                                             
-                                            <em>Selected files are
+                                            @*<em>Selected files are
                                                 <strong>not</strong>
-                                                actually uploaded.</em>
+                                                actually uploaded.</em>*@
                                         </div>
                                         
                                     
@@ -82,3 +82,8 @@
             </div>
         
  
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

@@ -1,0 +1,54 @@
+﻿@model GeneratePayroll
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "employees";
+    ViewData["category"] = "hr";
+}
+<partial name="_SuccessDarkModal"/>
+@section Content {
+
+
+
+	<link href="../../assets/css/pages/extra_pages.css" rel="stylesheet" />
+
+
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+					<form class="login100-form validate-form">
+						<span class="login100-form-title p-b-45">
+							Generate Payroll
+						</span>
+						<div class="wrap-input100 validate-input" data-validate="Valid StartTime is required">
+							<input asp-for="StartTime" type="text" class="form-control datetimepicker flatpickr-input" placeholder="StartDate" onfocus="(this.type='Date')" />
+							<span asp-validation-for="StartTime" class="text-danger"></span>
+						</div>
+						<div class="wrap-input100 validate-input" data-validate="EndTime is required">
+							<input asp-for="EndTime" type="text" class="form-control datetimepicker flatpickr-input" placeholder="EndDate" onfocus="(this.type='Date')" />
+							<span asp-validation-for="EndTime" class="text-danger"></span>
+						</div>
+						<div class="flex-sb-m w-full p-t-15 p-b-20">
+					
+						</div>
+						<div class="container-login100-form-btn">
+						<button onclick="location.href='@Url.Action("Index","GeneratePayroll")'" class="login100-form-btn">
+								Generate Payroll
+						</button>						
+					</div>
+						<div class="text-center p-t-45 p-b-20">
+	
+						</div>
+						<div class="login100-form-social flex-c-m">
+						</div>
+					</form>
+				<div class="login100-more" style="background-image: url('../../assets/images/pages/bg-01.png');">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Extra page Js -->
+	<script src="../../assets/js/pages/examples/pages.js"></script>
+
+}
