@@ -87,16 +87,9 @@ namespace DDU.Controllers
             ViewData["costCenter"] = new SelectList(_db.invCostCenter.ToList(), "CostID", "CostName");
             ViewData["employeeid"] = new SelectList(_db.employeeRegistration.ToList(), "EmployeeID", "FirstName");
             ViewData["store"] = new SelectList(_db.invStore.ToList(), "StoreID", "StoreCode");
-
-        public IActionResult Index()
-        {
-
             return View();
         }
-        public IActionResult PropertyManagement()
-        {
-            return View();
-        }
+      
 
 
         public JsonResult Stockchecked(int id)
