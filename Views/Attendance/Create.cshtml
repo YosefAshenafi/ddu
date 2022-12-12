@@ -1,0 +1,62 @@
+﻿@model Attendance
+@{ Layout = null; }
+
+
+ <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        
+                        <div class="body">
+                            <form method="post" enctype="multipart/form-data" >
+                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                         
+                            <div class="row clearfix">
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+
+                                              <input style="font-size: 18px;" asp-for="CheckIn" class="form-control datetimepicker flatpickr-input" placeholder="Check In" onfocus="(this.type='Time')"/>
+                                                        <span asp-validation-for="CheckIn" class="text-danger"></span> 
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-sm-6">
+                                   <div class="form-group focused">
+
+                                              <input style="font-size: 18px;" asp-for="Checkout" class="form-control datetimepicker flatpickr-input" placeholder="Check Out" onfocus="(this.type='Time')"/>
+                                                        <span asp-validation-for="Checkout" class="text-danger"></span> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group focused">
+                                       
+                                          <input style="font-size: 18px;" asp-for="Shift" type="text" class="form-control" placeholder="Shift"/>
+                                                        <span asp-validation-for="Shift" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                 <div class="col-sm-6">
+                                    <div class="form-group focused">
+                                       
+                                          <input style="font-size: 18px;" asp-for="Status" type="text" class="form-control" placeholder="Status"/>
+                                                        <span asp-validation-for="Status" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                               <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg waves-effect m-r-15 pull-left">Submit</button>
+                                
+                                <button type="button" class="btn btn-danger waves-effect pull-left">Cancel</button>
+                            </div>
+                            <br /><br />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
