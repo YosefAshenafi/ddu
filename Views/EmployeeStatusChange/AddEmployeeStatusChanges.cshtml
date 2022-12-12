@@ -77,7 +77,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row clearfix">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label for="email_address">Request Date</label>
+                                            <input type="text" value="@DateTime.Now.ToShortDateString()" class="flatpickr"
+                                               placeholder="RequestDate" asp-for="RequestDate" onfocus="(this.type='Date')" />
+                                            @*<input asp-for="RequestDate" type="text" class=flatpickr data-enable-time=true data-allow-input=true" placeholder=@DateTime.Now.ToShortDateString() onfocus="(this.type='Date')" />*@
+                                                <span asp-validation-for="RequestDate" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+
+                                        <label for="email_address">Date On</label>                                      
+                                        <input asp-for="DateOn" type="text" value="@DateTime.Now.ToShortDateString()" class="flatPicker" placeholder="DateOn" onfocus="(this.type='Date')" />
+                                        <span asp-validation-for="DateOn" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+@*                                <div class="row clearfix">
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="form-line">
@@ -88,13 +112,13 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group focused">
+                                    <div class="form-group">
 
                                             <input asp-for="DateOn" type="text" class="form-control datetimepicker flatpickr-input" placeholder="Date On" onfocus="(this.type='Date')" />
                                             <span asp-validation-for="DateOn" class="text-danger"></span>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <div class="form-group">

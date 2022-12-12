@@ -24,7 +24,7 @@ namespace DDU.Controllers
         //[Authorize(Roles = $"{Constants.Roles.Administrator}")]
         public IActionResult Index()
         {
-            IEnumerable<EmployeeRegistration> objEmployeeList = _db.employeeRegistration;
+            IEnumerable<EmployeeRegistration> objEmployeeList = _db.employeeRegistration.OrderByDescending(s => s.HireDate);
             return View(objEmployeeList);
         }
 
@@ -187,7 +187,7 @@ namespace DDU.Controllers
                 return View(eduModel);
             }
         }
-
+        ///
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddOrEdit(Guid id, [Bind("EmpEduId,EmployeeID,Credential,Field,Institute,FYear,TYear,EffectiveDate,EducationLev,SessionID,SessionIP,SessionMAC")] EmployeeEducation eduModel)
