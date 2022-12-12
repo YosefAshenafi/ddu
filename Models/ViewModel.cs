@@ -10,6 +10,7 @@
         public IEnumerable<EmployeeTraining> EmployeeTrainings { get; set; }
         public IEnumerable<EmployeeSkill> EmployeeSkills { get; set; }
         public IEnumerable<SalaryChange> SalaryChange { get; set; }
+        public IEnumerable<Attendance> Attendances { get; set; }
         public EmployeeEducation Education { get; set; }
 
 }

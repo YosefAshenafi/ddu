@@ -82,6 +82,8 @@ namespace DDU.Data;
 
     public DbSet<vw_StaffRecivable> vw_StaffRecivable { get; set; } = null!;
 
+    public DbSet<Attendance> Attendance { get; set; }
+
     public DbSet<Vw_Annualleave> vw_Annualleave { get; set; } = null!;
 
     public DbSet<DailyLabourer> dailyLabourer { get; set; } = null!;

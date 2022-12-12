@@ -1,0 +1,234 @@
+﻿@model ViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "Attendance";
+    ViewData["category"] = "hr";
+    ViewData["Employeeid"] = @ViewBag.Registration.EmployeeID;
+}
+
+
+   
+<div class="container-fluid">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="breadcrumb breadcrumb-style ">
+                    <li class="breadcrumb-item">
+                        <h4 class="page-title">Attendance Profile</h4>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-1">
+                        <a href="#">
+                            <i class="fas fa-home"></i> HR
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item bcrumb-2">
+                        <a href="#" onClick="return false;">Attendance</a>
+                    </li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-12">
+           
+            
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card active">
+                                <div class="chat">
+                                    <div class="chat-header clearfix">
+                                        <img src=@ViewBag.Registration.Image1Path class="" alt="">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="chat-about">
+                                                    <div class="chat-with">@ViewBag.Registration.FirstName @ViewBag.Registration.MiddleName</div>
+                                                    <div class="chat-num-messages">@ViewBag.Registration.Designation</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="chat-about">
+                                                    <div class="chat-with">Employee ID</div>
+                                                    <div class="chat-num-messages">@ViewBag.Registration.EmployeeID</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="chat-about">
+                                                    <div class="chat-with">Joining Date</div>
+                                                    
+                                                    <div class="chat-num-messages">@ViewBag.Registration.HireDate.ToString("MMM-dd-yyyy")</div>
+                                                   
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="chat-about">
+                                                    <div class="chat-with">Department</div>
+                                                    <div class="chat-num-messages">Account</div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+
+            <div class="card">
+                <div class="profile-tab-box">
+                    <div class="p-l-20">
+                        <ul class="nav ">
+                            <li class="nav-item tab-all">
+                                <a class="nav-link active show" href="#project"
+                                   data-bs-toggle="tab">Attendance</a>
+                            </li>
+                            
+                        </ul>
+                       @*@foreach (var obj in Model.Attendances)
+                                    {
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Attendance",new { id = @obj.AttendanceID,Employeeid=@obj.EmployeeID},Context.Request.Scheme)','Check Out')"  class=""><button style="margin-top: 0px;" class="btn btn-sucess d-flex align-items-center pull-right"><i class="fa fa-plus-circle me-2"></i> Chech Out</button></a>
+                        
+                      } *@ 
+                    
+                    </div>
+                     <div class="p-l-20">
+                        
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Attendance",new { id = 0,Employeeid=ViewData["Employeeid"]},Context.Request.Scheme)','Check In')"  class="d-inline"><button style="margin-top: -40px;" class="btn btn-sucess d-flex align-items-center pull-right"><i class="fa fa-clock-circle me-2"></i> <i data-feather="check-circle"></i> &nbsp;Check In</button></a>
+                        
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="card project_widget">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="header">
+                            <h2>
+                                <strong>Attendance</strong>
+                            </h2>
+
+                        </div>   
+                                <div class="body">
+                                <div class="row">
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="text-center m-b-20">
+                                                <h3 class="m-b-10 col-green">08:00</h3>
+                                                <div class="text font-15 m-b-5">Average Working Hours</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="text-center m-b-20">
+                                                <h3 class="m-b-10 col-green">10:30 AM</h3>
+                                                <div class="text font-15 m-b-5">Average In Time</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="text-center m-b-20">
+                                                <h3 class="m-b-10 col-green">07:30 PM</h3>
+                                                <div class="text font-15 m-b-5">Average Out Time</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-sm-6">
+                                            <div class="text-center m-b-20">
+                                                <h3 class="m-b-10 col-green">01:00</h3>
+                                                <div class="text font-15 m-b-5">Average Break Time</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover js-basic-example contact_list">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center"> Date </th>
+                                                    <th class="center"> Check In </th>
+                                                    <th class="center"> Check Out </th>
+                                                    <th class="center"> Shift </th>
+                                                    <th class="center"> Working Hours </th>
+                                                    <th class="center"> Check Out </th>
+                                                    <th class="center"> Action </th>
+                                                </tr>
+                                            </thead>
+                                              @foreach (var obj in Model.Attendances)
+                                    {
+                            <tbody id="view-all">
+                                <tr class="odd gradeX">
+                                    @if (obj.Date.HasValue)
+                                    {
+
+                                    @*<td class="center">@obj.Date.Value.ToString("MMM-dd-yyyy")</td>*@
+                                    <td class="center">@obj.Date.Value.ToString("MMM-dd-yyyy")</td>
+                                    }
+                                    else
+                                    {
+                                    <td></td>
+                                    }
+                                    @if (obj.CheckIn.HasValue)
+                                    {
+                                    <td class="center">@obj.CheckIn.Value.ToString("hh-mm-tt")</td>
+                                    }
+                                    else
+                                    {
+                                    <td></td>
+                                    }
+                                    @if (obj.Checkout.HasValue)
+                                    {
+                                    <td class="center">@obj.Checkout.Value.ToString("hh-mm-tt")</td>
+                                    }
+                                    else
+                                    {
+                                    <td class="center">00:00:00</td>
+                                    }
+                                    <td class="center">@obj.Shift</td>
+                                    <td class="center">@obj.NetMinutes</td>      
+                                   <td class="center">
+                                        @*<a  onclick="showInPopup('@Url.Action("AddOrEdit","Attendance",new { id = @obj.AttendanceID,Employeeid=@obj.EmployeeID},Context.Request.Scheme)','Check Out')" class="btn btn-tbl-edit">
+                                                    <i class="material-icons">Check out</i>
+                                         </a>*@
+                                         <a onclick="showInPopup('@Url.Action("AddOrEdit","Attendance",new { id = @obj.AttendanceID,Employeeid=@obj.EmployeeID},Context.Request.Scheme)','Check Out')"  class=""><button style="margin-top: 0px;" class="btn btn-sucess"><i class="fa fa-edit-circle me-2"></i><i data-feather="check-circle"></i> &nbsp; Chech Out</button></a>
+                                    </td>
+                                         <td class="center">
+                                        @*<form asp-action="EDelete" asp-route-id="@obj.AttendanceID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                            <input type="hidden" asp-for="@obj.AttendanceID" />
+                                            <button type="submit" value="Delete" class="btn btn-tbl-delete">
+                                             <i class="material-icons">delete_forever</i></button>                                         
+                                        </form>*@
+                                        
+                        
+                                                        <a onclick="showInPopup('@Url.Action("Delete","Attendance",new {id=obj.AttendanceID},Context.Request.Scheme)','Delete Attendance')" class="btn btn-tbl-delete"><i class="material-icons">delete_forever</i></a>
+                                                  
+                                    </td>
+                                </tr>                            
+                            </tbody>
+                            }
+                                            <tfoot>
+                                                <tr>
+                                                    <th class="center"> Date </th>
+                                                    <th class="center"> Check In </th>
+                                                    <th class="center"> Check Out </th>
+                                                    <th class="center"> Shift </th>
+                                                    <th class="center"> Working Hours </th>
+                                                    <th class="center"> Check Out </th>
+                                                    <th class="center"> Action </th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    </div>
+                        </div>
+                            </div>
+                        </div>
+                       
+                       
+                      
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+

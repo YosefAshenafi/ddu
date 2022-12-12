@@ -1,0 +1,58 @@
+﻿@model Attendance
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Delete" asp-route-id="@Model.AttendanceID" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input  asp-for="AttendanceID" type="hidden" />
+            <input  asp-for="EmployeeID" type="hidden" />
+            <input type="hidden" asp-for="Date" />
+            <input type="hidden" asp-for="CheckIn" />
+            <input type="hidden" asp-for="Checkout" />
+            
+            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <label asp-for="CheckIn" class="control-label">Check In</label>
+                                            <input asp-for="CheckIn" disabled class="" placeholder="Chech In"/>
+                                                        <span asp-validation-for="CheckIn" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                             <label asp-for="Checkout" class="control-label">Check Out</label>
+                                             <input asp-for="Checkout" disabled class="form-control datetimepicker flatpickr-input" placeholder="Chech Out"/>
+                                                        <span asp-validation-for="Checkout" class="text-danger"></span>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="col-sm-6">
+                                    <div class="form-group focused">
+                                        <label asp-for="Shift" class="control-label">Shift</label>
+                                        <input asp-for="Shift" class="form-control" placeholder="Shift"/>
+                                              <span asp-validation-for="Shift" class="text-danger"></span>
+                                    </div>
+                                </div>*@
+                            </div>
+                            
+                            
+                             
+                    <div class="form-group">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="col-lg-12 p-t-20 text-center">
+                               
+                                <input type="submit" value="Delete" class="btn btn-danger pull-left btn-block" data-bs-dismiss="modal" aria-label="Close"/>
+                                <input type="button" value="Cancel" class="btn btn-secondary " title="Close" data-bs-dismiss="modal" aria-label="Close" /> 
+                                
+                            </div>
+                        </div>
+            </div>
+        </form>
+    </div>
+</div>
