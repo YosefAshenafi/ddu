@@ -80,7 +80,7 @@
                             <span>Department</span>
                         </a>
                     </li>
-    
+
             @if (ViewData["name"] == "jobs")
             {
                 <text>
@@ -132,7 +132,7 @@
                             <span>PerDiem</span>
                         </a>
                     </li>
-            
+
             @if (ViewData["name"] == "Promotion/Demotion")
             {
                 <text>
@@ -288,91 +288,93 @@
                         </a>
                     </li>
                 </ul>
-                @if (ViewData["category"] == "inventory"){
+        @if (ViewData["category"] == "inventory")
+        {
                     <a class="menu-toggle">Inventory</a>
-                }
-                else {
+        }
+        else
+        {
                     <a class="menu-toggle toggled">Inventory</a>
-                }
+        }
                 <ul>
 
-                @if (ViewData["name"] == "propertyManagement")
-                {
-                    <text>
+            @if (ViewData["name"] == "propertyManagement")
+            {
+                <text>
                         <li class="active">
-                    </text>
-                }
-                else
-                {
-                    <text>
+                </text>
+            }
+            else
+            {
+                <text>
                         <li>
-                    </text>
-                }
+                </text>
+            }
                         <a href="@Url.Action("PropertyManagement","Inventory")">
                             <i data-feather="layers"></i>
                             <span>Property Management</span>
                         </a>
                     </li>
-                    @if (ViewData["name"] == "inventoryManagement")
-                {
-                    <text>
-                            <li class="active">
-                    </text>
-                }
-                else
-                {
-                    <text>
-                            <li>
-                    </text>
-                }
+            @if (ViewData["name"] == "inventoryManagement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
                         <a href="@Url.Action("Index","Inventory")">
-                                <i data-feather="briefcase"></i>
-                                <span>Inventory Management</span>
-                            </a>
-                        </li>
-                @if (ViewData["name"] == "inventoryApproval")
-                {
-                    <text>
-                            <li class="active">
-                    </text>
-                }
-                else
-                {
-                    <text>
-                            <li>
-                    </text>
-                }
-                            <a href="@Url.Action("InventoryConfirmation","Home")">
-                                <i data-feather="refresh-cw"></i>
-                                <span>Approval Process</span>
-                            </a>
-                </li>@if (ViewData["name"] == "inventoryProcurement")
-                {
-                    <text>
-                            <li class="active">
-                    </text>
-                }
-                else
-                {
-                    <text>
-                            <li>
-                    </text>
-                }
-                            <a href="@Url.Action("InventoryConfirmation","Home")">
-                                <i data-feather="shopping-bag"></i>
-                                <span>Procurement Process</span>
-                            </a>
-                        </li>
+                            <i data-feather="briefcase"></i>
+                            <span>Inventory Management</span>
+                        </a>
+                    </li>
+            @if (ViewData["name"] == "inventoryApproval")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("InventoryConfirmation","Home")">
+                            <i data-feather="refresh-cw"></i>
+                            <span>Approval Process</span>
+                        </a>
+                    </li>@if (ViewData["name"] == "inventoryProcurement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("InventoryConfirmation","Home")">
+                            <i data-feather="shopping-bag"></i>
+                            <span>Procurement Process</span>
+                        </a>
+                    </li>
 
-                    </ul>
-                @if (ViewData["category"] == "bid")
-                {
-                            <a class="menu-toggle">Bidding System</a>
-                }
-                else
-                {
-                            <a class="menu-toggle toggled">Bidding System</a>
-                }
+                </ul>
+        @if (ViewData["category"] == "bid")
+        {
+                    <a class="menu-toggle">Bidding System</a>
+        }
+        else
+        {
+                    <a class="menu-toggle toggled">Bidding System</a>
+        }
                 <ul>
             @if (ViewData["name"] == "bidRequest")
             {
@@ -531,12 +533,12 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Create">Create Role</a>
                     </li>
             @*  <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Index">Claims</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Index">Claims</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Create">Create Claim</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Create">Create Claim</a>
                     </li>
-                                   <li class="nav-item">
+                    <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="Claims" asp-action="Project">Policy Authorization</a>
                     </li>
                     <li class="nav-item">
@@ -547,7 +549,7 @@
                     </li>*@
                 </ul>
             </li>
-        </ul>       
+        </ul>
     </div>
     <!-- #Menu -->
 </aside>
