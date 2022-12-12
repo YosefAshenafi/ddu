@@ -1,3 +1,4 @@
+
 ﻿using DDU.Data;
 using DDU.Models;
 using DDU.Utility;
@@ -5,11 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
+﻿using Microsoft.AspNetCore.Mvc;
+
 
 namespace DDU.Controllers
 {
     public class InventoryController : Controller
     {
+
 
         private readonly ApplicationDbContext _db;
       
@@ -83,12 +87,17 @@ namespace DDU.Controllers
             ViewData["costCenter"] = new SelectList(_db.invCostCenter.ToList(), "CostID", "CostName");
             ViewData["employeeid"] = new SelectList(_db.employeeRegistration.ToList(), "EmployeeID", "FirstName");
             ViewData["store"] = new SelectList(_db.invStore.ToList(), "StoreID", "StoreCode");
+
+        public IActionResult Index()
+        {
+
             return View();
         }
         public IActionResult PropertyManagement()
         {
             return View();
         }
+
 
         public JsonResult Stockchecked(int id)
         {
@@ -671,5 +680,6 @@ namespace DDU.Controllers
             }
             return RedirectToAction("Index");
         }
+
     }
 }
