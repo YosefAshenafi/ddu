@@ -1,0 +1,319 @@
+﻿@{
+    ViewData["Title"] = "Property Management";
+    ViewData["name"] = "propertyManagement";
+    ViewData["category"] = "inventory";
+}
+
+@model IEnumerable<Vw_Item>
+@section Content {
+    <script src=~/lib/jquery/dist/jquery.js></script>
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Property Management</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> Inventory
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Property Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Your content goes here  -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="profile-tab-box">
+                        <div class="p-l-20">
+                            <ul class="nav ">
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link active show" href="#project" data-bs-toggle="tab">
+                                        Goods received note
+                                    </a>
+                                </li>
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link" href="#isv" data-bs-toggle="tab">
+                                        Issue Voucher
+                                    </a>
+                                </li>
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link " href="#return" data-bs-toggle="tab">
+                                        Item return
+                                    </a>
+                                </li>
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link " href="#disposal" data-bs-toggle="tab">
+                                        Item disposal
+                                    </a>
+                                </li>
+                                <li class="nav-item tab-all p-l-20">
+                                    <a class="nav-link" href="#physical" data-info="Physical" data-bs-toggle="tab">
+                                        Physical counts
+                                        </a>
+                                </li>
+                                <li class="nav-item tab-all p-l-20">
+                                    <a class="nav-link" href="#adjustment" data-info="adjustmentlist" data-bs-toggle="tab">
+                                        Adjustment
+                                     </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18"> Goods received note</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btngrn" title="Good Recieving Note"><i class="fa fa-plus"></i> GRN</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="isv" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Issue Voucher</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("IssueVoucher","Inventory")'" class="btn btn-success" id="btnisv" title="Issue Voucher"><i class="fa fa-plus"></i> ISV</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              @* <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover js-basic-example contact_list" id="example">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="center"> ItemCode </th>
+                                                    <th class="center"> ItemName </th>
+                                                    <th class="center"> Item Nature </th>
+                                                    <th class="center"> Item Family </th>
+                                                    <th class="center"> Onhand </th>
+                                                    <th class="center"> ReoredrPoint </th>
+                                                    <th class="center"> Minimum </th>
+
+                                                </tr>
+                                            </thead>
+                                            @foreach (var obj in Model)
+                                            {
+                                                <tbody>
+                                                    <tr data-id=@obj.ItemID>
+                                                        <td>
+                                                            <div class="switch">
+                                                                <label>
+                                                                    <input class="form-check-input" asp-items=@obj.ItemID type="checkbox" id=@obj.ItemID>
+
+                                                                    <span class="lever switch-col-light-green"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>@obj.ItemCode</td>
+                                                        <td>@obj.ItemName</td>
+                                                        <td>@obj.NatureName</td>
+                                                        <td>@obj.FamilyName</td>
+                                                        <td>@obj.Quantity</td>
+                                                        <td>@obj.ReoredrPoint</td>
+                                                        <td>@obj.Minimum</td>
+
+
+                                                    </tr>
+                                                </tbody>
+                                            }
+                                         
+                                        </table>
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="return" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Item return</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnreturn" title="Issue Voucher"><i class="fa fa-plus"></i> Return</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="disposal" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Item return</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btndisposal" title="Issue Voucher"><i class="fa fa-plus"></i> disposal</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="physical" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Physical counts</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnphysical" title="Issue Voucher"><i class="fa fa-plus"></i> physical</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="adjustment" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Adjustment</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnadjustment" title="Adjustment"><i class="fa fa-plus"></i> Adjustment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div role="tabpanel" class="tab-pane active" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="card">
+ @*                               <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18"> Goods received note</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btngrn" title="Good Recieving Note"><i class="fa fa-plus"></i> GRN</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover js-basic-example contact_list" id="example">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th class="center"> ItemCode </th>
+                                                    <th class="center"> ItemName </th>
+                                                    <th class="center"> Item Nature </th>
+                                                    <th class="center"> Item Family </th>
+                                                    <th class="center"> Onhand </th>
+                                                    <th class="center"> ReoredrPoint </th>
+                                                    <th class="center"> Minimum </th>
+
+                                                </tr>
+                                            </thead>
+                                            @foreach (var obj in Model)
+                                            {
+                                                <tbody>
+                                                    <tr data-id=@obj.ItemID>
+                                                        <td>
+
+                                                            <div class="switch">
+                                                                <label>
+                                                                    <input class="form-check-input" asp-items=@obj.ItemID type="checkbox" id=@obj.ItemID>
+
+                                                                    <span class="lever switch-col-light-green"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+
+                                                        <td>@obj.ItemCode</td>
+                                                        <td>@obj.ItemName</td>
+                                                        <td>@obj.NatureName</td>
+                                                        <td>@obj.FamilyName</td>
+                                                        <td>@obj.Quantity</td>
+                                                        <td>@obj.ReoredrPoint</td>
+                                                        <td>@obj.Minimum</td>
+
+                                                    </tr>
+                                                </tbody>
+                                            }
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            var dataId
+            $('#example tbody').on('click', 'tr', function () {
+                dataId = $(this).attr("data-id");
+                
+            });
+            $('#example tbody').on('change', 'input[type="checkbox"]', function () {
+                if (this.checked) {
+                    // the checkbox is now checked
+                    $.getJSON("/Inventory/Stockchecked", { id: dataId },
+                        function (d) {
+                            $("#btngrn").html("+GRN(" + d + ")");
+                            $("#btnisv").html("+ISV(" + d + ")");
+                            $("#btnreturn").html("+Return(" + d + ")");
+                            $("#btndisposal").html("+Disposal(" + d + ")");
+                            $("#btnphysical").html("+Physical(" + d + ")");
+                            $("#btnadjustment").html("+Adjustmentl(" + d + ")");
+                        })
+
+                } else {
+                    alert("uncheckbox " + dataId)
+                }
+            });
+        })
+    </script>
+}

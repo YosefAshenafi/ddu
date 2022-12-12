@@ -1,0 +1,274 @@
+﻿@model InvItemIssue
+@using System.Net.Http
+@using DDU.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    List<InvInventoryItem> products = HttpContextAccessor.HttpContext.Session.Get<List<InvInventoryItem>>("ISV");
+}
+<style>
+    td > img {
+        width: 75px;
+    }
+</style>
+@{
+    ViewData["Title"] = "Property Management";
+    ViewData["name"] = "propertyManagement";
+    ViewData["category"] = "inventory";
+}
+
+@section Content {
+        <script src=~/lib/jquery/dist/jquery.js></script>
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <!-- start page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0 font-size-18">Issue Voucher</h4>
+
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);"></a></li>
+                                    <li class="breadcrumb-item active"></li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end page title -->
+                @using (Html.BeginForm("ISVAddOrEdit", "Inventory", FormMethod.Post))
+                {
+
+                    <input asp-for="DivisionID" type="hidden" />
+                    <input asp-for="CostCenterID" type="hidden" />
+                            <input asp-for="SessionIP" type="hidden" />
+                            <input asp-for="SessionMAC" type="hidden" />
+                    <input asp-for="SectionID" type="hidden" />
+                    <input asp-for="NatureID" type="hidden" />
+                            <input asp-for="PhaseNo" type="hidden" />
+                    <input asp-for="EquipmentID" type="hidden" />
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+
+                                                 <table class="table align-middle table-nowrap table-bordered" id="example">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Item Code</th>
+                                                        <th>Item Name</th>
+                                                        <th>Unit Cost</th>
+                                                        <th>Quantity</th>                                               
+                                                    </tr>
+                                                </thead>
+                                            @*<form  method="post" asp-controller="Stock" asp-action="SubmitISV" id="productSales" enctype="multipart/form-data" >*@
+
+                                            @foreach (var invItem in products)
+                                            {
+
+                                                        <tbody>
+
+                                                                <tr data-id=@invItem.ItemID>
+                                                                <td>
+                                                                        <img src="@Url.Content("~/images/inventory/defaultProductImage.png")" />
+                                                                </td>
+                                                                    <td>  <input type="text" name="ItemCode" class="form-control" value=@invItem.ItemCode readonly /></td>
+                                                                <td>
+                                                                        <input type="text" name="ItemName" class="form-control" value=@invItem.ItemName readonly />
+
+                                                                    </td>
+                                                                <td>
+                                                            <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost readonly />
+
+                                                        </td>
+
+                                                                <td>
+                                                                    <div class="me-3" style="width: 120px;">
+                                                                            <input type="text" name="Qty" class="form-control" value=@invItem.ReoredrPoint />
+
+                                                                    </div>
+                                                                </td>                                           
+
+                                                            </tr>
+
+                                                        </tbody>
+
+
+                                            }
+
+                                            @*</form>*@
+                                            </table>
+
+
+
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-sm-6">
+
+                                                <a asp-controller="Inventory" asp-action="Index" class="btn btn-secondary">
+                                                    <i class="mdi mdi-arrow-left me-1"></i> Back Inventory
+                                                </a>
+                                            </div> <!-- end col -->
+                                            <div class="col-sm-6">
+
+                                                <Button type="submit" value="Submit" class="btn btn-lg btn-success"><i class="fa fa-save"></i> Save</Button>
+                                            </div> <!-- end col -->
+                                        </div> <!-- end row-->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"> Head information</h4>
+                                    @*<p class="card-title-desc mb-4">Select Vendor and Datetime</p>*@
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                               <div class="form-group mb-3">
+                                                <label class="col-form-label">CostCenter</label>
+
+                                                <select asp-for="CostCenterID" asp-items="ViewBag.costCenter" title="Supplier" class="col-12 m-t-20 p-l-0" select2>
+                                                    <option value="0">Select CostCenter</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                        <label class="col-form-label">Store</label>
+                                                        <select asp-for="StoreID" asp-items="ViewBag.store" class="col-12 m-t-20 p-l-0" title="Store">
+                                                       <option value="0">Select Store</option>                                                                          
+
+                                                     </select>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                <label for="example-date-input" class="form-label">Issue Date</label>
+                                                <input asp-for="IssueDate" class="form-control" type="date" id="example-date-input">
+                                                </div>
+
+                                                    <div class="form-group mb-3">
+                                                        <label class="col-form-label">IssuedBy</label>
+
+                                                        <select asp-for="PreparedBy" asp-items="ViewBag.employeeid" title="Employee" class="col-12 m-t-20 p-l-0" select2>
+                                                            <option value="0">Select Employee</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label class="col-form-label">ApprovedBy</label>
+
+                                                        <select asp-for="ApprovedBy" asp-items="ViewBag.employeeid" title="Employee" class="col-12 m-t-20 p-l-0" select2>
+                                                            <option value="0">Select Employee</option>
+
+                                                        </select>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                        </div>
+                }
+                <!-- end row -->
+
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © SICS.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by <a href="#!" class="text-decoration-underline">SICS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+        <script>
+            $(function () {
+                var dataId
+
+                $('#example tbody').on('click', 'tr', function () {
+
+                    dataId = $(this).attr("data-id");                
+
+                });
+
+                $('#example tbody').on('focusout', 'input[type="text"]', function () {
+
+                    var value = $(this).val();
+                    var name1 = $(this).attr("name");
+
+                    if (value != 0 && value != "0") {
+                        if (!$(this).val()) {
+
+                            alert("leave cell ");
+                        } else {
+                            $.getJSON("/Inventory/textChangeIsv", { id: dataId, name: name1, value: value },
+                                function (data) {
+                                    //  alert(data);
+                                    //if (typeof data === "object") {
+                                    //    alert (data[0].start);
+                                    //} else {
+                                    //    alert (JSON.parse(data)[0].start);
+                                    //}
+                                })
+
+                        }
+
+
+                    }
+
+
+                });
+
+            })
+
+            $(function () {
+
+                $('.form-control').keypress(function (e) {
+                    if (isNaN(this.value + "" + String.fromCharCode(e.charCode))) return false;
+                })
+                    .on("cut copy paste", function (e) {
+                        e.preventDefault();
+                    });
+
+            });
+
+            function SubmitSales() {
+                $("#productSales").submit();
+            }
+        </script>
+}
+    <!-- end main content-->
+    @*<script>
+    function onclick() {
+
+        $("btnEditProcedure").attr("asp-route-qty=", document.getElementById("qty").value);
+
+    }
+    function SubmitSales() {
+        $("#productSales").submit();
+    }
+</script>*@
+

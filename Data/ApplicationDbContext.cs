@@ -86,13 +86,48 @@ namespace DDU.Data;
 
     public DbSet<DailyLabourer> dailyLabourer { get; set; } = null!;
 
+    public DbSet<InvInventoryItem> invInventoryItem { get; set; } = null!;
+
+    public DbSet<InvReceive> invReceive { get; set; } = null!;
+
+    public DbSet<InvReceiveDetail> invReceiveDetail { get; set; } = null!;
+
+    public DbSet<Vw_Item> vw_Item { get; set; } = null!;
+
+    public DbSet<InvStore> invStore { get; set; } = null!;
+
+    public DbSet<InvSupplier> invSupplier { get; set; } = null!;
+
+    public DbSet<InvItemIssue> invItemIssue { get; set; } = null!;
+
+    public DbSet<InvItemIssueDetail> invItemIssueDetail { get; set; } = null!;
+
+    public DbSet<InvCostCenter> invCostCenter { get; set; } = null!;
+
+    public DbSet<InvItemReturn> invItemReturn { get; set; } = null!;
+
+    public DbSet<InvItemReturnDetail> invItemReturnDetail { get; set; } = null!;
+
+    public DbSet<InvDisposal> invDisposal { get; set; } = null!;
+
+    public DbSet<InvDisposalDetail> invDisposalDetail { get; set; } = null!;
+
+    public DbSet<InvCount> invCount { get; set; } = null!;
+
+    public DbSet<InvCountDetail> invCountDetail { get; set; } = null!;
+
+    public DbSet<InvAdjustment> invAdjustment { get; set; } = null!;
+
+    public DbSet<InvAdjustmentDetail> invAdjustmentDetail { get; set; } = null!;
+
+    public DbSet<InvItemTransferDetail> invItemTransferDetail { get; set; } = null!;
+
+    public DbSet<InvItemTransfer> invItemTransfer { get; set; } = null!;   
 
 
-    //public string strConnectionString = "User Id=sa;Password=Ahmicomp1;Server=.;Database=DDUDB;";
+    public string strConnectionString = "User Id=sa;Password=Ahmi#comp#1;Server=.;Database=DDUDB;";  
 
-    // Server= sql5097.site4now.net;Database=db_a676b9_ddu;user id = db_a676b9_ddu_admin; password=P@ssw0rd; MultipleActiveResultSets=true;
-
-    public string strConnectionString = "User Id=db_a676b9_ddu_admin;Password=P@ssw0rd;Server=sql5097.site4now.net;Database=db_a676b9_ddu;";
+    //public string strConnectionString = "User Id=db_a676b9_ddu_admin;Password=P@ssw0rd;Server=sql5097.site4now.net;Database=db_a676b9_ddu;";
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

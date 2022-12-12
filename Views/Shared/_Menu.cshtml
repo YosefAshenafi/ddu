@@ -288,6 +288,85 @@
                         </a>
                     </li>
                 </ul>
+        @if (ViewData["category"] == "inventory")
+        {
+                    <a class="menu-toggle">Inventory</a>
+        }
+        else
+        {
+                    <a class="menu-toggle toggled">Inventory</a>
+        }
+                <ul>
+
+            @if (ViewData["name"] == "propertyManagement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("PropertyManagement","Inventory")">
+                            <i data-feather="layers"></i>
+                            <span>Property Management</span>
+                        </a>
+                    </li>
+            @if (ViewData["name"] == "inventoryManagement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("Index","Inventory")">
+                            <i data-feather="briefcase"></i>
+                            <span>Inventory Management</span>
+                        </a>
+                    </li>
+            @if (ViewData["name"] == "inventoryApproval")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("InventoryConfirmation","Home")">
+                            <i data-feather="refresh-cw"></i>
+                            <span>Approval Process</span>
+                        </a>
+                    </li>@if (ViewData["name"] == "inventoryProcurement")
+            {
+                <text>
+                        <li class="active">
+                </text>
+            }
+            else
+            {
+                <text>
+                        <li>
+                </text>
+            }
+                        <a href="@Url.Action("InventoryConfirmation","Home")">
+                            <i data-feather="shopping-bag"></i>
+                            <span>Procurement Process</span>
+                        </a>
+                    </li>
+
+                </ul>
         @if (ViewData["category"] == "bid")
         {
                     <a class="menu-toggle">Bidding System</a>

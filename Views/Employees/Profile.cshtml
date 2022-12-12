@@ -112,7 +112,15 @@
                                         <div class="demo-switch-title">Permanent</div>
                                         <div class="switch">
                                             <label>
-                                                <input type="checkbox" checked>
+                                                 @if (@ViewBag.Registration.Employmenttype == 1)
+                                                {
+                                                        <input class="form-check-input"  type="checkbox" checked >
+                                                }
+                                                else
+                                                {
+                                                    <input class="form-check-input"  type="checkbox" >
+                                                }  
+                                                
                                                 <span class="lever switch-col-green"></span>
                                             </label>
                                         </div>
@@ -121,7 +129,15 @@
                                         <div class="demo-switch-title">Temporary</div>
                                         <div class="switch">
                                             <label>
-                                                <input type="checkbox" >
+                                        @if (@ViewBag.Registration.Employmenttype == 2)
+                                        {
+                                                <input class="form-check-input"  type="checkbox" checked >
+                                        }
+                                        else
+                                        {
+                                            <input class="form-check-input"  type="checkbox" >
+                                        }    
+                                                
                                                 <span class="lever switch-col-light-green"></span>
                                             </label>
                                         </div>
@@ -131,7 +147,32 @@
                                         <div class="switch">
                                             <label>
                                                 <input type="checkbox" >
-                                                <span class="lever switch-col-lime"></span>
+                                        @if (@ViewBag.Registration.Employmenttype == 3)
+                                        {
+                                            <input class="form-check-input" type="checkbox" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-check-input" type="checkbox">
+                                        }
+                                        <span class="lever switch-col-lime"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="demo-switch-title">Daily labourer</div>
+                                        <div class="switch">
+                                            <label>
+                                                <input type="checkbox" >
+                                        @if (@ViewBag.Registration.Employmenttype == 4)
+                                        {
+                                            <input class="form-check-input" type="checkbox" checked>
+                                        }
+                                        else
+                                        {
+                                            <input class="form-check-input" type="checkbox">
+                                        }
+                                        <span class="lever switch-col-lime"></span>
                                             </label>
                                         </div>
                                     </div>
