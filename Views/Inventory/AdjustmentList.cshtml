@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "inventory";
+    ViewData["category"] = "inventory";
+}
+@model IEnumerable<Vw_Adjustment>
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Inventory</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#">
+                                <i class="fas fa-home"></i> Inventory Management
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Adjustment list</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                        </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu float-end">
+                                    <li>
+                                        <a href="javascript:void(0);">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Something else here</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-hover js-basic-example contact_list">
+
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th class="center"> StoreCode </th>
+                                        <th class="center"> Reason </th>
+                                  
+                                        <th class="center"> AdjustmentDate </th>
+                                        <th class="center"> AdjustedBY </th>
+                                        <th class="center"> ApprovedBy </th>
+                                        <th class="center"> Action </th>
+                                    </tr>
+                                </thead>
+                                @foreach (var obj in Model)
+                                {
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td class="table-img center">
+                                                <a asp-controller="Inventory" asp-action="GRNInvoice" asp-route-id="@obj.AdjustmentID" )"><img src="~/images/inventory/2038147.png" alt=""></a>
+
+                                            </td>
+                                            <td class="center">@obj.StoreCode</td>
+                                            <td class="center">@obj.Reason</td>
+                                            <td class="center">@obj.AdjustmentDate.Value.ToString("MMM-dd-yyyy")</td>
+                                            <td class="center">@obj.AdjustedBY</td>
+                                         
+                                            <td class="center">@obj.ApprovedBy</td>
+
+                                            <td class="center">
+                                                @* <a href="#" class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                        </a>*@
+                                                <form asp-action="ADDelete" asp-route-id="@obj.AdjustmentID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                                    <input type="hidden" asp-for="@obj.AdjustmentID" />
+                                                    <button type="submit" value="Delete" class="btn btn-tbl-delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

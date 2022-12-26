@@ -83,7 +83,7 @@
 
                                                                     </td>
                                                                     <td>
-                                                                        <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost readonly />
+                                                                        <input type="text" name="UnitCost" class="form-control" value=@Math.Round(invItem.UnitCost,2) readonly />
 
                                                                     </td>
 
@@ -146,13 +146,14 @@
                                                         <label class="col-form-label">Store</label>
                                                         <select asp-for="StoreTo" asp-items="ViewBag.store" class="col-12 m-t-20 p-l-0" title="Store">
                                                             <option value="0">Select Store</option>
-
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group mb-3">
                                                         <label for="example-date-input" class="form-label">Transfer Date</label>
-                                                        <input asp-for="DateCreated" class="form-control" type="date" id="example-date-input">
+                                                         <input asp-for="DateCreated" id="myDateTimePicker" placeholder="Select Date Created Time" type="text" class="flatpickr-input active">
+                                                        <span asp-validation-for="DateCreated" class="text-danger"></span>
+                                                        @*<input asp-for="DateCreated" class="form-control" type="date" id="example-date-input">*@
                                                     </div>
 
                                                     <div class="form-group mb-3">
@@ -165,10 +166,8 @@
                                                     </div>
                                                     <div class="form-group mb-3">
                                                         <label class="col-form-label">ApprovedBy</label>
-
                                                         <select asp-for="ConfirmBy" asp-items="ViewBag.employeeid" title="Employee" class="col-12 m-t-20 p-l-0" select2>
                                                             <option value="0">Select Employee</option>
-
                                                         </select>
                                                     </div>
                                                 </div>
@@ -223,7 +222,7 @@
 
                             alert("leave cell ");
                         } else {
-                            $.getJSON("/Inventory/textChangeTR", { id: dataId, name: name1, value: value },
+                        $.getJSON("/Inventory/textChangeTR", { id: dataId, name: name1, value: value },
                                 function (data) {
                                     //  alert(data);
                                     //if (typeof data === "object") {
@@ -271,3 +270,8 @@
     }
 </script>*@
 
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

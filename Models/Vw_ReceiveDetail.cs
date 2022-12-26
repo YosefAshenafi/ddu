@@ -2,9 +2,8 @@
 
 namespace DDU.Models
 {
-    public class Vw_Item
+    public class Vw_ReceiveDetail
     {
-        [Key]
         public int ItemID { get; set; }
 
         public string? ItemCode { get; set; }
@@ -13,23 +12,24 @@ namespace DDU.Models
 
         public string? Description { get; set; }
 
-        public double? Quantity { get; set; }
-
-        public decimal? ReoredrPoint { get; set; }
-
-        public double? Minimum { get; set; }
-
-        public string? DivName { get; set; }
-
         public string? FamilyName { get; set; }
 
         public string? NatureName { get; set; }
 
         public string? ItemType { get; set; }
 
-        public double UnitCost { get; set; }
+        [Key]
+        public Guid ReferenceDetailID { get; set; }
 
+        public Guid ReferenceNo { get; set; }
 
+        public string? UnitMeasure { get; set; }
+
+        public decimal QtyReceived { get; set; }
+
+        public decimal UnitPrice { get; set; }
+
+        public string? Remark { get; set; }
 
     }
 }

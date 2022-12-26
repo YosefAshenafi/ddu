@@ -41,5 +41,6 @@ namespace DDU.Models
         public string? SessionIP { get; set; }
 
         public string? SessionMAC { get; set; }
+
     }
 }

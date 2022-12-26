@@ -83,13 +83,13 @@
 
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost readonly />
+                                                            <input type="text" name="UnitCost" class="form-control" value=@Math.Round(invItem.UnitCost,2) readonly />
 
                                                         </td>
 
                                                         <td>
                                                             <div class="me-3" style="width: 120px;">
-                                                                <input type="text" name="Qty" class="form-control" value=@invItem.ReoredrPoint />
+                                                                <input type="number"  name="Qty" class="form-control" value=@invItem.ReoredrPoint />
 
                                                             </div>
                                                         </td>
@@ -97,15 +97,9 @@
                                                     </tr>
 
                                                 </tbody>
-
-
                                             }
-
                                             @*</form>*@
                                         </table>
-
-
-
                                     </div>
                                     <div class="row mt-4">
                                         <div class="col-sm-6">
@@ -127,9 +121,8 @@
 
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title"> Head information</h4>
+                                    <h4 class="card-title"> Asset Adjustment Form</h4>
                                     @*<p class="card-title-desc mb-4">Select Vendor and Datetime</p>*@
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group mb-3">
@@ -149,8 +142,9 @@
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="example-date-input" class="form-label">Disposal Date</label>
-                                                <input asp-for="AdjustmentDate" class="form-control" type="date" id="example-date-input">
+                                                <label for="example-date-input" class="form-label">Adjustment Date</label>
+                                                <input asp-for="AdjustmentDate" id="myDateTimePicker" placeholder="Select Adjustment Date Time" type="text" class="flatpickr-input active">
+                                                <span asp-validation-for="AdjustmentDate" class="text-danger"></span>                                               
                                             </div>
 
                                             <div class="form-group mb-3">
@@ -163,16 +157,12 @@
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label class="col-form-label">ApprovedBy</label>
-
                                                 <select asp-for="ApprovedBy" asp-items="ViewBag.employeeid" title="Employee" class="col-12 m-t-20 p-l-0" select2>
                                                     <option value="0">Select Employee</option>
-
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                             <!-- end card -->
@@ -269,3 +259,8 @@
     }
 </script>*@
 
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

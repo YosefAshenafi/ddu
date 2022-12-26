@@ -86,7 +86,7 @@
 
                                                                     </td>
                                                                 <td>
-                                                            <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost readonly />
+                                                            <input type="text" name="UnitCost" class="form-control" value=@Math.Round(invItem.UnitCost,2) readonly />
 
                                                         </td>
 
@@ -130,7 +130,7 @@
 
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title"> Head information</h4>
+                                        <h4 class="card-title">Issue & Receipt Voucher</h4>
                                     @*<p class="card-title-desc mb-4">Select Vendor and Datetime</p>*@
 
                                         <div class="row">
@@ -153,7 +153,9 @@
 
                                                 <div class="form-group mb-3">
                                                 <label for="example-date-input" class="form-label">Issue Date</label>
-                                                <input asp-for="IssueDate" class="form-control" type="date" id="example-date-input">
+                                                @*<input asp-for="IssueDate" class="form-control" type="date" id="example-date-input">*@
+                                                <input asp-for="IssueDate" id="myDateTimePicker" placeholder="Select Issue Date Time" type="text" class="flatpickr-input active">
+                                                <span asp-validation-for="IssueDate" class="text-danger"></span>
                                                 </div>
 
                                                     <div class="form-group mb-3">
@@ -272,3 +274,8 @@
     }
 </script>*@
 
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

@@ -84,7 +84,7 @@
 
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost readonly />
+                                                            <input type="text" name="UnitCost" class="form-control" value=@Math.Round(invItem.UnitCost,2) readonly />
 
                                                         </td>
 
@@ -98,7 +98,6 @@
                                                     </tr>
 
                                                 </tbody>
-
 
                                             }
 
@@ -150,12 +149,13 @@
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label for="example-date-input" class="form-label">Issue Date</label>
-                                                <input asp-for="ReturnDate" class="form-control" type="date" id="example-date-input">
+                                                <label for="example-date-input" class="form-label">ReturnDate</label>
+                                                <input asp-for="ReturnDate" id="myDateTimePicker" placeholder="Select Return Date Time" type="text" class="flatpickr-input active">
+                                                <span asp-validation-for="ReturnDate" class="text-danger"></span>
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                <label class="col-form-label">IssuedBy</label>
+                                                <label class="col-form-label">ReturnedBy</label>
 
                                                 <select asp-for="ReturnedBy" asp-items="ViewBag.employeeid" title="Employee" class="col-12 m-t-20 p-l-0" select2>
                                                     <option value="0">Select Employee</option>
@@ -269,4 +269,8 @@
         $("#productSales").submit();
     }
 </script>*@
-
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

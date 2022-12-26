@@ -13,11 +13,11 @@ namespace DDU.Models
 
         public int ItemID { get; set; }
 
-        public double QuantityRecived { get; set; }
+        public decimal QuantityRecived { get; set; }
 
-        public double QuantityTransfer { get; set; }
+        public decimal QuantityTransfer { get; set; }
 
-        public double UnitCost { get; set; }
+        public decimal UnitCost { get; set; }
 
         public string? Remark { get; set; }
     }

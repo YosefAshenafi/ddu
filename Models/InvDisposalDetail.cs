@@ -5,9 +5,9 @@ namespace DDU.Models
     public class InvDisposalDetail
     {
         [Key]
-        public int ID { get; set; }
+        public Guid DisposedDetailId { get; set; }
 
-        public int DisposedId { get; set; }
+        public Guid DisposedId { get; set; }
 
         public int ItemID { get; set; }
 

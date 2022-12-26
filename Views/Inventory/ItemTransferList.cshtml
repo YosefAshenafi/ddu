@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "inventory";
+    ViewData["category"] = "inventory";
+}
+@model IEnumerable<Vw_ItemTransfer>
+@section Content {
+        <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Inventory</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> Inventory Management
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">Item Transfer list</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu float-end">
+                                        <li>
+                                            <a href="javascript:void(0);">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover js-basic-example contact_list">
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                        <th class="center"> TransferNumber </th>
+                                        <th class="center"> FromStore </th>
+                                        <th class="center"> ToStore </th>
+                                        <th class="center"> TransferCreated </th>
+                                        <th class="center"> RequestedBy </th>
+                                            <th class="center"> ApprovedBy </th>                                      
+                                            <th class="center"> Action </th>
+                                        </tr>
+                                    </thead>
+                                @foreach (var obj in Model)
+                                {
+                                        <tbody>
+                                            <tr class="odd gradeX">
+                                                <td class="table-img center">
+                                                        <a asp-controller="Inventory" asp-action="GRNInvoice" asp-route-id="@obj.TransferId" )"><img src="~/images/inventory/2038147.png" alt=""></a>
+
+                                                </td>
+                                                    <td class="center">@obj.TransferNumber</td>
+                                                    <td class="center">@obj.FromStore</td>
+                                                    <td class="center">@obj.ToStore</td>
+                                                    <td class="center">@obj.DateCreated.Value.ToString("MMM-dd-yyyy")</td>
+                                            <td class="center">@obj.RequestedBy</td>
+                                            <td class="center">@obj.ConfirmBy</td>
+                                                    
+
+                                                <td class="center">
+                                                @* <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>*@
+                                                <form asp-action="TRDelete" asp-route-id="@obj.TransferId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                                    <input type="hidden" asp-for="@obj.TransferId" />
+                                                    <button type="submit" value="Delete" class="btn btn-tbl-delete">
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </button>
+                                                </form>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                }
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

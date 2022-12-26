@@ -13,6 +13,7 @@ namespace DDU.Models
 
         public decimal QtyReturned { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = true)]
         public decimal UnitPrice { get; set; }
 
         public string? Remark { get; set; }
