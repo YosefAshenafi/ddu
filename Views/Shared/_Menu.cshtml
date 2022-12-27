@@ -315,7 +315,7 @@
                             <span>Property Management</span>
                         </a>
                     </li>
-            @if (ViewData["name"] == "inventoryManagement")
+            <li> @if (ViewData["name"] == "inventoryManagement")
             {
                 <text>
                         <li class="active">
@@ -324,7 +324,7 @@
             else
             {
                 <text>
-                        <li>
+                       
                 </text>
             }
                         <a href="@Url.Action("Index","Inventory")">

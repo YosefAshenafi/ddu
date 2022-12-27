@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ViewData["name"] = "inventory";
+    ViewData["category"] = "inventory";
+}
+@model IEnumerable<Vw_BinCard>
+@section Content {
+        <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="breadcrumb breadcrumb-style ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Inventory</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="#">
+                                    <i class="fas fa-home"></i> Inventory Management
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onClick="return false;">BinCard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu float-end">
+                                        <li>
+                                            <a href="javascript:void(0);">Action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);">Something else here</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                        <!-- end page title -->
+
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-sm-6">
+                                                <div class="search-box me-2 mb-2 d-inline-block">                                                 
+                                                        <h2>@DateTime.Today.ToString("MMM-dd-yyyy")</h2>                                                 
+
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 d-flex justify-content-end">
+                                                <h2>Stock Card (Bin Card)</h2>
+                                            </div><!-- end col-->
+                                        </div>
+                                       
+
+                                        <div class="table-responsive">
+                                            <table class="table align-middle table-nowrap table-bordered" id="example">
+                                                <thead class="table-light" style="position:sticky; top: 0">
+                                                    @*<tr>
+                                                        <th rowspan="2">#</th>
+                                                        <th rowspan="2">Description</th>
+                                                        <th colspan="3">Beginning</th>
+                                                        <th style="background-color:#b9ffda;">Store Name</th>
+                                                        <th colspan="2">Stock in</th>
+                                                        <th style="background-color:#b9ffda;">Transfer In</th>
+                                                        <th colspan="3">Stock out</th>
+                                                        <th colspan="3" style="background-color:#faf5d1;">Management Use</th>
+                                                        <th>Adjustment</th>
+                                                        <th colspan="2" style="background-color:#b9ffda;">Mixer</th>
+                                                        <th>Balance</th>
+                                                        <th style="background-color:#faf5d1;">Short</th>
+                                                    </tr>*@
+                                                    @*TransactionID	Type	UniqueValue	StoreID	OperationDate	ItemID	Qty	UnitPrice	RowState	Stockin	stockout	Adjustment	Balance	Amount	BalAmount	ItemName	Category*@
+                                                    <tr>
+                                                        <th></th>
+                                                        <th class="align-middle">Item Name</th>
+                                                        <th class="align-middle">Store Name</th>
+                                                        <th class="align-middle">Type</th>
+                                                        <th class="align-middle">OperationDate</th>
+                                                        <th class="align-middle" >Qty</th>
+                                                        <th class="align-middle" style=" background-color:#b9ffda;">Stockin</th>
+                                                        <th class="align-middle" style="background-color:#faf5d1;">Stockout</th>
+                                                        <th class="align-middle">Adjustment</th>
+                                                        <th class="align-middle" style=" background-color:#b9ffda;">Balance</th>
+                                                        <th class="align-middle" style="background-color:#faf5d1;">BalAmount</th>                                                     
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                @foreach (var bin in Model)
+                                                {
+                                                    <tbody>
+                                              
+                                                    <tr data-id=@bin.UniqueValue>
+                                                <th class="align-middle">@bin.TransactionID</th>
+                                                <th class="align-middle">@bin.ItemName</th>
+                                                            <th class="align-middle">@bin.StoreID</th>
+                                                            <th class="align-middle">@bin.Type</th>
+                                                            <th class="align-middle">@bin.OperationDate.Value.ToString("MMM-dd-yyyy")</th>
+                                                            <th class="align-middle" >@bin.Qty</th>
+                                                            <th class="align-middle" style="background-color:#b9ffda;">@bin.Stockin</th>
+                                                            <th class="align-middle" style="background-color:#faf5d1;">@bin.Stockout </th>
+                                                            <th class="align-middle">@bin.Adjustment</th>
+                                                            <th class="align-middle" style="background-color:#b9ffda;">@bin.Balance </th>
+                                                            <th class="align-middle" style="background-color:#faf5d1;">@bin.BalAmount</th>                                      
+                                               
+                                                
+
+                                                </tr>
+
+
+                                                  
+                                                    </tbody>
+                                                  
+                                                }
+                                            </table>
+                                        </div>
+
+                                        <div class="row mb-2">
+                                            <div class="col-sm-4">
+                                                <div class="search-box me-2 mb-2 d-inline-block">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8 d-flex justify-content-end">
+                                                <a asp-controller="Inventory" asp-action="Index" class="btn btn-secondary">
+                                                    <i class="mdi mdi-arrow-left me-1"></i> Back Inventory
+                                                </a>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}

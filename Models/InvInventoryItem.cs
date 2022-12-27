@@ -8,7 +8,7 @@ namespace DDU.Models
 
         public int FamID { get; set; }
 
-        public int TypeID { get; set; }
+        public int? TypeID { get; set; }
 
         public int DivisionID { get; set; }
         [Key]
@@ -30,9 +30,9 @@ namespace DDU.Models
 
         public double BegUnitCost { get; set; }
 
-        public DateTime BegDate { get; set; }
+        public DateTime? BegDate { get; set; }
 
-        public double Quantity { get; set; }
+        public double? Quantity { get; set; }
 
         public decimal ReoredrPoint { get; set; }
 
@@ -59,5 +59,12 @@ namespace DDU.Models
         public int StockAccId { get; set; }
 
         public double Minimum { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? LastUpdated { get; set; }
+
+
+
     }
 }

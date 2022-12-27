@@ -124,7 +124,24 @@ namespace DDU.Data;
 
     public DbSet<InvItemTransferDetail> invItemTransferDetail { get; set; } = null!;
 
-    public DbSet<InvItemTransfer> invItemTransfer { get; set; } = null!;   
+    public DbSet<InvItemTransfer> invItemTransfer { get; set; } = null!;
+
+    public DbSet<Vw_Adjustment> vw_Adjustment { get; set; } = null!;
+
+    public DbSet<Vw_Count> vw_Count { get; set; } = null!;
+
+    public DbSet<Vw_GRNList> vw_GRNList { get; set; } = null!;
+
+    public DbSet<Vw_ItemIssue> vw_ItemIssue { get; set; } = null!;
+
+    public DbSet<Vw_ItemReturn> vw_ItemReturn { get; set; } = null!;
+
+    public DbSet<Vw_ItemTransfer> vw_ItemTransfer { get; set; } = null!;
+
+    public DbSet<Vw_ReceiveDetail> vw_ReceiveDetail { get; set; } = null!;
+
+    public DbSet<Vw_BinCard> vw_BinCard { get; set; } = null!;    
+
 
 
     public string strConnectionString = "User Id=sa;Password=Ahmi#comp#1;Server=.;Database=DDUDB;";  

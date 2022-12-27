@@ -21,11 +21,26 @@ namespace DDU.Controllers
         {
             _db = db;
         }
+
+        public IActionResult BinCard(int id)
+        {
+            string sid = id.ToString();
+            IEnumerable<Vw_BinCard> objItemList = _db.vw_BinCard.Select(z => z).Where(s => s.ItemID == sid).ToList(); 
+            return View(objItemList);
+        }
         public IActionResult Index()
         {
             HttpContext.Session.Set("GRN", new List<InvInventoryItem>());
-            IEnumerable<Vw_Item> objItemList = _db.vw_Item.ToList();
-            return View(objItemList);
+            try
+            { 
+                IEnumerable<Vw_Item> objItemList = _db.vw_Item.ToList();
+                return View(objItemList);
+            }
+            catch
+            {
+                throw;
+            }
+            
         }
         public ActionResult GRN()
         {
@@ -44,7 +59,6 @@ namespace DDU.Controllers
             ViewData["store"] = new SelectList(_db.invStore.ToList(), "StoreID", "StoreCode");
             return View();
         }
-
         public ActionResult ItemReturn()
         {
            
@@ -89,14 +103,62 @@ namespace DDU.Controllers
             ViewData["store"] = new SelectList(_db.invStore.ToList(), "StoreID", "StoreCode");
             return View();
         }
-      
 
+        public ActionResult GRNList()
+        {
+            IEnumerable<Vw_GRNList> objItemList = _db.vw_GRNList.ToList();
+            return View(objItemList);
+        }
+
+        public ActionResult IssueVoucherList()
+        {
+            IEnumerable<Vw_ItemIssue> objItemList = _db.vw_ItemIssue.ToList();
+            return View(objItemList);
+        }
+        public ActionResult ItemReturnList()
+        {
+            IEnumerable<Vw_ItemReturn> objItemList = _db.vw_ItemReturn.ToList();
+            return View(objItemList);
+        }
+
+        public ActionResult CountList()
+        {
+            IEnumerable<Vw_Count> objItemList = _db.vw_Count.ToList();
+            return View(objItemList);
+        }
+
+        public ActionResult AdjustmentList()
+        {
+            IEnumerable<Vw_Adjustment> objItemList = _db.vw_Adjustment.ToList();
+            return View(objItemList);
+        }
+
+        public ActionResult ItemTransferList()
+        {
+            IEnumerable<Vw_ItemTransfer> objItemList = _db.vw_ItemTransfer.ToList();
+            return View(objItemList);
+        }
+
+        public IActionResult GRNInvoice(Guid? id)
+        {
+            ViewGRNInvoice mymodel = new ViewGRNInvoice();
+            mymodel.receive = _db.invReceive.Find(id);
+            mymodel.store = _db.invStore.Find(mymodel.receive.StoreID);
+            mymodel.supplier = _db.invSupplier.Find(mymodel.receive.SupplierID);
+            mymodel.Registration = _db.employeeRegistration.Find(Guid.Parse(mymodel.receive.ApprovedBy));
+            //mymodel.Registration = _db.employeeRegistration.Find(mymodel.receive.ApprovedBy);
+            mymodel.vw_ReceiveDetail = _db.vw_ReceiveDetail.Select(z => z).Where(s => s.ReferenceNo == id).ToList();
+            
+
+            return View(mymodel);
+            //return View();
+        }
 
         public JsonResult Stockchecked(int id)
         {
-            List<InvInventoryItem> products = new List<InvInventoryItem>();
+            List<Vw_Item> products = new List<Vw_Item>();
 
-            var productsFromDb = _db.invInventoryItem.Find(id);
+            var productsFromDb = _db.vw_Item.Find(id);
 
             if (productsFromDb == null)
             {
@@ -107,18 +169,18 @@ namespace DDU.Controllers
             if (products == null)
             {
 
-                products = new List<InvInventoryItem>();
+                products = new List<Vw_Item>();
             }
             else
             {
-                products = HttpContext.Session.Get<List<InvInventoryItem>>("GRN");
+                products = HttpContext.Session.Get<List<Vw_Item>>("GRN");
                 
             }
             productsFromDb.ReoredrPoint = 1;
             if (products == null)
             {
 
-                products = new List<InvInventoryItem>();
+                products = new List<Vw_Item>();
             }
 #pragma warning disable CS8602 // Dereference of a possibly null reference
             products.Add(productsFromDb);
@@ -588,7 +650,8 @@ namespace DDU.Controllers
                                 orderItem.ItemID = product.ItemID;
                                 orderItem.QtyReceived = product.ReoredrPoint;
                                 orderItem.UnitPrice = decimal.Parse(product.UnitCost.ToString());
-                                orderItem.UnitMeasure = product.UnitMeasure;
+                            //orderItem.UnitMeasure = product.UnitMeasure;
+                            orderItem.UnitMeasure = "NN";
                                 orderItem.Remark = "";
                                 _db.invReceiveDetail.Add(orderItem);
                                 
@@ -603,6 +666,7 @@ namespace DDU.Controllers
                         throw;
                     }                
             }
+            TempData["success"] = "Edit Add successfully";
             return RedirectToAction("Index");
         }
 
@@ -656,7 +720,8 @@ namespace DDU.Controllers
                             orderItem.ItemID = product.ItemID;
                             orderItem.Qty = product.ReoredrPoint;
                             orderItem.UnitPrice = decimal.Parse(product.UnitCost.ToString());
-                            orderItem.UnitMeasure = product.UnitMeasure;
+                            //orderItem.UnitMeasure = product.UnitMeasure;
+                            orderItem.UnitMeasure = "NN";
                             orderItem.Remark = "";
                             _db.invItemIssueDetail.Add(orderItem);
 
@@ -671,8 +736,488 @@ namespace DDU.Controllers
                     throw;
                 }
             }
+            TempData["success"] = "Edit Add successfully";
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DSAddOrEdit(Guid id, InvDisposal disposalModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+
+            //Update
+            if (disposalModel.DisposalId != Guid.Empty)
+            {
+                try
+                {
+                    _db.Update(disposalModel);
+                    await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+
+            }
+            //Insert                
+            else
+            {
+                try
+                {
+                    //disposalModel.i = Guid.NewGuid();
+                    InvDisposal order1 = new InvDisposal();
+                    order1 = disposalModel;
+                   // String ISVNo = GetISVNo();
+                    //order1.FinanceDepartment = ISVNo;
+                    order1.FinanceDepartment = "";
+                    order1.DivisionId = 1;
+                    order1.SectionID = 1;
+                    order1.SessionID = "";
+                    order1.SessionIP = "";
+                    order1.SessionMAC = "";
+                    _db.invDisposal.Add(order1);
+                    //await _db.SaveChangesAsync();
+                    List<InvInventoryItem> products = HttpContext.Session.Get<List<InvInventoryItem>>("DS");
+                    if (products != null)
+                    {
+                        foreach (var product in products)
+                        {
+                            InvDisposalDetail orderItem = new InvDisposalDetail();
+                            //orderItem.DisposedId = Guid.NewGuid();
+                            orderItem.DisposedId = order1.DisposalId;
+                            orderItem.ItemID = product.ItemID;
+                            orderItem.QuantityDisposed= double.Parse(product.ReoredrPoint.ToString());
+                            orderItem.UnitCost = double.Parse(product.UnitCost.ToString());
+                            //orderItem. = product.UnitMeasure;
+                            orderItem.Remark = "";
+                            _db.invDisposalDetail.Add(orderItem);      
+
+                        }
+                    }
+
+                    await _db.SaveChangesAsync();
+                    HttpContext.Session.Set("DS", new List<InvInventoryItem>());
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            TempData["success"] = "Edit Add successfully";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RTAddOrEdit(Guid id, InvItemReturn returnModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+
+            //Update
+            if (returnModel.ReturnID != Guid.Empty)
+            {
+                try
+                {
+                    _db.Update(returnModel);
+                    await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+
+            }
+            //Insert                
+            else
+            {
+                try
+                {
+                    //disposalModel.i = Guid.NewGuid();
+                    InvItemReturn order1 = new InvItemReturn();
+                    order1 = returnModel;
+                    String RTNo = GetRTNo();
+                    //order1.FinanceDepartment = ISVNo;
+                    order1.DivisionID = 1;
+                    order1.SectionID = 1;
+                    order1.SessionID = "";
+                    order1.SessionIP = "";
+                    order1.SessionMAC = "";
+                    order1.Reason = "";
+                    
+                    _db.invItemReturn.Add(order1);
+                    //await _db.SaveChangesAsync();
+                    List<InvInventoryItem> products = HttpContext.Session.Get<List<InvInventoryItem>>("RT");
+                    if (products != null)
+                    {
+                        foreach (var product in products)
+                        {
+                            InvItemReturnDetail orderItem = new InvItemReturnDetail();
+                            orderItem.ReturnDetailId = Guid.NewGuid();
+                            orderItem.ReturnID = order1.ReturnID;
+                            orderItem.ItemID = product.ItemID;
+                            orderItem.QtyReturned = product.ReoredrPoint;
+                            orderItem.UnitPrice = decimal.Parse(product.UnitCost.ToString());
+                            //orderItem. = product.UnitMeasure;
+                            orderItem.Remark = "";
+                            
+                            _db.invItemReturnDetail.Add(orderItem);
+
+                        }
+                    }
+
+                    await _db.SaveChangesAsync();
+                    HttpContext.Session.Set("RT", new List<InvInventoryItem>());
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            TempData["success"] = "Edit Add successfully";
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TRAddOrEdit(Guid id, InvItemTransfer transferModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+
+            //Update
+            if (transferModel.TransferId != Guid.Empty)
+            {
+                try
+                {
+                    //_db.Update(transferModel);
+                    //await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+
+            }
+            //Insert                
+            else
+            {
+                try
+                {                  
+                    InvItemTransfer order1 = new InvItemTransfer();
+                    transferModel.TransferId = Guid.NewGuid();
+                    order1 = transferModel;
+                    String TRNo = GetTRNo();
+                    order1.TransferNumber = TRNo;
+                    order1.DivisionId = 1;
+                    order1.SessionID = "";
+                    order1.SessionIP = "";
+                    order1.SessionMAC = "";
+                    order1.LastUpdated = DateTime.Now;
+                    _db.invItemTransfer.Add(order1);
+                    //await _db.SaveChangesAsync();
+                    List<InvInventoryItem> products = HttpContext.Session.Get<List<InvInventoryItem>>("TR");
+                    if (products != null)
+                    {
+                        foreach (var product in products)
+                        {
+                            InvItemTransferDetail orderItem = new InvItemTransferDetail();
+                            orderItem.TransferDetailID = Guid.NewGuid();
+                            orderItem.TransferId = order1.TransferId;
+                            orderItem.ItemID = product.ItemID;
+                            orderItem.QuantityTransfer = product.ReoredrPoint;
+                            orderItem.UnitCost = decimal.Parse(product.UnitCost.ToString());
+                            orderItem.LastUpdated=DateTime.Now;
+                            orderItem.Remark = "";
+                            _db.invItemTransferDetail.Add(orderItem);
+                        }
+                    }
+                    await _db.SaveChangesAsync();
+                    HttpContext.Session.Set("TR", new List<InvInventoryItem>());
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            TempData["success"] = "Edit Add successfully";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> COAddOrEdit(Guid id, InvCount countModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+
+            //Update
+            if (countModel.CountID != Guid.Empty)
+            {
+                try
+                {
+                    _db.Update(countModel);
+                    await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+
+            }
+            //Insert                
+            else
+            {
+                try
+                {
+                    //disposalModel.i = Guid.NewGuid();
+                    InvCount order1 = new InvCount();
+                    order1 = countModel;
+                    String TRNo = GetTRNo();
+                    //order1.FinanceDepartment = ISVNo;
+                    order1.DivisionID = 1;
+                    order1.SectionID = 1;
+                    order1.SessionID = "";
+                    order1.SessionIP = "";
+                    order1.SessionMAC = "";
+                    order1.StoreKeeper = "";
+                    _db.invCount.Add(order1);
+                    //await _db.SaveChangesAsync();
+                    List<InvInventoryItem> products = HttpContext.Session.Get<List<InvInventoryItem>>("CO");
+                    if (products != null)
+                    {
+                        foreach (var product in products)
+                        {
+                            InvCountDetail orderItem = new InvCountDetail();
+                            orderItem.CountDetailId = Guid.NewGuid();
+                            orderItem.CountID = order1.CountID;
+                            orderItem.ItemID = product.ItemID;
+                            orderItem.PhysicalCount = product.ReoredrPoint;
+                            orderItem.UnitPrice = decimal.Parse(product.UnitCost.ToString());
+                            //orderItem. = product.UnitMeasure;
+                            orderItem.Remark = "";
+                            _db.invCountDetail.Add(orderItem);
+
+                        }
+                    }
+
+                    await _db.SaveChangesAsync();
+                    HttpContext.Session.Set("TR", new List<InvInventoryItem>());
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            TempData["success"] = "Edit Add successfully";
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ADAddOrEdit(Guid id, InvAdjustment adjustmentModel)
+        {
+            //if (ModelState.IsValid)
+            //{
+
+            //Update
+            if (adjustmentModel.AdjustmentID != Guid.Empty)
+            {
+                try
+                {
+                    _db.Update(adjustmentModel);
+                    await _db.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+
+            }
+            //Insert                
+            else
+            {
+                try
+                {
+                    //disposalModel.i = Guid.NewGuid();
+                    InvAdjustment order1 = new InvAdjustment();
+                    order1 = adjustmentModel;
+                    String TRNo = GetAdjNo();
+                    //order1.FinanceDepartment = ISVNo;
+                    order1.DivisionID = 1;
+                    order1.SectionID = 1;
+                    order1.SessionID = "";
+                    order1.SessionIP = "";
+                    order1.SessionMAC = "";
+                    order1.Reason = "";
+                    _db.invAdjustment.Add(order1);
+                    //await _db.SaveChangesAsync();
+                    List<InvInventoryItem> products = HttpContext.Session.Get<List<InvInventoryItem>>("AD");
+                    if (products != null)
+                    {
+                        foreach (var product in products)
+                        {
+                            InvAdjustmentDetail orderItem = new InvAdjustmentDetail();
+                            orderItem.AdjustmentDetailId = Guid.NewGuid();
+                            orderItem.AdjustmentID = order1.AdjustmentID;
+                            orderItem.ItemID = product.ItemID;
+                            orderItem.QtyAdjusted = product.ReoredrPoint;
+                            orderItem.UnitPrice = decimal.Parse(product.UnitCost.ToString());
+                            orderItem.Remark = "";
+                            _db.invAdjustmentDetail.Add(orderItem);
+
+                        }
+                    }
+
+                    await _db.SaveChangesAsync();
+                    HttpContext.Session.Set("TR", new List<InvInventoryItem>());
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw;
+                }
+            }
+            TempData["success"] = "Edit Add successfully";
+            return RedirectToAction("Index");
+        }
+
+        // GET: Received/Delete/
+        public async Task<IActionResult> GrnDelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var grnModel = await _db.invReceive
+                .FirstOrDefaultAsync(m => m.ReferenceNo == id);
+            if (grnModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invReceive.Remove(grnModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
+
+        // GET: ItemIssue/Delete/
+        public async Task<IActionResult> ISVDelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var isvModel = await _db.invItemIssue
+                .FirstOrDefaultAsync(m => m.ItemIssueID == id);
+            if (isvModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invItemIssue.Remove(isvModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
+
+        // GET: ItemReturn/Delete/
+        public async Task<IActionResult> RTDelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var rtModel = await _db.invItemReturn
+                .FirstOrDefaultAsync(m => m.ReturnID == id);
+            if (rtModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invItemReturn.Remove(rtModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
+
+        // GET: ItemTransfer/Delete/
+        public async Task<IActionResult> TRDelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var rtModel = await _db.invItemTransfer
+                .FirstOrDefaultAsync(m => m.TransferId == id);
+            if (rtModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invItemTransfer.Remove(rtModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
+
+        // GET: ItemTransfer/Delete/
+        public async Task<IActionResult> CODelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var coModel = await _db.invCount
+                .FirstOrDefaultAsync(m => m.CountID == id);
+            if (coModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invCount.Remove(coModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
+
+        // GET: ItemAdjustment/Delete/
+        public async Task<IActionResult> ADDelete(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var adModel = await _db.invAdjustment
+                .FirstOrDefaultAsync(m => m.AdjustmentID == id);
+            if (adModel == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.invAdjustment.Remove(adModel);
+                await _db.SaveChangesAsync();
+                TempData["success"] = "Delete successfully";
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "Index") });
+            }
+        }
     }
 }

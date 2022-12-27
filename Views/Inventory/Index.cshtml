@@ -50,8 +50,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item tab-all">
-                                    <a class="nav-link " href="#disposal" data-bs-toggle="tab">
-                                        Item disposal
+                                    <a class="nav-link " href="#transfer" data-bs-toggle="tab">
+                                        Item Transfer
                                     </a>
                                 </li>
                                 <li class="nav-item tab-all p-l-20">
@@ -63,6 +63,11 @@
                                     <a class="nav-link" href="#adjustment" data-info="adjustmentlist" data-bs-toggle="tab">
                                         Adjustment
                                      </a>
+                                </li>
+                                <li class="nav-item tab-all">
+                                    <a class="nav-link " href="#disposal" data-bs-toggle="tab">
+                                        Item disposal
+                                    </a>
                                 </li>
                             </ul>
 
@@ -79,6 +84,7 @@
                                             <h4 class="mb-sm-0 font-size-18"> Goods received note</h4>
                                             <div class="page-title-right">
                                                 <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btngrn" title="Good Recieving Note"><i class="fa fa-plus"></i> GRN</button>
+                                                <button onclick="location.href='@Url.Action("GRNList","Inventory")'" class="btn btn-secondary" id="btnlistgrn" title="Good Recieving Note"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
@@ -97,56 +103,12 @@
                                             <h4 class="mb-sm-0 font-size-18">Issue Voucher</h4>
                                             <div class="page-title-right">
                                                 <button onclick="location.href='@Url.Action("IssueVoucher","Inventory")'" class="btn btn-success" id="btnisv" title="Issue Voucher"><i class="fa fa-plus"></i> ISV</button>
+                                                <button onclick="location.href='@Url.Action("IssueVoucherList","Inventory")'" class="btn btn-secondary" id="btnlistivs" title="Issue Voucher"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                              @* <div class="body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover js-basic-example contact_list" id="example">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th class="center"> ItemCode </th>
-                                                    <th class="center"> ItemName </th>
-                                                    <th class="center"> Item Nature </th>
-                                                    <th class="center"> Item Family </th>
-                                                    <th class="center"> Onhand </th>
-                                                    <th class="center"> ReoredrPoint </th>
-                                                    <th class="center"> Minimum </th>
-
-                                                </tr>
-                                            </thead>
-                                            @foreach (var obj in Model)
-                                            {
-                                                <tbody>
-                                                    <tr data-id=@obj.ItemID>
-                                                        <td>
-                                                            <div class="switch">
-                                                                <label>
-                                                                    <input class="form-check-input" asp-items=@obj.ItemID type="checkbox" id=@obj.ItemID>
-
-                                                                    <span class="lever switch-col-light-green"></span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-
-                                                        <td>@obj.ItemCode</td>
-                                                        <td>@obj.ItemName</td>
-                                                        <td>@obj.NatureName</td>
-                                                        <td>@obj.FamilyName</td>
-                                                        <td>@obj.Quantity</td>
-                                                        <td>@obj.ReoredrPoint</td>
-                                                        <td>@obj.Minimum</td>
-
-
-                                                    </tr>
-                                                </tbody>
-                                            }
-                                         
-                                        </table>
-                                    </div>
-                                </div>*@
+ 
                             </div>
                         </div>
                     </div>
@@ -159,11 +121,30 @@
                                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                             <h4 class="mb-sm-0 font-size-18">Item return</h4>
                                             <div class="page-title-right">
-                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnreturn" title="Issue Voucher"><i class="fa fa-plus"></i> Return</button>
+                                                    <button onclick="location.href='@Url.Action("ItemReturn","Inventory")'" class="btn btn-success" id="btnreturn" title="Item return"><i class="fa fa-plus"></i> Return</button>
+                                                <button onclick="location.href='@Url.Action("ItemReturnList","Inventory")'" class="btn btn-secondary" id="btnlistrt" title="Item return"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>                          
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="transfer" aria-expanded="false">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                            <h4 class="mb-sm-0 font-size-18">Item transfer</h4>
+                                            <div class="page-title-right">
+                                                <button onclick="location.href='@Url.Action("ItemTransfer","Inventory")'" class="btn btn-success" id="btntransfer" title="ItemTransfer"><i class="fa fa-plus"></i> Transfer</button>
+                                                <button onclick="location.href='@Url.Action("ItemTransferList","Inventory")'" class="btn btn-secondary" id="btnlistrt" title="ItemTransfer"><i class="fa fa-list"></i> List</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,9 +155,10 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                            <h4 class="mb-sm-0 font-size-18">Item return</h4>
+                                                <h4 class="mb-sm-0 font-size-18">Item Disposal</h4>
                                             <div class="page-title-right">
-                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btndisposal" title="Issue Voucher"><i class="fa fa-plus"></i> disposal</button>
+                                                    <button onclick="location.href='@Url.Action("Disposal","Inventory")'" class="btn btn-success" id="btndisposal" title="Issue Voucher"><i class="fa fa-plus"></i> disposal</button>
+                                                <button onclick="location.href='@Url.Action("DisposalList","Inventory")'" class="btn btn-secondary" id="btnlistds" title="Disposal"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
@@ -194,7 +176,8 @@
                                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                             <h4 class="mb-sm-0 font-size-18">Physical counts</h4>
                                             <div class="page-title-right">
-                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnphysical" title="Issue Voucher"><i class="fa fa-plus"></i> physical</button>
+                                                    <button onclick="location.href='@Url.Action("Count","Inventory")'" class="btn btn-success" id="btnphysical" title="Issue Voucher"><i class="fa fa-plus"></i> physical</button>
+                                                <button onclick="location.href='@Url.Action("CountList","Inventory")'" class="btn btn-secondary" id="btnlistds" title="Count"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
@@ -211,7 +194,8 @@
                                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                             <h4 class="mb-sm-0 font-size-18">Adjustment</h4>
                                             <div class="page-title-right">
-                                                <button onclick="location.href='@Url.Action("GRN","Inventory")'" class="btn btn-success" id="btnadjustment" title="Adjustment"><i class="fa fa-plus"></i> Adjustment</button>
+                                                    <button onclick="location.href='@Url.Action("Adjustment","Inventory")'" class="btn btn-success" id="btnadjustment" title="Adjustment"><i class="fa fa-plus"></i> Adjustment</button>
+                                                    <button onclick="location.href='@Url.Action("AdjustmentList","Inventory")'" class="btn btn-secondary" id="btnlistad" title="Count"><i class="fa fa-list"></i> List</button>
                                             </div>
                                         </div>
                                     </div>
@@ -248,6 +232,7 @@
                                                     <th class="center"> Onhand </th>
                                                     <th class="center"> ReoredrPoint </th>
                                                     <th class="center"> Minimum </th>
+                                                    <th></th>
 
                                                 </tr>
                                             </thead>
@@ -273,6 +258,12 @@
                                                         <td>@obj.Quantity</td>
                                                         <td>@obj.ReoredrPoint</td>
                                                         <td>@obj.Minimum</td>
+                                                        <td class="center">
+
+                                                            <a asp-controller="Inventory" asp-action="BinCard" asp-route-id="@obj.ItemID" class="btn btn-tbl-add">
+                                                                <i class="material-icons">dehaze</i>
+                                                            </a>
+                                                        </td>
 
                                                     </tr>
                                                 </tbody>
@@ -308,6 +299,7 @@
                             $("#btndisposal").html("+Disposal(" + d + ")");
                             $("#btnphysical").html("+Physical(" + d + ")");
                             $("#btnadjustment").html("+Adjustmentl(" + d + ")");
+                            $("#btntransfer").html("+Transfer(" + d + ")");
                         })
 
                 } else {

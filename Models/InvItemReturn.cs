@@ -17,18 +17,18 @@ namespace DDU.Models
 
         public string? StoreID { get; set; }
 
-        public string? ReturnedBy { get; set; }
+        public string? ReturnedBy { get; set; } = "";
 
-        public string? ApprovedBy { get; set; }
+        public string? ApprovedBy { get; set; } = "";
 
-        public string? ReceivedBy { get; set; }
+        public string? ReceivedBy { get; set; } = "";
 
-        public string? Reason { get; set; }
+        public string? Reason { get; set; } = "";
 
-        public string? SessionID { get; set; }
+        public string? SessionID { get; set; } = "";
 
-        public string? SessionIP { get; set; }
+        public string? SessionIP { get; set; } = "";
 
-        public string? SessionMAC { get; set; }
+        public string? SessionMAC { get; set; } = "";
     }
 }

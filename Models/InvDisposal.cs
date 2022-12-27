@@ -4,10 +4,10 @@ namespace DDU.Models
 {
     public class InvDisposal
     {
-        public int DivisionId { get; set; }
-
         [Key]
-        public int DisposalId { get; set; }
+        public Guid DisposalId { get; set; }
+
+        public int DivisionId { get; set; }
 
         public int CostCenterID { get; set; }
 
@@ -35,5 +35,7 @@ namespace DDU.Models
         public string? SessionIP { get; set; }
 
         public string? SessionMAC { get; set; }
+
+
     }
 }

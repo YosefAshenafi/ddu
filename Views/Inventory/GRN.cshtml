@@ -85,7 +85,7 @@
 
                                                         </td>
                                                     <td>
-                                                            <input type="text" name="UnitCost" class="form-control" value=@invItem.UnitCost />                                            
+                                                            <input type="text" name="UnitCost" class="form-control" value=@Math.Round(invItem.UnitCost,2) />                                            
 
                                                     </td>
 
@@ -129,7 +129,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"> Head information</h4>
+                                <h4 class="card-title"> Material Receipt Note</h4>
                                 @*<p class="card-title-desc mb-4">Select Vendor and Datetime</p>*@
 
                                 <div class="row">
@@ -141,6 +141,7 @@
                                                 <option value="0">Select Vendor</option>
 
                                             </select>
+                                               
                                         </div>
                                         <div class="form-group mb-3">
                                                 <label class="col-form-label">Store</label>
@@ -148,11 +149,14 @@
                                                <option value="0">Select Store</option>                                                                          
                                                                             
                                              </select>
+                                              
                                         </div>
 
                                         <div class="form-group mb-3">
-                                            <label for="example-date-input" class="form-label">Recived Date</label>
-                                            <input asp-for="ReceiveDate" class="form-control" type="date" id="example-date-input">
+                                                <label for="data-mdb-inline" class="form-label">Recived Date</label>
+                                                <input asp-for="ReceiveDate" id="myDateTimePicker" placeholder="Select Receive Date Time" type="text" class="flatpickr-input active">
+                                      
+                                                <span asp-validation-for="ReceiveDate" class="text-danger"></span>
                                         </div>
 
                                             <div class="form-group mb-3">
@@ -162,6 +166,7 @@
                                                     <option value="0">Select Employee</option>
 
                                                 </select>
+                                               
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label class="col-form-label">ApprovedBy</label>
@@ -170,6 +175,7 @@
                                                     <option value="0">Select Employee</option>
 
                                                 </select>
+                                                
                                             </div>
                                     </div>
 
@@ -260,15 +266,9 @@
     </script>
 }
 <!-- end main content-->
-@*<script>
-    function onclick() {
 
-        $("btnEditProcedure").attr("asp-route-qty=", document.getElementById("qty").value);
-
+     @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
     }
-    function SubmitSales() {
-        $("#productSales").submit();
     }
-</script>*@
-
-    
