@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Add Supplier";
+    ViewData["name"] = "propertyManagement";
+    ViewData["category"] = "inventory";
+}
+@model InvSupplier
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Supplier</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="../../index.html">
+                                <i class="fas fa-home"></i> Inventory
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">Supplier</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Add</strong> Supplier
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form method="post" enctype="multipart/form-data" action="@Url.Action("AddSupplier","Inventory")">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="SupCode" class="form-control" placeholder="Code" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="SupName" class="form-control" placeholder="Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Catagory" class="form-control" placeholder="Catagory" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Address" class="form-control" placeholder="Address" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="WebAddress" class="form-control" placeholder="WebAddress" />
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Pobox" class="form-control" placeholder="Pobox" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="City" class="form-control" placeholder="City" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input asp-for="Telephone1" class="form-control" placeholder="Phone Number" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Email1" class="form-control" placeholder="Email" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input asp-for="Remarks" type="text" class="form-control" placeholder="Remark" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

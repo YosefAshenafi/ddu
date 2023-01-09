@@ -1,0 +1,204 @@
+﻿@model IEnumerable<DDU.Models.InvInventoryItem>
+
+@{
+    ViewData["Title"] = "InventoryItems";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>InventoryItems</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NatureID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FamID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DivisionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeqNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitMeasure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BegQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BegUnitCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BegDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReoredrPoint)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PackageSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image1Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image2Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManPartNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shelf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Row)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Box)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockAccId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Minimum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NatureID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DivisionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeqNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitMeasure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BegQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BegUnitCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BegDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReoredrPoint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image1Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image2Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManPartNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shelf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Row)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Box)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockAccId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Minimum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ItemID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ItemID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ItemID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<DDU.Models.InvEquipment>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Content {
+    <div class="section-header">
+<h4>Equipments</h4>
+
+<p>
+        <a asp-action="AddEquipment" class="btn btn-success">+ Create New</a>
+</p>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SectionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FixID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EqpCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EqpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComeFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufactureYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePurchase)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SectionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FixID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EqpCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EqpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComeFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufactureYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePurchase)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EquipmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EquipmentID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EquipmentID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

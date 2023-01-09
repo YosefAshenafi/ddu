@@ -21,7 +21,53 @@ namespace DDU.Controllers
         {
             _db = db;
         }
+        public IActionResult PropertyManagement()
+        {
+            IEnumerable<InvSupplier> supplierModel = _db.invSupplier;
 
+            var listOfModels = new ViewModelInventory();
+            listOfModels.Suppliers = supplierModel;
+            return View(listOfModels);
+        }
+        public IActionResult InventoryItems()
+        {
+            IEnumerable<InvInventoryItem> model = _db.invInventoryItem;
+            return View("Property/InventoryItems/InventoryItems",model);
+        }
+
+        public IActionResult Equipment()
+        {
+            IEnumerable<InvEquipment> model = _db.invEquipment;
+            return View("Property/Equipments/List",model);
+        }
+        public IActionResult AddEquipment()
+        {
+            return View("Property/Equipments/Create");
+        }
+        public IActionResult Suppliers()
+        {
+            IEnumerable<InvSupplier> model = _db.invSupplier;
+            return View("Property/Suppliers/List",model);
+        }
+        public IActionResult AddSupplier()
+        {
+            return View("Property/Suppliers/Add");
+        }
+        public IActionResult EditSupplier(int Id)
+        {
+            InvSupplier model = _db.invSupplier.Where(e=>e.SupplierID == Id).FirstOrDefault();
+            return View("Property/Suppliers/Edit", model);
+        }
+        public IActionResult DeleteSupplier(int Id)
+        {
+            InvSupplier model = _db.invSupplier.Where(e => e.SupplierID == Id).FirstOrDefault();
+            return View("Property/Suppliers/Remove", model);
+        }
+        public IActionResult SupplierDetail(int Id)
+        {
+            InvSupplier model = _db.invSupplier.Where(e => e.SupplierID == Id).FirstOrDefault();
+            return View("Property/Suppliers/view", model);
+        }
         public IActionResult BinCard(int id)
         {
             string sid = id.ToString();
