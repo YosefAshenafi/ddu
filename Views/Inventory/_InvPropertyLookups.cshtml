@@ -1,0 +1,555 @@
+﻿@{
+    int division_count = 1, store_count = 1, family_count = 1, nature_count = 1, type_count = 1, spec_count = 1;
+}
+<div class="tab-pane fade" id="employment" aria-expanded="false">
+    <div class="card">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <strong>Item Lookups</strong>
+                </h2>
+            </div>
+
+            <div class="body row d-flex">
+                <div class="table-responsive tbl-border col-md-5 overflow-y-scroll mh400">
+                    <h6>Division</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#divisionModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Code </th>
+                                <th class="center"> Name </th>
+                                <th class="center"> Address </th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["division"] != null)
+                            {
+                                foreach (var division in ViewData["division"] as List<DDU.Models.InvDivision>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @division_count</td>
+                                        <td class="center"> @division.DivCode</td>
+                                        <td class="center"> @division.DivName</td>
+                                        <td class="center"> @division.DivAddress</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@division.DivID', 'Division')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    division_count += 1;
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive tbl-border col-md-6 overflow-y-scroll mh400 ml30">
+                    <h6>Store</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#storeModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Store Code </th>
+                                <th class="center"> Store Location</th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["store"] != null)
+                            {
+                                foreach (var store in ViewData["store"] as List<DDU.Models.InvStore>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @store_count</td>
+                                        <td class="center"> @store.StoreCode</td>
+                                        <td class="center"> @store.StoreLocation</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@store.StoreID', 'Store')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    store_count += 1;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive tbl-border col-md-5 overflow-y-scroll mh400">
+                    <h6>Item Family</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#itemFamilyModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Family Code</th>
+                                <th class="center"> Family Name</th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["itemFamily"] != null)
+                            {
+                                foreach (var family in ViewData["itemFamily"] as List<DDU.Models.InvItemFamily>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @family_count</td>
+                                        <td class="center"> @family.FamCode</td>
+                                        <td class="center"> @family.FamName</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@family.FamID', 'ItemFamily')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    family_count += 1;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive tbl-border col-md-6 overflow-y-scroll mh400 ml30">
+                    <h6>Item Nature</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#itemNatureModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Nature Code </th>
+                                <th class="center"> Nature Name </th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["itemNature"] != null)
+                            {
+                                foreach (var nature in ViewData["itemNature"] as List<DDU.Models.InvItemNature>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @nature_count</td>
+                                        <td class="center"> @nature.NatureCode</td>
+                                        <td class="center"> @nature.NatureName</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@nature.NatureID', 'ItemNature')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    nature_count += 1;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-responsive tbl-border col-md-5 overflow-y-scroll mh400">
+                    <h6>Item Type</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#itemTypeModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Type Code </th>
+                                <th class="center"> Name </th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["itemType"] != null)
+                            {
+                                foreach (var itemType in ViewData["itemType"] as List<DDU.Models.InvItemType>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @type_count</td>
+                                        <td class="center"> @itemType.TypeCode</td>
+                                        <td class="center"> @itemType.Name</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@itemType.TypeID', 'ItemType')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    type_count += 1;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive tbl-border col-md-6 overflow-y-scroll mh400 ml30">
+                    <h6>Item Type Specifications</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#itemTypeSpecModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Spec Code </th>
+                                <th class="center"> Description </th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewData["itemTypeSpec"] != null)
+                            {
+                                foreach (var spec in ViewData["itemTypeSpec"] as List<DDU.Models.InvItemTypeSpecification>)
+                                {
+                                    <tr class="odd gradeX">
+                                        <td class="center"> @spec_count</td>
+                                        <td class="center"> @spec.SpecCode</td>
+                                        <td class="center"> @spec.Description</td>
+                                        <td class="center">
+                                            <a href="#" class="btn btn-tbl-edit">
+                                                <i class="material-icons">create</i>
+                                            </a>
+                                            <a onclick="DeleteLookup('@spec.SpecID', 'ItemTypeSpec')" href="#" class="btn btn-tbl-delete">
+                                                <i class="material-icons">delete_forever</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    nature_count += 1;
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive tbl-border col-md-5 overflow-y-scroll mh400">
+                    <h6>Fixed Assets</h6>
+                    <table class="table table-bordered table-hover js-basic-example contact_list">
+                        <thead>
+                            <tr>
+                                <th class="center">
+                                    <button data-bs-toggle="modal" data-bs-target="#divisionModal" class="btn btn-sucess d-flex align-items-center">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </th>
+                                <th class="center"> Jobtitle </th>
+                                <th class="center"> Date from </th>
+                                <th class="center"> Date to </th>
+                                <th class="center"> Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td class="center"> 1</td>
+                                <td class="center"> D001</td>
+                                <td class="center"> Division 1</td>
+                                <td class="center"> Bole, AA, Ethiopia</td>
+                                <td class="center">
+                                    <a href="#" class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                    <a onclick="return WarnDelete()" href="#" class="btn btn-tbl-delete">
+                                        <i class="material-icons">delete_forever</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td class="center"> 2</td>
+                                <td class="center"> D002</td>
+                                <td class="center"> Division 2</td>
+                                <td class="center"> Bole, AA, Ethiopia</td>
+                                <td class="center">
+                                    <a href="#" class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                    <a onclick="return WarnDelete()" href="#" class="btn btn-tbl-delete">
+                                        <i class="material-icons">delete_forever</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td class="center"> 3</td>
+                                <td class="center"> D003</td>
+                                <td class="center"> Division 3</td>
+                                <td class="center"> Bole, AA, Ethiopia</td>
+                                <td class="center">
+                                    <a href="#" class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                    <a onclick="return WarnDelete()" href="#" class="btn btn-tbl-delete">
+                                        <i class="material-icons">delete_forever</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td class="center"> 4</td>
+                                <td class="center"> D004</td>
+                                <td class="center"> Division 4</td>
+                                <td class="center"> Bole, AA, Ethiopia</td>
+                                <td class="center">
+                                    <a href="#" class="btn btn-tbl-edit">
+                                        <i class="material-icons">create</i>
+                                    </a>
+                                    <a onclick="return WarnDelete()" href="#" class="btn btn-tbl-delete">
+                                        <i class="material-icons">delete_forever</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Division Modal -->
+
+<div class="modal fade" id="divisionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateDivision","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Division</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Division Code</label>
+                    <input type="text" name="DivCode" id="DivCode" class="form-control" placeholder="Division Code" />
+                    <label class="label form-label">Division Name</label>
+                    <input type="text" name="DivName" id="DivName" class="form-control" placeholder="Division Name" />
+                    <label class="label form-label">Division Address</label>
+                    <input type="text" name="DivAddress" id="DivAddress" class="form-control" placeholder="Division Address" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateStore","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Store</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Store Code</label>
+                    <select name="DivID" select2>
+                        <option>Select Division</option>
+                        @foreach(var division in ViewData["division"] as List<DDU.Models.InvDivision>){
+                            <option value="@division.DivID">@division.DivName</option>
+                            }
+                    </select>
+                    <label class="label form-label">Store Code</label>
+                    <input type="text" name="StoreCode" id="StoreCode" class="form-control" placeholder="Store Code" />
+                    <label class="label form-label">Store Location</label>
+                    <input type="text" name="StoreLocation" id="StoreLocation" class="form-control" placeholder="Store Location" />
+                    <input type="hidden" name="DivID" value="0" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="LastUpdated" value="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="itemFamilyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateItemFamily","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Item Family</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Family Code</label>
+                    <input type="text" name="FamCode" id="StoreCode" class="form-control" placeholder="Family Code" />
+                    <label class="label form-label">Family Name</label>
+                    <input type="text" name="FamName" id="StoreCode" class="form-control" placeholder="Family Name" />
+                    <input type="hidden" name="FamID" value="0" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="LastUpdated" value="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="itemNatureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateItemNature","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Item Nature</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Nature Code</label>
+                    <input type="text" name="NatureCode" id="NatureCode" class="form-control" placeholder="Nature Code" />
+                    <label class="label form-label">Nature Name</label>
+                    <input type="text" name="NatureName" id="NatureName" class="form-control" placeholder="Nature Name" />
+                    <input type="hidden" name="NatureID" value="0" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="LastUpdated" value="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="itemTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateItemType","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Item Type</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Item Type</label>
+                    <select name="FamilyID">
+                        <option>Select Item Family</option>
+                        @foreach(var family in ViewData["itemFamily"] as List<DDU.Models.InvItemFamily>)
+                        {
+                            <option value="@family.FamID">@family.FamName</option>
+                        }
+                    </select>
+                    <label class="label form-label">Type Code</label>
+                    <input type="text" name="TypeCode" id="TypeCode" class="form-control" placeholder="Type Code" />
+                    <label class="label form-label">Type Name</label>
+                    <input type="text" name="Name" id="Name" class="form-control" placeholder="Name" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="LastUpdated" value="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="itemTypeSpecModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" enctype="multipart/form-data" action="@Url.Action("UpdateItemTypeSpecification","Inventory")">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Item Type Specification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="label form-label">Item Type Specification</label>
+                    <select name="FamilyID">
+                        <option>Select Item Type</option>
+                        @foreach(var type in ViewData["itemType"] as List<DDU.Models.InvItemType>)
+                        {
+                            <option value="@type.TypeID">@type.Name</option>
+                        }
+                    </select>
+                    <label class="label form-label">Spec Code</label>
+                    <input type="text" name="SpecCode" id="SpecCode" class="form-control" placeholder="Spec Code" />
+                    <label class="label form-label">Description</label>
+                    <input type="text" name="Description" id="Description" class="form-control" placeholder="Description" />
+                    <input type="hidden" name="IsDeleted" value="0" />
+                    <input type="hidden" name="LastUpdated" value="@DateTime.Now" />
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    function DeleteLookup(id, lookupName) {
+        var result = confirm("Are you sure you want to remove this "+  lookupName);
+        
+        if(result){
+            if(lookupName == "Division"){
+                window.location.href = '@Url.Action("DeleteDivision", "Inventory")/'+ id;
+            }
+            else if(lookupName == "Store"){
+                window.location.href = '@Url.Action("DeleteStore", "Inventory")/'+ id;
+            }
+            else if (lookupName == "ItemFamily") {
+                window.location.href = '@Url.Action("DeleteItemFamily", "Inventory")/'+ id;
+            }
+            else if (lookupName == "ItemNature") {
+                window.location.href = '@Url.Action("DeleteItemNature", "Inventory")/'+ id;
+            }
+            else if (lookupName == "ItemType") {
+                window.location.href = '@Url.Action("DeleteItemType", "Inventory")/'+ id;
+            }
+            else if (lookupName == "ItemTypeSpec") {
+                window.location.href = '@Url.Action("DeleteItemTypeSpecification", "Inventory")/' + id;
+            }
+        }
+    }
+</script>

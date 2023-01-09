@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DDU.Models.InvBudget>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CostID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PeriodNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FisicalYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BudAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BudCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerHectoLiter)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionMAC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquipmentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PeriodNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FisicalYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BudAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BudCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostPerHectoLiter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionIP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SessionMAC)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BudId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BudId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BudId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

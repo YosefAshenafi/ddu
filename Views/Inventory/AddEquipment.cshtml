@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "Add Equipment";
+    ViewData["name"] = "propertyManagement";
+    ViewData["category"] = "inventory";
+}
+@model InvEquipment
+@section Content {
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="breadcrumb breadcrumb-style ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Equipment</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="../../index.html">
+                                <i class="fas fa-home"></i> Inventory
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">Equipment</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Add</strong> Equipment
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form method="post" enctype="multipart/form-data" action="@Url.Action("AddEquipment","Inventory")">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select asp-for="SectionID" class="col-12 m-t-20 p-l-0" select2">
+                                                <option selected disabled>Select Section</option>
+                                                @foreach (var unit in ViewData["invSection"] as List<DDU.Models.InvSection>)
+                                                {
+                                                    <option value="@unit.SecId">@unit.SecName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select asp-for="FixID" class="col-12 m-t-20 p-l-0" select2">
+                                                <option selected disabled>Select Fixed Asset</option>
+                                                @foreach (var unit in ViewData["invFixed"] as List<DDU.Models.InvFixedAsset>)
+                                                {
+                                                    <option value="@unit.FixID">@unit.FixName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select asp-for="SupplierID" class="col-12 m-t-20 p-l-0" select2">
+                                                <option selected disabled>Select Supplier</option>
+                                                @foreach (var supplier in ViewData["invSupplier"] as List<DDU.Models.InvSupplier>)
+                                                {
+                                                    <option value="@supplier.SupplierID">@supplier.SupName</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="EqpCode" class="form-control" placeholder="Code" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="EqpName" class="form-control" placeholder="Name" />
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Capacity" class="form-control" placeholder="Capacity" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="Unit" class="form-control" placeholder="Unit" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input asp-for="Mark" class="form-control" placeholder="Mark" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="ModelNo" class="form-control" placeholder="Model Number" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input asp-for="SerialNo" type="text" class="form-control" placeholder="Serial Number" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="ComeFrom" class="form-control" placeholder="Come From" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input asp-for="ManufactureYear" type="text" class="form-control" placeholder="Manufacture Year" />
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input asp-for="DatePurchase" class="form-control" placeholder="Purchased Date" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 p-t-20 text-center">
+                                <button type="submit" class="btn btn-primary waves-effect m-r-15">Submit</button>
+                                <button type="button" class="btn btn-danger waves-effect">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+    @section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

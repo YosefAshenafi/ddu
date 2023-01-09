@@ -38,6 +38,7 @@ namespace DDU.Data;
     public DbSet<TblLeaveRequest> tblLeaveRequest { get; set; }
 
     public DbSet<TblLeaveType> tblLeaveType { get; set; }
+    public DbSet<InvEquipment> invEquipment { get; set; }
 
     public DbSet<TblEmployeeOnLeave> tblEmployeeOnLeave { get; set; }
 

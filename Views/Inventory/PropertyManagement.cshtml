@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DDU.Models.ViewModelInventory;
+@{
     ViewData["Title"] = "Property Management";
     ViewData["name"] = "propertyManagement";
     ViewData["category"] = "inventory";
@@ -33,15 +34,24 @@
                         <div class="p-l-20">
                             <ul class="nav ">
                                     <li class="nav-item tab-all">
-                                        <a class="nav-link active show" href="#project" data-bs-toggle="tab">
-                                            Fixed Assets
+                                    <a class="nav-link active show" href="#inventoryItems" data-bs-toggle="tab">
+                                            Inventory Items
                                         </a>
                                     </li>
                                     <li class="nav-item tab-all p-l-20">
-                                        <a class="nav-link" href="#education" data-info="edulist" data-bs-toggle="tab">Asset Codes</a>
+                                    <a class="nav-link" href="#suppliers" data-info="edulist" data-bs-toggle="tab">Suppliers</a>
                                     </li>
                                     <li class="nav-item tab-all p-l-20">
-                                        <a class="nav-link" href="#employment" data-info="employmentlist" data-bs-toggle="tab">Property Settings</a>
+                                        <a class="nav-link" href="#equipments" data-info="edulist" data-bs-toggle="tab">Equipments</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#costCenter" data-info="edulist" data-bs-toggle="tab">Cost Center</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#budget" data-info="edulist" data-bs-toggle="tab">Budget</a>
+                                    </li>
+                                    <li class="nav-item tab-all p-l-20">
+                                        <a class="nav-link" href="#lookups" data-info="edulist" data-bs-toggle="tab">Lookups</a>
                                     </li>
                             </ul>
 
@@ -49,7 +59,7 @@
                     </div>
                 </div>
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="project" aria-expanded="true">
+                    <div role="tabpanel" class="tab-pane active" id="inventoryItems" aria-expanded="true">
                         <div class="row clearfix">
                             <div class="card">
                                 <div class="header">
@@ -81,9 +91,20 @@
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="timeline" aria-expanded="false">
+                    <div role="tabpanel" class="tab-pane" id="suppliers" aria-expanded="true">
+                        <div class="row clearfix">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>
+                                        <strong>Fixed Assets</strong>
+                                    </h2>
+                                </div>
+
+                                @await Html.PartialAsync("~/Views/Inventory/Property/Suppliers/List.cshtml", @Model.Suppliers)
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="education" aria-expanded="false">
+                    <div class="tab-pane fade" id="equipments" aria-expanded="false">
 
                         <div class="card">
                             <div class="header">
@@ -117,7 +138,73 @@
                         </div>
 
                     </div>
-                    <div class="tab-pane fade" id="employment" aria-expanded="false">
+                    <div class="tab-pane fade" id="costCenter" aria-expanded="false">
+
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    <strong>Property Settings</strong>
+                                </h2>
+                            </div>
+
+                            <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover js-basic-example contact_list">
+                                        <thead>
+                                            <tr>
+                                                <th class="center"> Organiazation </th>
+                                                <th class="center"> Jobtitle </th>
+                                                <th class="center"> Date from </th>
+                                                <th class="center"> Date to </th>
+                                                <th class="center"> Action</th>
+                                            </tr>
+                                        </thead>
+
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                  
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="budget" aria-expanded="false">
+
+                        <div class="card">
+                            <div class="header">
+                                <h2>
+                                    <strong>Property Settings</strong>
+                                </h2>
+                            </div>
+
+                            <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover js-basic-example contact_list">
+                                        <thead>
+                                            <tr>
+                                                <th class="center"> Organiazation </th>
+                                                <th class="center"> Jobtitle </th>
+                                                <th class="center"> Date from </th>
+                                                <th class="center"> Date to </th>
+                                                <th class="center"> Action</th>
+                                            </tr>
+                                        </thead>
+
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                  
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="lookups" aria-expanded="false">
 
                         <div class="card">
                             <div class="header">
